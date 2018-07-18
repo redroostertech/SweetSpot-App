@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="QuestionaireTableViewCell" customModule="SweetSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSi-hQ-wgN">
+                        <rect key="frame" x="16" y="6" width="30" height="31.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="3Pt-kV-7mk"/>
+                        </constraints>
+                        <state key="normal" image="oval"/>
+                        <connections>
+                            <action selector="selection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="beU-zv-oUm"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oi-xl-xSX">
+                        <rect key="frame" x="54" y="6" width="258" height="31.5"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hSi-hQ-wgN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="3Cb-vS-YRh"/>
+                    <constraint firstItem="1oi-xl-xSX" firstAttribute="top" secondItem="hSi-hQ-wgN" secondAttribute="top" id="7mS-UE-T2m"/>
+                    <constraint firstAttribute="bottom" secondItem="hSi-hQ-wgN" secondAttribute="bottom" constant="6" id="9i6-Mr-gR9"/>
+                    <constraint firstItem="hSi-hQ-wgN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RUd-rY-THZ"/>
+                    <constraint firstItem="1oi-xl-xSX" firstAttribute="leading" secondItem="hSi-hQ-wgN" secondAttribute="trailing" constant="8" id="aYG-Vf-Fjf"/>
+                    <constraint firstItem="1oi-xl-xSX" firstAttribute="bottom" secondItem="hSi-hQ-wgN" secondAttribute="bottom" id="cJf-JF-Z0t"/>
+                    <constraint firstAttribute="trailing" secondItem="1oi-xl-xSX" secondAttribute="trailing" constant="8" id="iAJ-r4-EaE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btn_Selection" destination="hSi-hQ-wgN" id="2Ol-50-5Nc"/>
+                <outlet property="lbl_Response" destination="1oi-xl-xSX" id="Wgx-Ub-BEy"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="oval" width="16" height="16"/>
+    </resources>
+</document>

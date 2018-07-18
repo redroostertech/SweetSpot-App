@@ -1,0 +1,1135 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		054B82A115C8349B30BAAC26 /* Pods_SweetSpotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CB0CBFA2C6B1ECE121760F /* Pods_SweetSpotUITests.framework */; };
+		1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B2D20FC368000BD6A78 /* AppConstants.swift */; };
+		1BA58B6220FC397800BD6A78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B6120FC397800BD6A78 /* Utils.swift */; };
+		1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */; };
+		1BA58BB220FDAAAE00BD6A78 /* WizardQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9820FDAAAC00BD6A78 /* WizardQuestion.swift */; };
+		1BA58BB320FDAAAE00BD6A78 /* CustomerWineSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9920FDAAAC00BD6A78 /* CustomerWineSelect.swift */; };
+		1BA58BB420FDAAAE00BD6A78 /* WineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9A20FDAAAC00BD6A78 /* WineType.swift */; };
+		1BA58BB520FDAAAE00BD6A78 /* SalaryRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9B20FDAAAC00BD6A78 /* SalaryRange.swift */; };
+		1BA58BB620FDAAAE00BD6A78 /* RetailDatasourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9C20FDAAAC00BD6A78 /* RetailDatasourceType.swift */; };
+		1BA58BB720FDAAAE00BD6A78 /* WizardCustomerAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9D20FDAAAC00BD6A78 /* WizardCustomerAnswer.swift */; };
+		1BA58BB820FDAAAE00BD6A78 /* WizardAnswerMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9E20FDAAAC00BD6A78 /* WizardAnswerMatrix.swift */; };
+		1BA58BB920FDAAAE00BD6A78 /* AltWineName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9F20FDAAAC00BD6A78 /* AltWineName.swift */; };
+		1BA58BBA20FDAAAE00BD6A78 /* WineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA020FDAAAC00BD6A78 /* WineColor.swift */; };
+		1BA58BBB20FDAAAE00BD6A78 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA120FDAAAC00BD6A78 /* Customer.swift */; };
+		1BA58BBC20FDAAAE00BD6A78 /* CustomerRetailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA220FDAAAC00BD6A78 /* CustomerRetailer.swift */; };
+		1BA58BBD20FDAAAE00BD6A78 /* NuraResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA320FDAAAC00BD6A78 /* NuraResponse.swift */; };
+		1BA58BBE20FDAAAE00BD6A78 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA420FDAAAC00BD6A78 /* Wine.swift */; };
+		1BA58BBF20FDAAAE00BD6A78 /* Tannin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA520FDAAAD00BD6A78 /* Tannin.swift */; };
+		1BA58BC020FDAAAE00BD6A78 /* Acidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA620FDAAAD00BD6A78 /* Acidity.swift */; };
+		1BA58BC120FDAAAE00BD6A78 /* WineRetailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA720FDAAAD00BD6A78 /* WineRetailer.swift */; };
+		1BA58BC220FDAAAE00BD6A78 /* RetailerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA820FDAAAD00BD6A78 /* RetailerType.swift */; };
+		1BA58BC320FDAAAE00BD6A78 /* AlcoholStrength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BA920FDAAAD00BD6A78 /* AlcoholStrength.swift */; };
+		1BA58BC420FDAAAE00BD6A78 /* MaritalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAA20FDAAAD00BD6A78 /* MaritalStatus.swift */; };
+		1BA58BC520FDAAAE00BD6A78 /* WizardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAB20FDAAAD00BD6A78 /* WizardAnswer.swift */; };
+		1BA58BC620FDAAAE00BD6A78 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAC20FDAAAD00BD6A78 /* Gender.swift */; };
+		1BA58BC720FDAAAE00BD6A78 /* Oak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAD20FDAAAD00BD6A78 /* Oak.swift */; };
+		1BA58BC820FDAAAE00BD6A78 /* AgeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAE20FDAAAD00BD6A78 /* AgeRange.swift */; };
+		1BA58BC920FDAAAE00BD6A78 /* WineProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BAF20FDAAAD00BD6A78 /* WineProfile.swift */; };
+		1BA58BCA20FDAAAE00BD6A78 /* CustomerWineFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BB020FDAAAD00BD6A78 /* CustomerWineFavorite.swift */; };
+		1BA58BD020FEE16100BD6A78 /* RetailerDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BCF20FEE16000BD6A78 /* RetailerDistance.swift */; };
+		1BA58BD420FEF25100BD6A78 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD320FEF25100BD6A78 /* UIImageView.swift */; };
+		1BA58BD620FEF29C00BD6A78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD520FEF29C00BD6A78 /* UIImage.swift */; };
+		1BA58BD820FEF2B900BD6A78 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD720FEF2B900BD6A78 /* String.swift */; };
+		23505DA1971E7F3051E1E742 /* Pods_SweetSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1D6F838C72D46064AFED68 /* Pods_SweetSpot.framework */; };
+		BA7DC9F420EECAE6001A7AFB /* MySweetSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */; };
+		BA7DC9F620EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */; };
+		BA7DC9F820EF1688001A7AFB /* RateMyWineContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F720EF1688001A7AFB /* RateMyWineContainerController.swift */; };
+		BA7DC9FA20EF1CF1001A7AFB /* RateMyWineAllWInesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F920EF1CF1001A7AFB /* RateMyWineAllWInesController.swift */; };
+		BA7DC9FC20EF1D05001A7AFB /* RateMyWineRatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FB20EF1D05001A7AFB /* RateMyWineRatedController.swift */; };
+		BA7DC9FE20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FD20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift */; };
+		BA7DCA0020EF273E001A7AFB /* ShareToSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FF20EF273E001A7AFB /* ShareToSocialViewController.swift */; };
+		BAA5051220F2842B001A3CFD /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA5051120F2842A001A3CFD /* UIViewController+Extensions.swift */; };
+		BAA5051420F2843C001A3CFD /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA5051320F2843C001A3CFD /* UserDefaults+Extensions.swift */; };
+		BAB2783420EF2A090023EF1D /* Athelas-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */; };
+		BAB2783720EF2BB10023EF1D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAC733A620E6F4B200E77BF4 /* Info.plist */; };
+		BAB2783920EF2EC20023EF1D /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = BAB2783820EF2EC20023EF1D /* Futura.ttc */; };
+		BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAB2783A20EF2F970023EF1D /* GFSDidot-Regular.ttf */; };
+		BAC7339820E6F4B100E77BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7339720E6F4B100E77BF4 /* AppDelegate.swift */; };
+		BAC7339A20E6F4B100E77BF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7339920E6F4B100E77BF4 /* ViewController.swift */; };
+		BAC7339D20E6F4B100E77BF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC7339B20E6F4B100E77BF4 /* Main.storyboard */; };
+		BAC733A020E6F4B200E77BF4 /* SweetSpot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAC7339E20E6F4B200E77BF4 /* SweetSpot.xcdatamodeld */; };
+		BAC733A220E6F4B200E77BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAC733A120E6F4B200E77BF4 /* Assets.xcassets */; };
+		BAC733A520E6F4B200E77BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAC733A320E6F4B200E77BF4 /* LaunchScreen.storyboard */; };
+		BAC733B020E6F4B200E77BF4 /* SweetSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733AF20E6F4B200E77BF4 /* SweetSpotTests.swift */; };
+		BAC733BB20E6F4B200E77BF4 /* SweetSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733BA20E6F4B200E77BF4 /* SweetSpotUITests.swift */; };
+		BAC733CD20E6F67700E77BF4 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733C820E6F67600E77BF4 /* UIColor+Extensions.swift */; };
+		BAC733CE20E6F67700E77BF4 /* AttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733C920E6F67700E77BF4 /* AttributedString+Extensions.swift */; };
+		BAC733D120E6F67700E77BF4 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733CC20E6F67700E77BF4 /* UIDevice+Extensions.swift */; };
+		BAC733D820E6F6A600E77BF4 /* CustomStringConvertible+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733D220E6F6A500E77BF4 /* CustomStringConvertible+Extension.swift */; };
+		BAC733DB20E6F6A600E77BF4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733D520E6F6A600E77BF4 /* Error.swift */; };
+		BAC733DF20E6F87700E77BF4 /* ModuleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733DE20E6F87700E77BF4 /* ModuleHandler.swift */; };
+		BAC733E120E6F88600E77BF4 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733E020E6F88600E77BF4 /* UITextField+Extensions.swift */; };
+		BAC733E320E6F8A400E77BF4 /* RandomStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733E220E6F8A300E77BF4 /* RandomStringGenerator.swift */; };
+		BAC733E520E7187600E77BF4 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733E420E7187600E77BF4 /* Configs.swift */; };
+		BAC733E720E72A0800E77BF4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733E620E72A0800E77BF4 /* LoginViewController.swift */; };
+		BAC733E920E72ECC00E77BF4 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733E820E72ECC00E77BF4 /* ForgotPasswordViewController.swift */; };
+		BAC733EB20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733EA20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift */; };
+		BAC733ED20E7E18A00E77BF4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733EC20E7E18A00E77BF4 /* RegistrationViewController.swift */; };
+		BAC733EF20E7E68400E77BF4 /* RegistrationPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733EE20E7E68400E77BF4 /* RegistrationPasswordViewController.swift */; };
+		BAC733F120E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733F020E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift */; };
+		BAC733F420E7FB6600E77BF4 /* QuestionaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733F220E7FB6600E77BF4 /* QuestionaireTableViewCell.swift */; };
+		BAC733F520E7FB6600E77BF4 /* QuestionaireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC733F320E7FB6600E77BF4 /* QuestionaireTableViewCell.xib */; };
+		BAC733F720E7FC2700E77BF4 /* QuestionaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733F620E7FC2700E77BF4 /* QuestionaireViewController.swift */; };
+		BAC733F920E87D6100E77BF4 /* QuestionaireFinalStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733F820E87D6100E77BF4 /* QuestionaireFinalStepViewController.swift */; };
+		BAC733FB20E9255700E77BF4 /* RegistrationCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC733FA20E9255700E77BF4 /* RegistrationCompletionViewController.swift */; };
+		BAE0740420E93F4C00F8FD63 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740320E93F4C00F8FD63 /* DashboardViewController.swift */; };
+		BAE0740620E950A200F8FD63 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740520E950A200F8FD63 /* MenuViewController.swift */; };
+		BAE0740E20E97F7F00F8FD63 /* CAPSPageMenu+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740720E97F7D00F8FD63 /* CAPSPageMenu+UIConfiguration.swift */; };
+		BAE0740F20E97F7F00F8FD63 /* CAPSPageMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740820E97F7D00F8FD63 /* CAPSPageMenu+Options.swift */; };
+		BAE0741020E97F7F00F8FD63 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740920E97F7D00F8FD63 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */; };
+		BAE0741120E97F7F00F8FD63 /* CAPSPageMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740A20E97F7D00F8FD63 /* CAPSPageMenuConfiguration.swift */; };
+		BAE0741220E97F7F00F8FD63 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740B20E97F7E00F8FD63 /* MenuItemView.swift */; };
+		BAE0741320E97F7F00F8FD63 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740C20E97F7E00F8FD63 /* CAPSPageMenu.swift */; };
+		BAE0741420E97F7F00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0740D20E97F7E00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift */; };
+		BAE0741920E9824400F8FD63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0741820E9824400F8FD63 /* ProfileViewController.swift */; };
+		BAE0741B20E982CD00F8FD63 /* WineProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0741A20E982CD00F8FD63 /* WineProfileViewController.swift */; };
+		BAE0741E20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0741C20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift */; };
+		BAE0741F20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE0741D20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib */; };
+		BAE0742220EC047D00F8FD63 /* SecondaryNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742020EC047D00F8FD63 /* SecondaryNavigationViewController.swift */; };
+		BAE0742320EC047D00F8FD63 /* SecondaryNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE0742120EC047D00F8FD63 /* SecondaryNavigationViewController.xib */; };
+		BAE0742520EC733A00F8FD63 /* ProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742420EC733A00F8FD63 /* ProfileContainerViewController.swift */; };
+		BAE0742720EC788800F8FD63 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742620EC788800F8FD63 /* Question.swift */; };
+		BAE0742920EC78AF00F8FD63 /* QuestionaireDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742820EC78AF00F8FD63 /* QuestionaireDataSource.swift */; };
+		BAE0742B20EC7EFE00F8FD63 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742A20EC7EFE00F8FD63 /* HelpViewController.swift */; };
+		BAE0742D20ECFB0400F8FD63 /* FindMyWineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742C20ECFB0400F8FD63 /* FindMyWineViewController.swift */; };
+		BAE0742F20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0742E20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift */; };
+		BAE0743120EDA41C00F8FD63 /* WasWineAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0743020EDA41C00F8FD63 /* WasWineAvailableViewController.swift */; };
+		BAFDCB9220EDAABB00611048 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFDCB9120EDAABB00611048 /* AddReviewViewController.swift */; };
+		BAFDCB9420EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFDCB9320EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift */; };
+		BAFDCB9620EEC56000611048 /* FindMyWineDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFDCB9520EEC56000611048 /* FindMyWineDetailsViewController.swift */; };
+		CF4FB898BECA26AAFB9C1978 /* Pods_SweetSpotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37EC97AFD0AE9D75FC4C8BC /* Pods_SweetSpotTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BAC733AC20E6F4B200E77BF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAC7338C20E6F4B100E77BF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAC7339320E6F4B100E77BF4;
+			remoteInfo = SweetSpot;
+		};
+		BAC733B720E6F4B200E77BF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAC7338C20E6F4B100E77BF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAC7339320E6F4B100E77BF4;
+			remoteInfo = SweetSpot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E1D6F838C72D46064AFED68 /* Pods_SweetSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA58B2D20FC368000BD6A78 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		1BA58B6120FC397800BD6A78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retailer.swift; sourceTree = "<group>"; };
+		1BA58B9820FDAAAC00BD6A78 /* WizardQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardQuestion.swift; sourceTree = "<group>"; };
+		1BA58B9920FDAAAC00BD6A78 /* CustomerWineSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerWineSelect.swift; sourceTree = "<group>"; };
+		1BA58B9A20FDAAAC00BD6A78 /* WineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineType.swift; sourceTree = "<group>"; };
+		1BA58B9B20FDAAAC00BD6A78 /* SalaryRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryRange.swift; sourceTree = "<group>"; };
+		1BA58B9C20FDAAAC00BD6A78 /* RetailDatasourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetailDatasourceType.swift; sourceTree = "<group>"; };
+		1BA58B9D20FDAAAC00BD6A78 /* WizardCustomerAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardCustomerAnswer.swift; sourceTree = "<group>"; };
+		1BA58B9E20FDAAAC00BD6A78 /* WizardAnswerMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardAnswerMatrix.swift; sourceTree = "<group>"; };
+		1BA58B9F20FDAAAC00BD6A78 /* AltWineName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltWineName.swift; sourceTree = "<group>"; };
+		1BA58BA020FDAAAC00BD6A78 /* WineColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineColor.swift; sourceTree = "<group>"; };
+		1BA58BA120FDAAAC00BD6A78 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		1BA58BA220FDAAAC00BD6A78 /* CustomerRetailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRetailer.swift; sourceTree = "<group>"; };
+		1BA58BA320FDAAAC00BD6A78 /* NuraResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuraResponse.swift; sourceTree = "<group>"; };
+		1BA58BA420FDAAAC00BD6A78 /* Wine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
+		1BA58BA520FDAAAD00BD6A78 /* Tannin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tannin.swift; sourceTree = "<group>"; };
+		1BA58BA620FDAAAD00BD6A78 /* Acidity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acidity.swift; sourceTree = "<group>"; };
+		1BA58BA720FDAAAD00BD6A78 /* WineRetailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineRetailer.swift; sourceTree = "<group>"; };
+		1BA58BA820FDAAAD00BD6A78 /* RetailerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetailerType.swift; sourceTree = "<group>"; };
+		1BA58BA920FDAAAD00BD6A78 /* AlcoholStrength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlcoholStrength.swift; sourceTree = "<group>"; };
+		1BA58BAA20FDAAAD00BD6A78 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaritalStatus.swift; sourceTree = "<group>"; };
+		1BA58BAB20FDAAAD00BD6A78 /* WizardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardAnswer.swift; sourceTree = "<group>"; };
+		1BA58BAC20FDAAAD00BD6A78 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		1BA58BAD20FDAAAD00BD6A78 /* Oak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oak.swift; sourceTree = "<group>"; };
+		1BA58BAE20FDAAAD00BD6A78 /* AgeRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeRange.swift; sourceTree = "<group>"; };
+		1BA58BAF20FDAAAD00BD6A78 /* WineProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineProfile.swift; sourceTree = "<group>"; };
+		1BA58BB020FDAAAD00BD6A78 /* CustomerWineFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerWineFavorite.swift; sourceTree = "<group>"; };
+		1BA58BCF20FEE16000BD6A78 /* RetailerDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetailerDistance.swift; sourceTree = "<group>"; };
+		1BA58BD320FEF25100BD6A78 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		1BA58BD520FEF29C00BD6A78 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		1BA58BD720FEF2B900BD6A78 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4241194076455E89F9E9E936 /* Pods-SweetSpotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotTests/Pods-SweetSpotTests.release.xcconfig"; sourceTree = "<group>"; };
+		66CCFBFA62E816B0FA91692F /* Pods-SweetSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot.release.xcconfig"; sourceTree = "<group>"; };
+		678D4F3B510D5865B159AC83 /* Pods-SweetSpotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotUITests/Pods-SweetSpotUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySweetSpotViewController.swift; sourceTree = "<group>"; };
+		BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySweetSpotRemoveWineViewController.swift; sourceTree = "<group>"; };
+		BA7DC9F720EF1688001A7AFB /* RateMyWineContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyWineContainerController.swift; sourceTree = "<group>"; };
+		BA7DC9F920EF1CF1001A7AFB /* RateMyWineAllWInesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyWineAllWInesController.swift; sourceTree = "<group>"; };
+		BA7DC9FB20EF1D05001A7AFB /* RateMyWineRatedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RateMyWineRatedController.swift; path = Assets.xcassets/RateMyWineRatedController.swift; sourceTree = "<group>"; };
+		BA7DC9FD20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyWineUnRatedController.swift; sourceTree = "<group>"; };
+		BA7DC9FF20EF273E001A7AFB /* ShareToSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareToSocialViewController.swift; sourceTree = "<group>"; };
+		BAA5051120F2842A001A3CFD /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		BAA5051320F2843C001A3CFD /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Athelas-Regular.ttf"; sourceTree = "<group>"; };
+		BAB2783820EF2EC20023EF1D /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
+		BAB2783A20EF2F970023EF1D /* GFSDidot-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GFSDidot-Regular.ttf"; sourceTree = "<group>"; };
+		BAC7339420E6F4B100E77BF4 /* SweetSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC7339720E6F4B100E77BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BAC7339920E6F4B100E77BF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BAC7339C20E6F4B100E77BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BAC7339F20E6F4B200E77BF4 /* SweetSpot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SweetSpot.xcdatamodel; sourceTree = "<group>"; };
+		BAC733A120E6F4B200E77BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAC733A420E6F4B200E77BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BAC733A620E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC733AF20E6F4B200E77BF4 /* SweetSpotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetSpotTests.swift; sourceTree = "<group>"; };
+		BAC733B120E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC733BA20E6F4B200E77BF4 /* SweetSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetSpotUITests.swift; sourceTree = "<group>"; };
+		BAC733BC20E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC733C820E6F67600E77BF4 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		BAC733C920E6F67700E77BF4 /* AttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		BAC733CC20E6F67700E77BF4 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		BAC733D220E6F6A500E77BF4 /* CustomStringConvertible+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extension.swift"; sourceTree = "<group>"; };
+		BAC733D520E6F6A600E77BF4 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BAC733DE20E6F87700E77BF4 /* ModuleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleHandler.swift; sourceTree = "<group>"; };
+		BAC733E020E6F88600E77BF4 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		BAC733E220E6F8A300E77BF4 /* RandomStringGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomStringGenerator.swift; sourceTree = "<group>"; };
+		BAC733E420E7187600E77BF4 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		BAC733E620E72A0800E77BF4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BAC733E820E72ECC00E77BF4 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		BAC733EA20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		BAC733EC20E7E18A00E77BF4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		BAC733EE20E7E68400E77BF4 /* RegistrationPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPasswordViewController.swift; sourceTree = "<group>"; };
+		BAC733F020E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendPasswordPopOverViewController.swift; sourceTree = "<group>"; };
+		BAC733F220E7FB6600E77BF4 /* QuestionaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireTableViewCell.swift; sourceTree = "<group>"; };
+		BAC733F320E7FB6600E77BF4 /* QuestionaireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionaireTableViewCell.xib; sourceTree = "<group>"; };
+		BAC733F620E7FC2700E77BF4 /* QuestionaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireViewController.swift; sourceTree = "<group>"; };
+		BAC733F820E87D6100E77BF4 /* QuestionaireFinalStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireFinalStepViewController.swift; sourceTree = "<group>"; };
+		BAC733FA20E9255700E77BF4 /* RegistrationCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCompletionViewController.swift; sourceTree = "<group>"; };
+		BAE0740320E93F4C00F8FD63 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		BAE0740520E950A200F8FD63 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		BAE0740720E97F7D00F8FD63 /* CAPSPageMenu+UIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIConfiguration.swift"; sourceTree = "<group>"; };
+		BAE0740820E97F7D00F8FD63 /* CAPSPageMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+Options.swift"; sourceTree = "<group>"; };
+		BAE0740920E97F7D00F8FD63 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
+		BAE0740A20E97F7D00F8FD63 /* CAPSPageMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenuConfiguration.swift; sourceTree = "<group>"; };
+		BAE0740B20E97F7E00F8FD63 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		BAE0740C20E97F7E00F8FD63 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
+		BAE0740D20E97F7E00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		BAE0741820E9824400F8FD63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BAE0741A20E982CD00F8FD63 /* WineProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineProfileViewController.swift; sourceTree = "<group>"; };
+		BAE0741C20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryNavigationViewController.swift; sourceTree = "<group>"; };
+		BAE0741D20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrimaryNavigationViewController.xib; sourceTree = "<group>"; };
+		BAE0742020EC047D00F8FD63 /* SecondaryNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryNavigationViewController.swift; sourceTree = "<group>"; };
+		BAE0742120EC047D00F8FD63 /* SecondaryNavigationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondaryNavigationViewController.xib; sourceTree = "<group>"; };
+		BAE0742420EC733A00F8FD63 /* ProfileContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainerViewController.swift; sourceTree = "<group>"; };
+		BAE0742620EC788800F8FD63 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		BAE0742820EC78AF00F8FD63 /* QuestionaireDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireDataSource.swift; sourceTree = "<group>"; };
+		BAE0742A20EC7EFE00F8FD63 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		BAE0742C20ECFB0400F8FD63 /* FindMyWineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyWineViewController.swift; sourceTree = "<group>"; };
+		BAE0742E20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyWineDetailsListViewController.swift; sourceTree = "<group>"; };
+		BAE0743020EDA41C00F8FD63 /* WasWineAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasWineAvailableViewController.swift; sourceTree = "<group>"; };
+		BAFDCB9120EDAABB00611048 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		BAFDCB9320EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyWineDetailsCarouselViewController.swift; sourceTree = "<group>"; };
+		BAFDCB9520EEC56000611048 /* FindMyWineDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyWineDetailsViewController.swift; sourceTree = "<group>"; };
+		C288913855BB45BCF15D43D9 /* Pods-SweetSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot.debug.xcconfig"; sourceTree = "<group>"; };
+		C2CB0CBFA2C6B1ECE121760F /* Pods_SweetSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37EC97AFD0AE9D75FC4C8BC /* Pods_SweetSpotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetSpotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D39B2E4E6EC213840289AA41 /* Pods-SweetSpotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotTests/Pods-SweetSpotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8642CF7B748E6079AB143E5 /* Pods-SweetSpotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotUITests/Pods-SweetSpotUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAC7339120E6F4B100E77BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23505DA1971E7F3051E1E742 /* Pods_SweetSpot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733A820E6F4B200E77BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4FB898BECA26AAFB9C1978 /* Pods_SweetSpotTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733B320E6F4B200E77BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054B82A115C8349B30BAAC26 /* Pods_SweetSpotUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BA58B2F20FC38F700BD6A78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BA58BA620FDAAAD00BD6A78 /* Acidity.swift */,
+				1BA58BAE20FDAAAD00BD6A78 /* AgeRange.swift */,
+				1BA58BA920FDAAAD00BD6A78 /* AlcoholStrength.swift */,
+				1BA58B9F20FDAAAC00BD6A78 /* AltWineName.swift */,
+				1BA58BA120FDAAAC00BD6A78 /* Customer.swift */,
+				1BA58BA220FDAAAC00BD6A78 /* CustomerRetailer.swift */,
+				1BA58BB020FDAAAD00BD6A78 /* CustomerWineFavorite.swift */,
+				1BA58B9920FDAAAC00BD6A78 /* CustomerWineSelect.swift */,
+				1BA58BAC20FDAAAD00BD6A78 /* Gender.swift */,
+				1BA58BAA20FDAAAD00BD6A78 /* MaritalStatus.swift */,
+				1BA58BA320FDAAAC00BD6A78 /* NuraResponse.swift */,
+				1BA58BAD20FDAAAD00BD6A78 /* Oak.swift */,
+				1BA58B9C20FDAAAC00BD6A78 /* RetailDatasourceType.swift */,
+				1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */,
+				1BA58BCF20FEE16000BD6A78 /* RetailerDistance.swift */,
+				1BA58BA820FDAAAD00BD6A78 /* RetailerType.swift */,
+				1BA58B9B20FDAAAC00BD6A78 /* SalaryRange.swift */,
+				1BA58BA520FDAAAD00BD6A78 /* Tannin.swift */,
+				1BA58BA420FDAAAC00BD6A78 /* Wine.swift */,
+				1BA58BA020FDAAAC00BD6A78 /* WineColor.swift */,
+				1BA58BAF20FDAAAD00BD6A78 /* WineProfile.swift */,
+				1BA58BA720FDAAAD00BD6A78 /* WineRetailer.swift */,
+				1BA58B9A20FDAAAC00BD6A78 /* WineType.swift */,
+				1BA58BAB20FDAAAD00BD6A78 /* WizardAnswer.swift */,
+				1BA58B9E20FDAAAC00BD6A78 /* WizardAnswerMatrix.swift */,
+				1BA58B9D20FDAAAC00BD6A78 /* WizardCustomerAnswer.swift */,
+				1BA58B9820FDAAAC00BD6A78 /* WizardQuestion.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BA58B6020FC396C00BD6A78 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1BA58B2D20FC368000BD6A78 /* AppConstants.swift */,
+				1BA58B6120FC397800BD6A78 /* Utils.swift */,
+				BAC733D520E6F6A600E77BF4 /* Error.swift */,
+				BAC733E420E7187600E77BF4 /* Configs.swift */,
+				BAC733DE20E6F87700E77BF4 /* ModuleHandler.swift */,
+				BAC733E220E6F8A300E77BF4 /* RandomStringGenerator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1BA58BCB20FE2C3300BD6A78 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BAE0742020EC047D00F8FD63 /* SecondaryNavigationViewController.swift */,
+				BAE0742120EC047D00F8FD63 /* SecondaryNavigationViewController.xib */,
+				BAC733F220E7FB6600E77BF4 /* QuestionaireTableViewCell.swift */,
+				BAC733F320E7FB6600E77BF4 /* QuestionaireTableViewCell.xib */,
+				BAE0741D20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib */,
+				BAE0741C20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1BA58BCC20FE2F3C00BD6A78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAC733C920E6F67700E77BF4 /* AttributedString+Extensions.swift */,
+				BAC733C820E6F67600E77BF4 /* UIColor+Extensions.swift */,
+				BAC733CC20E6F67700E77BF4 /* UIDevice+Extensions.swift */,
+				BAC733D220E6F6A500E77BF4 /* CustomStringConvertible+Extension.swift */,
+				BAA5051120F2842A001A3CFD /* UIViewController+Extensions.swift */,
+				BAA5051320F2843C001A3CFD /* UserDefaults+Extensions.swift */,
+				BAC733E020E6F88600E77BF4 /* UITextField+Extensions.swift */,
+				1BA58BD320FEF25100BD6A78 /* UIImageView.swift */,
+				1BA58BD520FEF29C00BD6A78 /* UIImage.swift */,
+				1BA58BD720FEF2B900BD6A78 /* String.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5E54295596D78850D3A314B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E1D6F838C72D46064AFED68 /* Pods_SweetSpot.framework */,
+				C37EC97AFD0AE9D75FC4C8BC /* Pods_SweetSpotTests.framework */,
+				C2CB0CBFA2C6B1ECE121760F /* Pods_SweetSpotUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA72EDF2662E64798A1A3260 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C288913855BB45BCF15D43D9 /* Pods-SweetSpot.debug.xcconfig */,
+				66CCFBFA62E816B0FA91692F /* Pods-SweetSpot.release.xcconfig */,
+				D39B2E4E6EC213840289AA41 /* Pods-SweetSpotTests.debug.xcconfig */,
+				4241194076455E89F9E9E936 /* Pods-SweetSpotTests.release.xcconfig */,
+				E8642CF7B748E6079AB143E5 /* Pods-SweetSpotUITests.debug.xcconfig */,
+				678D4F3B510D5865B159AC83 /* Pods-SweetSpotUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BAB2783220EF29CF0023EF1D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BAB2783820EF2EC20023EF1D /* Futura.ttc */,
+				BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */,
+				BAB2783A20EF2F970023EF1D /* GFSDidot-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BAC7338B20E6F4B100E77BF4 = {
+			isa = PBXGroup;
+			children = (
+				BAC7339620E6F4B100E77BF4 /* SweetSpot */,
+				BAC733AE20E6F4B200E77BF4 /* SweetSpotTests */,
+				BAC733B920E6F4B200E77BF4 /* SweetSpotUITests */,
+				BAC7339520E6F4B100E77BF4 /* Products */,
+				AA72EDF2662E64798A1A3260 /* Pods */,
+				5E54295596D78850D3A314B1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BAC7339520E6F4B100E77BF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAC7339420E6F4B100E77BF4 /* SweetSpot.app */,
+				BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */,
+				BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAC7339620E6F4B100E77BF4 /* SweetSpot */ = {
+			isa = PBXGroup;
+			children = (
+				1BA58BCC20FE2F3C00BD6A78 /* Views */,
+				1BA58BCB20FE2C3300BD6A78 /* Cells */,
+				1BA58B6020FC396C00BD6A78 /* Utils */,
+				1BA58B2F20FC38F700BD6A78 /* Model */,
+				BAC7339720E6F4B100E77BF4 /* AppDelegate.swift */,
+				BAFDCB9120EDAABB00611048 /* AddReviewViewController.swift */,
+				BAE0740320E93F4C00F8FD63 /* DashboardViewController.swift */,
+				BAFDCB9520EEC56000611048 /* FindMyWineDetailsViewController.swift */,
+				BAE0742E20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift */,
+				BAFDCB9320EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift */,
+				BAE0742C20ECFB0400F8FD63 /* FindMyWineViewController.swift */,
+				BAC733E820E72ECC00E77BF4 /* ForgotPasswordViewController.swift */,
+				BAC733E620E72A0800E77BF4 /* LoginViewController.swift */,
+				BAE0742A20EC7EFE00F8FD63 /* HelpViewController.swift */,
+				BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */,
+				BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */,
+				BAC7339B20E6F4B100E77BF4 /* Main.storyboard */,
+				BAE0740520E950A200F8FD63 /* MenuViewController.swift */,
+				BAE0742420EC733A00F8FD63 /* ProfileContainerViewController.swift */,
+				BAE0741820E9824400F8FD63 /* ProfileViewController.swift */,
+				BAE0742620EC788800F8FD63 /* Question.swift */,
+				BAE0742820EC78AF00F8FD63 /* QuestionaireDataSource.swift */,
+				BAC733F620E7FC2700E77BF4 /* QuestionaireViewController.swift */,
+				BAC733F820E87D6100E77BF4 /* QuestionaireFinalStepViewController.swift */,
+				BA7DC9F920EF1CF1001A7AFB /* RateMyWineAllWInesController.swift */,
+				BA7DC9F720EF1688001A7AFB /* RateMyWineContainerController.swift */,
+				BA7DC9FB20EF1D05001A7AFB /* RateMyWineRatedController.swift */,
+				BA7DC9FD20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift */,
+				BAC733FA20E9255700E77BF4 /* RegistrationCompletionViewController.swift */,
+				BAC733EE20E7E68400E77BF4 /* RegistrationPasswordViewController.swift */,
+				BAC733EC20E7E18A00E77BF4 /* RegistrationViewController.swift */,
+				BAC733F020E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift */,
+				BA7DC9FF20EF273E001A7AFB /* ShareToSocialViewController.swift */,
+				BAC733EA20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift */,
+				BAC7339920E6F4B100E77BF4 /* ViewController.swift */,
+				BAE0743020EDA41C00F8FD63 /* WasWineAvailableViewController.swift */,
+				BAE0741A20E982CD00F8FD63 /* WineProfileViewController.swift */,
+				BAC733A120E6F4B200E77BF4 /* Assets.xcassets */,
+				BAC733A320E6F4B200E77BF4 /* LaunchScreen.storyboard */,
+				BAC733A620E6F4B200E77BF4 /* Info.plist */,
+				BAC7339E20E6F4B200E77BF4 /* SweetSpot.xcdatamodeld */,
+				BAB2783220EF29CF0023EF1D /* Fonts */,
+				BAE0741720E9812900F8FD63 /* Page Menu */,
+			);
+			path = SweetSpot;
+			sourceTree = "<group>";
+		};
+		BAC733AE20E6F4B200E77BF4 /* SweetSpotTests */ = {
+			isa = PBXGroup;
+			children = (
+				BAC733AF20E6F4B200E77BF4 /* SweetSpotTests.swift */,
+				BAC733B120E6F4B200E77BF4 /* Info.plist */,
+			);
+			path = SweetSpotTests;
+			sourceTree = "<group>";
+		};
+		BAC733B920E6F4B200E77BF4 /* SweetSpotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BAC733BA20E6F4B200E77BF4 /* SweetSpotUITests.swift */,
+				BAC733BC20E6F4B200E77BF4 /* Info.plist */,
+			);
+			path = SweetSpotUITests;
+			sourceTree = "<group>";
+		};
+		BAE0741720E9812900F8FD63 /* Page Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BAE0740C20E97F7E00F8FD63 /* CAPSPageMenu.swift */,
+				BAE0740820E97F7D00F8FD63 /* CAPSPageMenu+Options.swift */,
+				BAE0740720E97F7D00F8FD63 /* CAPSPageMenu+UIConfiguration.swift */,
+				BAE0740920E97F7D00F8FD63 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */,
+				BAE0740D20E97F7E00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift */,
+				BAE0740A20E97F7D00F8FD63 /* CAPSPageMenuConfiguration.swift */,
+				BAE0740B20E97F7E00F8FD63 /* MenuItemView.swift */,
+			);
+			path = "Page Menu";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAC7339320E6F4B100E77BF4 /* SweetSpot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot" */;
+			buildPhases = (
+				A55A159C6A3536F6DF516FD1 /* [CP] Check Pods Manifest.lock */,
+				BAC7339020E6F4B100E77BF4 /* Sources */,
+				BAC7339120E6F4B100E77BF4 /* Frameworks */,
+				BAC7339220E6F4B100E77BF4 /* Resources */,
+				73DBA3942C68C1FC48F9B51E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SweetSpot;
+			productName = SweetSpot;
+			productReference = BAC7339420E6F4B100E77BF4 /* SweetSpot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BAC733AA20E6F4B200E77BF4 /* SweetSpotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotTests" */;
+			buildPhases = (
+				464D04E783B899B6696641B5 /* [CP] Check Pods Manifest.lock */,
+				BAC733A720E6F4B200E77BF4 /* Sources */,
+				BAC733A820E6F4B200E77BF4 /* Frameworks */,
+				BAC733A920E6F4B200E77BF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BAC733AD20E6F4B200E77BF4 /* PBXTargetDependency */,
+			);
+			name = SweetSpotTests;
+			productName = SweetSpotTests;
+			productReference = BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BAC733B520E6F4B200E77BF4 /* SweetSpotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotUITests" */;
+			buildPhases = (
+				69576C6BA71B1DB36579F60B /* [CP] Check Pods Manifest.lock */,
+				BAC733B220E6F4B200E77BF4 /* Sources */,
+				BAC733B320E6F4B200E77BF4 /* Frameworks */,
+				BAC733B420E6F4B200E77BF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BAC733B820E6F4B200E77BF4 /* PBXTargetDependency */,
+			);
+			name = SweetSpotUITests;
+			productName = SweetSpotUITests;
+			productReference = BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAC7338C20E6F4B100E77BF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "RedRooster Technologies Inc";
+				TargetAttributes = {
+					BAC7339320E6F4B100E77BF4 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					BAC733AA20E6F4B200E77BF4 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BAC7339320E6F4B100E77BF4;
+					};
+					BAC733B520E6F4B200E77BF4 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BAC7339320E6F4B100E77BF4;
+					};
+				};
+			};
+			buildConfigurationList = BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BAC7338B20E6F4B100E77BF4;
+			productRefGroup = BAC7339520E6F4B100E77BF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAC7339320E6F4B100E77BF4 /* SweetSpot */,
+				BAC733AA20E6F4B200E77BF4 /* SweetSpotTests */,
+				BAC733B520E6F4B200E77BF4 /* SweetSpotUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAC7339220E6F4B100E77BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC733A520E6F4B200E77BF4 /* LaunchScreen.storyboard in Resources */,
+				BAE0741F20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib in Resources */,
+				BAB2783720EF2BB10023EF1D /* Info.plist in Resources */,
+				BAB2783420EF2A090023EF1D /* Athelas-Regular.ttf in Resources */,
+				BAC733A220E6F4B200E77BF4 /* Assets.xcassets in Resources */,
+				BAC733F520E7FB6600E77BF4 /* QuestionaireTableViewCell.xib in Resources */,
+				BAB2783920EF2EC20023EF1D /* Futura.ttc in Resources */,
+				BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */,
+				BAC7339D20E6F4B100E77BF4 /* Main.storyboard in Resources */,
+				BAE0742320EC047D00F8FD63 /* SecondaryNavigationViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733A920E6F4B200E77BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733B420E6F4B200E77BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		464D04E783B899B6696641B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetSpotTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69576C6BA71B1DB36579F60B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetSpotUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73DBA3942C68C1FC48F9B51E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A55A159C6A3536F6DF516FD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetSpot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAC7339020E6F4B100E77BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAE0741220E97F7F00F8FD63 /* MenuItemView.swift in Sources */,
+				BAC733E920E72ECC00E77BF4 /* ForgotPasswordViewController.swift in Sources */,
+				1BA58BD820FEF2B900BD6A78 /* String.swift in Sources */,
+				BAC733E120E6F88600E77BF4 /* UITextField+Extensions.swift in Sources */,
+				BAFDCB9220EDAABB00611048 /* AddReviewViewController.swift in Sources */,
+				BAC733F120E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift in Sources */,
+				1BA58BB620FDAAAE00BD6A78 /* RetailDatasourceType.swift in Sources */,
+				1BA58BD620FEF29C00BD6A78 /* UIImage.swift in Sources */,
+				1BA58BBE20FDAAAE00BD6A78 /* Wine.swift in Sources */,
+				BAFDCB9420EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift in Sources */,
+				1BA58BC120FDAAAE00BD6A78 /* WineRetailer.swift in Sources */,
+				BAC733E320E6F8A400E77BF4 /* RandomStringGenerator.swift in Sources */,
+				BAA5051420F2843C001A3CFD /* UserDefaults+Extensions.swift in Sources */,
+				1BA58BB820FDAAAE00BD6A78 /* WizardAnswerMatrix.swift in Sources */,
+				BAE0741320E97F7F00F8FD63 /* CAPSPageMenu.swift in Sources */,
+				1BA58BBD20FDAAAE00BD6A78 /* NuraResponse.swift in Sources */,
+				BAE0741120E97F7F00F8FD63 /* CAPSPageMenuConfiguration.swift in Sources */,
+				BA7DC9FA20EF1CF1001A7AFB /* RateMyWineAllWInesController.swift in Sources */,
+				1BA58BD420FEF25100BD6A78 /* UIImageView.swift in Sources */,
+				BAC733E720E72A0800E77BF4 /* LoginViewController.swift in Sources */,
+				1BA58BB320FDAAAE00BD6A78 /* CustomerWineSelect.swift in Sources */,
+				BAC7339A20E6F4B100E77BF4 /* ViewController.swift in Sources */,
+				BAE0740620E950A200F8FD63 /* MenuViewController.swift in Sources */,
+				1BA58BC720FDAAAE00BD6A78 /* Oak.swift in Sources */,
+				1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */,
+				BA7DC9F420EECAE6001A7AFB /* MySweetSpotViewController.swift in Sources */,
+				1BA58BBC20FDAAAE00BD6A78 /* CustomerRetailer.swift in Sources */,
+				BAFDCB9620EEC56000611048 /* FindMyWineDetailsViewController.swift in Sources */,
+				BAE0742220EC047D00F8FD63 /* SecondaryNavigationViewController.swift in Sources */,
+				BAA5051220F2842B001A3CFD /* UIViewController+Extensions.swift in Sources */,
+				1BA58BBB20FDAAAE00BD6A78 /* Customer.swift in Sources */,
+				1BA58BC920FDAAAE00BD6A78 /* WineProfile.swift in Sources */,
+				BAE0742F20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift in Sources */,
+				BAC733DF20E6F87700E77BF4 /* ModuleHandler.swift in Sources */,
+				BAC733E520E7187600E77BF4 /* Configs.swift in Sources */,
+				BAE0740E20E97F7F00F8FD63 /* CAPSPageMenu+UIConfiguration.swift in Sources */,
+				BAC733FB20E9255700E77BF4 /* RegistrationCompletionViewController.swift in Sources */,
+				BAE0743120EDA41C00F8FD63 /* WasWineAvailableViewController.swift in Sources */,
+				BAE0742520EC733A00F8FD63 /* ProfileContainerViewController.swift in Sources */,
+				1BA58BCA20FDAAAE00BD6A78 /* CustomerWineFavorite.swift in Sources */,
+				BAC733F920E87D6100E77BF4 /* QuestionaireFinalStepViewController.swift in Sources */,
+				BAE0740F20E97F7F00F8FD63 /* CAPSPageMenu+Options.swift in Sources */,
+				1BA58BB720FDAAAE00BD6A78 /* WizardCustomerAnswer.swift in Sources */,
+				BA7DCA0020EF273E001A7AFB /* ShareToSocialViewController.swift in Sources */,
+				BAC7339820E6F4B100E77BF4 /* AppDelegate.swift in Sources */,
+				1BA58BC220FDAAAE00BD6A78 /* RetailerType.swift in Sources */,
+				BAC733A020E6F4B200E77BF4 /* SweetSpot.xcdatamodeld in Sources */,
+				BAE0742720EC788800F8FD63 /* Question.swift in Sources */,
+				1BA58BB520FDAAAE00BD6A78 /* SalaryRange.swift in Sources */,
+				BAC733DB20E6F6A600E77BF4 /* Error.swift in Sources */,
+				BAC733F420E7FB6600E77BF4 /* QuestionaireTableViewCell.swift in Sources */,
+				BA7DC9FC20EF1D05001A7AFB /* RateMyWineRatedController.swift in Sources */,
+				BAC733D820E6F6A600E77BF4 /* CustomStringConvertible+Extension.swift in Sources */,
+				BAC733ED20E7E18A00E77BF4 /* RegistrationViewController.swift in Sources */,
+				1BA58BBA20FDAAAE00BD6A78 /* WineColor.swift in Sources */,
+				BAE0741020E97F7F00F8FD63 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
+				1BA58BC820FDAAAE00BD6A78 /* AgeRange.swift in Sources */,
+				1BA58B6220FC397800BD6A78 /* Utils.swift in Sources */,
+				BAE0742920EC78AF00F8FD63 /* QuestionaireDataSource.swift in Sources */,
+				BAE0740420E93F4C00F8FD63 /* DashboardViewController.swift in Sources */,
+				1BA58BC520FDAAAE00BD6A78 /* WizardAnswer.swift in Sources */,
+				1BA58BBF20FDAAAE00BD6A78 /* Tannin.swift in Sources */,
+				BAC733CE20E6F67700E77BF4 /* AttributedString+Extensions.swift in Sources */,
+				BA7DC9F620EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift in Sources */,
+				BAE0741E20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift in Sources */,
+				BAC733EB20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift in Sources */,
+				BAE0741420E97F7F00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
+				1BA58BC620FDAAAE00BD6A78 /* Gender.swift in Sources */,
+				BA7DC9FE20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift in Sources */,
+				1BA58BD020FEE16100BD6A78 /* RetailerDistance.swift in Sources */,
+				1BA58BC420FDAAAE00BD6A78 /* MaritalStatus.swift in Sources */,
+				BAC733D120E6F67700E77BF4 /* UIDevice+Extensions.swift in Sources */,
+				1BA58BB920FDAAAE00BD6A78 /* AltWineName.swift in Sources */,
+				1BA58BB220FDAAAE00BD6A78 /* WizardQuestion.swift in Sources */,
+				BAC733EF20E7E68400E77BF4 /* RegistrationPasswordViewController.swift in Sources */,
+				BAE0741920E9824400F8FD63 /* ProfileViewController.swift in Sources */,
+				1BA58BC320FDAAAE00BD6A78 /* AlcoholStrength.swift in Sources */,
+				1BA58BC020FDAAAE00BD6A78 /* Acidity.swift in Sources */,
+				BA7DC9F820EF1688001A7AFB /* RateMyWineContainerController.swift in Sources */,
+				BAE0741B20E982CD00F8FD63 /* WineProfileViewController.swift in Sources */,
+				1BA58BB420FDAAAE00BD6A78 /* WineType.swift in Sources */,
+				BAE0742D20ECFB0400F8FD63 /* FindMyWineViewController.swift in Sources */,
+				BAC733F720E7FC2700E77BF4 /* QuestionaireViewController.swift in Sources */,
+				1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */,
+				BAE0742B20EC7EFE00F8FD63 /* HelpViewController.swift in Sources */,
+				BAC733CD20E6F67700E77BF4 /* UIColor+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733A720E6F4B200E77BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC733B020E6F4B200E77BF4 /* SweetSpotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAC733B220E6F4B200E77BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC733BB20E6F4B200E77BF4 /* SweetSpotUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BAC733AD20E6F4B200E77BF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAC7339320E6F4B100E77BF4 /* SweetSpot */;
+			targetProxy = BAC733AC20E6F4B200E77BF4 /* PBXContainerItemProxy */;
+		};
+		BAC733B820E6F4B200E77BF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAC7339320E6F4B100E77BF4 /* SweetSpot */;
+			targetProxy = BAC733B720E6F4B200E77BF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BAC7339B20E6F4B100E77BF4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAC7339C20E6F4B100E77BF4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BAC733A320E6F4B200E77BF4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAC733A420E6F4B200E77BF4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BAC733BD20E6F4B200E77BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BAC733BE20E6F4B200E77BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAC733C020E6F4B200E77BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C288913855BB45BCF15D43D9 /* Pods-SweetSpot.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2J3ML4NKQE;
+				INFOPLIST_FILE = SweetSpot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nuracode.ireid.SweetSpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAC733C120E6F4B200E77BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66CCFBFA62E816B0FA91692F /* Pods-SweetSpot.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2J3ML4NKQE;
+				INFOPLIST_FILE = SweetSpot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nuracode.ireid.SweetSpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BAC733C320E6F4B200E77BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D39B2E4E6EC213840289AA41 /* Pods-SweetSpotTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PSWQPK482;
+				INFOPLIST_FILE = SweetSpotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rrtech.michaelwestbrooksii.SweetSpotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot.app/SweetSpot";
+			};
+			name = Debug;
+		};
+		BAC733C420E6F4B200E77BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4241194076455E89F9E9E936 /* Pods-SweetSpotTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PSWQPK482;
+				INFOPLIST_FILE = SweetSpotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rrtech.michaelwestbrooksii.SweetSpotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot.app/SweetSpot";
+			};
+			name = Release;
+		};
+		BAC733C620E6F4B200E77BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8642CF7B748E6079AB143E5 /* Pods-SweetSpotUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PSWQPK482;
+				INFOPLIST_FILE = SweetSpotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rrtech.michaelwestbrooksii.SweetSpotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SweetSpot;
+			};
+			name = Debug;
+		};
+		BAC733C720E6F4B200E77BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 678D4F3B510D5865B159AC83 /* Pods-SweetSpotUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2PSWQPK482;
+				INFOPLIST_FILE = SweetSpotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rrtech.michaelwestbrooksii.SweetSpotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SweetSpot;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC733BD20E6F4B200E77BF4 /* Debug */,
+				BAC733BE20E6F4B200E77BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC733C020E6F4B200E77BF4 /* Debug */,
+				BAC733C120E6F4B200E77BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC733C320E6F4B200E77BF4 /* Debug */,
+				BAC733C420E6F4B200E77BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAC733C620E6F4B200E77BF4 /* Debug */,
+				BAC733C720E6F4B200E77BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BAC7339E20E6F4B200E77BF4 /* SweetSpot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BAC7339F20E6F4B200E77BF4 /* SweetSpot.xcdatamodel */,
+			);
+			currentVersion = BAC7339F20E6F4B200E77BF4 /* SweetSpot.xcdatamodel */;
+			path = SweetSpot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BAC7338C20E6F4B100E77BF4 /* Project object */;
+}
