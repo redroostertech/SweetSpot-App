@@ -6,6 +6,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - DropDown (2.3.2)
   - IQKeyboardManagerSwift (6.0.3)
   - ObjectMapper (3.1.0)
   - SDWebImage (4.3.3):
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - Alamofire
   - AWSS3
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - DropDown
   - IQKeyboardManagerSwift
   - ObjectMapper (~> 3.1)
   - SDWebImage
@@ -31,6 +33,7 @@ SPEC REPOS:
     - Alamofire
     - AWSCore
     - AWSS3
+    - DropDown
     - IQKeyboardManagerSwift
     - ObjectMapper
     - SDWebImage
@@ -52,6 +55,7 @@ SPEC CHECKSUMS:
   AWSCore: 3019940607dee2a467e0a8de638649d9fcb9afc3
   AWSS3: 003ab3d5b42cd512d812d9227cd927d0345b739b
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 53de522850289ffe0a3c3dab26b9377c4007ccd8
+PODFILE CHECKSUM: 854e1ed73dfed22c93b69a60999933576c1846ff
 
 COCOAPODS: 1.5.3

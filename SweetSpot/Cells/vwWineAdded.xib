@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="vwWineAdded" id="iN0-l3-epB" customClass="vwWineAdded" customModule="SweetSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2Z-sw-vPv">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTW-WL-8aw">
+                            <rect key="frame" x="137" y="28" width="100.5" height="20"/>
+                            <attributedString key="attributedText">
+                                <fragment content="WINE NAME">
+                                    <attributes>
+                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" size="16" name="Didot-Bold"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZp-I0-Rz0">
+                            <rect key="frame" x="78" y="56" width="219.5" height="16"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Has been added to rate my wines">
+                                    <attributes>
+                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" size="12" name="Futura-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-09-7dW">
+                            <rect key="frame" x="342" y="0.0" width="33" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="Eij-VF-fRx"/>
+                                <constraint firstAttribute="width" constant="33" id="OBs-OF-QR5"/>
+                            </constraints>
+                            <state key="normal" image="close_details.png"/>
+                            <connections>
+                                <action selector="btnClose_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="E19-gd-nm5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1529411765" green="0.1215686275" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="Gmn-YJ-c7K"/>
+                        <constraint firstItem="jZp-I0-Rz0" firstAttribute="top" secondItem="RTW-WL-8aw" secondAttribute="bottom" constant="8" id="Toz-MG-rAT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F2Z-sw-vPv" secondAttribute="trailing" id="Ds4-ed-gK8"/>
+                <constraint firstItem="RTW-WL-8aw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="HBD-kN-Z8w"/>
+                <constraint firstItem="jZp-I0-Rz0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IfS-Cn-GTU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="tJH-09-7dW" secondAttribute="top" constant="20" id="PCs-dL-9sj"/>
+                <constraint firstItem="RTW-WL-8aw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="XZs-r6-pJc"/>
+                <constraint firstItem="F2Z-sw-vPv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cac-J3-C1F"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="F2Z-sw-vPv" secondAttribute="top" constant="20" id="e4r-ZM-wNI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tJH-09-7dW" secondAttribute="trailing" id="rga-4I-2qk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="btn_Close" destination="tJH-09-7dW" id="g8D-Vu-GHG"/>
+                <outlet property="lblMessage" destination="jZp-I0-Rz0" id="LcQ-4q-q3Z"/>
+                <outlet property="lbl_WineName" destination="RTW-WL-8aw" id="WSu-7d-oAZ"/>
+            </connections>
+            <point key="canvasLocation" x="-2.5" y="-43.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_details.png" width="53" height="61"/>
+    </resources>
+</document>

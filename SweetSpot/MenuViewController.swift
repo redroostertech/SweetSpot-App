@@ -20,6 +20,7 @@ class MenuViewController: UIViewController {
     @IBOutlet var btn_MyWineJourney: UIButton!
     @IBOutlet var btn_Logout: UIButton!
     
+    @IBOutlet weak var lbl_Version: UILabel!
     //var user: User!
     
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class MenuViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.AppColors.purple
         SideMenuManager.default.menuFadeStatusBar = false
+        lbl_Version.text = Bundle.main.releaseVersionNumberPretty
+        lbl_Version.textColor = UIColor.AppColors.beige
         
         lbl_TitleOfView.textColor = UIColor.AppColors.beige
         lbl_TitleOfView.text = String(format: "Welcome, %@", "Mike"/*user.firstName*/).uppercased()

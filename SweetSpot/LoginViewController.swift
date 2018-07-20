@@ -106,7 +106,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         ]
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             //print("\(response.result.value!)")
-            
+            if response.result.value == nil{
+                print("found nil while getting response from server")
+                return
+            }
             let jsonValues = response.result.value as! [String:Any]
             
             let status = jsonValues["status"] as? Int

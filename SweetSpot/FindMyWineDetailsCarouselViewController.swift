@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import DropDown
 
 class FindMyWineCarouselCell: UICollectionViewCell {
     @IBOutlet var img_Wine: UIImageView!
@@ -18,6 +20,9 @@ class FindMyWineCarouselCell: UICollectionViewCell {
     @IBOutlet var lbl_WineCity: UILabel!
     @IBOutlet var lbl_WineDescription: UITextView!
     @IBOutlet var divider: UILabel!
+    
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         lbl_WineLocation.textColor = UIColor.AppColors.beige
@@ -73,10 +78,62 @@ class FindMyWineDetailsCarouselViewController:
     
     var navigation: SecondaryNavigationViewController!
     
+    let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
+    let strListViewTypeList = ["List View","Carousel View"]
+    let strSellByList = ["All","By Bottle", "By Glass"]
+    
+    var iSortByOption = 0
+    var iListViewType = 1
+    var iSellBy = 0
+    var retailer:Retailer = Retailer(JSONString:"{}")!
+    
+    let ddSortByOptions = DropDown()
+    let ddListViewTypes = DropDown()
+    let ddSellByLists = DropDown()
+    
+    var wineList = WineList(JSONString: "{}")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.AppColors.purple
+        
+        
+        text_Address.isEnabled = false
+        text_Address.text = self.retailer.getRetailername()
+        ddSortByOptions.dataSource = strSortByOptionsList
+        ddSortByOptions.anchorView = text_SortBy
+        text_SortBy.delegate = self
+        text_SortBy.text = strSortByOptionsList[0]
+        self.ddSortByOptions.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_SortBy.text = item
+            self.iSortByOption = index
+            self.loadMainTable()
+        }
+        
+        ddListViewTypes.dataSource = strListViewTypeList
+        ddListViewTypes.anchorView = text_ViewType
+        text_ViewType.delegate = self
+        text_ViewType.text = strListViewTypeList[1]
+        self.ddListViewTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_ViewType.text = item
+            self.iListViewType = index
+            if index == 0{
+                print("show listview")
+                 self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        ddSellByLists.dataSource = strSellByList
+        ddSellByLists.anchorView = text_Bottle
+        text_Bottle.delegate = self
+        text_Bottle.text = strSellByList[0]
+        self.ddSellByLists.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_Bottle.text = item
+            self.iSellBy = index
+            self.loadMainTable()
+        }
+        
         
         navigation = SecondaryNavigationViewController()
         addChildViewController(navigation)
@@ -161,6 +218,46 @@ class FindMyWineDetailsCarouselViewController:
         mainTableImageView.image = mainTableImage
         mainTableImageView.contentMode = .center
         mainTable.backgroundView = mainTableImageView
+        loadMainTable()
+    }
+    
+    func loadMainTable(){
+        let parameters: Parameters = ["action": "getWineByRetailerID",
+                                      "retailer_id": "\(retailer.getRetaileraiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
+            "sort_by":"\(iSortByOption)",
+            "sell_by":"\(iSellBy)"
+            
+            
+        ]
+        
+        print("retailer_id \(retailer.getRetaileraiid())")
+        print("iSortByOption \(iSortByOption)")
+        print("iSellBy \(iSellBy)")
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            if response.result.value == nil{
+                return
+            }
+            let jsonValues = response.result.value as! [String:Any]
+            
+            let status = jsonValues["status"] as? Int
+            if status != 1{
+                print("error from server: \(jsonValues["message"])")
+                self.wineList = WineList(JSONString: "{}")!
+                self.mainTable.reloadData()
+                return
+            }
+            let data = jsonValues["data"] as! [String:Any]
+            if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+                print("JSON string = \(theJSONText!)")
+                
+                self.wineList = WineList(JSONString: theJSONText!)!
+                self.mainTable.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,21 +266,75 @@ class FindMyWineDetailsCarouselViewController:
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.wineList.wineList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FindMyWineCarouselCell", for: indexPath) as! FindMyWineCarouselCell
         cell.backgroundColor = .clear
+        
+        let wine = self.wineList.wineList[indexPath.row ]
+        cell.lbl_WineName.text = wine.getWinename()
+        var address = ""
+        if wine.getWineryname() != ""{
+            address = address + wine.getWineryname() + "\n"
+        }
+        if wine.getCountry() != ""{
+            address = address + wine.getCountry() + ", " + wine.getRegion() + "\n"
+        }
+        
+        if wine.getVarietyname() != ""{
+            address = address + wine.getVarietyname()
+        }
+        cell.lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
+        cell.lbl_WinePrice.text = "$\(wine.getRetailerbottleprice())"
+        cell.lbl_WineType.text = "\(wine.getVarietyname())"
+        cell.lbl_WineDescription.text = wine.getWinedescription()
+        
+        
+        if wine.getPhotourl() != ""{
+            
+            cell.img_Wine.imageFromUrl(theUrl: wine.getPhotourl())
+        }
         return cell
     }
     
 }
+extension FindMyWineDetailsCarouselViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case text_Bottle:
+            self.ddSellByLists.show()
+            self.view.endEditing(true)
+            break
+        case text_SortBy:
+            self.ddSortByOptions.show()
+            self.view.endEditing(true)
+            break
+        case text_ViewType:
+            self.ddListViewTypes.show()
+            self.view.endEditing(true)
+            break
+        default:
+            break
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}
 
 extension FindMyWineDetailsCarouselViewController: NavDelegate {
     func doDismiss() {
-        dismiss(animated: true,
-                completion: nil)
+//        dismiss(animated: true,
+//                completion: nil)
+        self.presentingViewController?.view.isHidden = true
+        
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        
     }
     
     func doGoToProfile() {

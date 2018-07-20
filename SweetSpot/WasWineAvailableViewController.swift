@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class WasWineAvailableViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class WasWineAvailableViewController: UIViewController {
     
     var user: User!
     var primaryNavigationViewController: PrimaryNavigationViewController!
+    var wine:Wine = Wine(JSONString:"{}")!
+    var retailer:Retailer = Retailer(JSONString:"{}")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,11 @@ class WasWineAvailableViewController: UIViewController {
                                       for: .normal)
         btn_Yes.setTitle("Yes".uppercased(),
                          for: .normal)
+        
+        lbl_WineName.text = wine.getWinename()
+        lbl_BusinessName.text = retailer.getRetailername()
+        lbl_BusinessName.text = retailer.getAddressline1() + " " + retailer.getCity() + ", " + retailer.getState()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,5 +87,16 @@ class WasWineAvailableViewController: UIViewController {
                      completion: nil)
     }
     
-
+    @IBAction func yes(_ sender: Any) {
+        let parameters: Parameters = ["action": "addCustomerSelectWine",
+                                      "wine_id": "\(wine.getWineaiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            self.dismiss(animated: true,
+                         completion: nil)
+        }
+    }
+    
 }

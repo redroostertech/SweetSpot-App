@@ -15,9 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet var lbl_CallToAction: UILabel!
     @IBOutlet var img_SubHeader: UIImageView!
     
+    @IBOutlet weak var lbl_Version: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lbl_Version.text = Bundle.main.releaseVersionNumberPretty
+        lbl_Version.textColor = UIColor.AppColors.beige
         setVCBackgroundImageToView(image: login_background_image)
         
         let vcSubHeader = UIImage(named: login_sub_header_image)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import DropDown
 
 class FindMyWineSponsoredCell: UITableViewCell {
     @IBOutlet var lbl_Title: UILabel!
@@ -16,6 +18,8 @@ class FindMyWineSponsoredCell: UITableViewCell {
     @IBOutlet var lbl_Price: UILabel!
     @IBOutlet var btn_GoTo: UIButton!
     @IBOutlet var btn_Details: UIButton!
+    
+    @IBOutlet weak var btn_Favorite: UIButton!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -36,9 +40,11 @@ class FindMyWineSponsoredCell: UITableViewCell {
         btn_Details.layer.borderWidth = CGFloat(btn_border_width)
         btn_Details.backgroundColor = UIColor.clear
         btn_Details.setTitleColor(UIColor.AppColors.beige,
-                                 for: .normal)
+                                  for: .normal)
         btn_Details.setTitle("Details".uppercased(),
-                            for: .normal)
+                             for: .normal)
+        
+        
     }
 }
 
@@ -58,6 +64,7 @@ class FindMyWineRecommendedCell: UITableViewCell {
     @IBOutlet var btn_GoTo: UIButton!
     @IBOutlet var btn_Details: UIButton!
     
+    @IBOutlet weak var btn_Favorite: UIButton!
     override func layoutSubviews() {
         super.layoutSubviews()
         mainImg.layer.cornerRadius = 5
@@ -95,8 +102,64 @@ class FindMyWineDetailsListViewController: UIViewController,
     
     var navigation: SecondaryNavigationViewController!
     
+    let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
+    let strListViewTypeList = ["List View","Carousel View"]
+    let strSellByList = ["All","By Bottle", "By Glass"]
+    
+    var iSortByOption = 0
+    var iListViewType = 0
+    var iSellBy = 0
+    var retailer:Retailer = Retailer(JSONString:"{}")!
+    
+    let ddSortByOptions = DropDown()
+    let ddListViewTypes = DropDown()
+    let ddSellByLists = DropDown()
+    
+    var wineList = WineList(JSONString: "{}")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        text_Address.isEnabled = false
+        text_Address.text = self.retailer.getRetailername()
+        ddSortByOptions.dataSource = strSortByOptionsList
+        ddSortByOptions.anchorView = text_SortBy
+        text_SortBy.delegate = self
+        text_SortBy.text = strSortByOptionsList[0]
+        self.ddSortByOptions.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_SortBy.text = item
+            self.iSortByOption = index
+            self.loadMainTable()
+        }
+        
+        ddListViewTypes.dataSource = strListViewTypeList
+        ddListViewTypes.anchorView = text_ViewType
+        text_ViewType.delegate = self
+        text_ViewType.text = strListViewTypeList[0]
+        self.ddListViewTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_ViewType.text = item
+            self.iListViewType = index
+            if index == 1{
+                print("show carouselview")
+                if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsCarouselViewController", storyBoard: "Main") as? FindMyWineDetailsCarouselViewController {
+                    
+                    viewController.retailer = self.retailer
+                    self.present(viewController, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        ddSellByLists.dataSource = strSellByList
+        ddSellByLists.anchorView = text_Bottle
+        text_Bottle.delegate = self
+        text_Bottle.text = strSellByList[0]
+        self.ddSellByLists.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.text_Bottle.text = item
+            self.iSellBy = index
+            self.loadMainTable()
+        }
+        
+        
         
         self.view.backgroundColor = UIColor.AppColors.purple
         
@@ -121,9 +184,9 @@ class FindMyWineDetailsListViewController: UIViewController,
         self.text_Address.rightView = addressRightInputImageView
         
         let sortByRightInputImageView = UIImageView(frame: CGRect(x: 0,
-                                                                     y: 0,
-                                                                     width: 32,
-                                                                     height: self.text_ViewType.frame.height))
+                                                                  y: 0,
+                                                                  width: 32,
+                                                                  height: self.text_ViewType.frame.height))
         sortByRightInputImageView.image = rightInputImage
         sortByRightInputImageView.contentMode = .center
         self.text_SortBy.rightViewMode = .always
@@ -151,9 +214,9 @@ class FindMyWineDetailsListViewController: UIViewController,
         self.text_Bottle.rightView = distanceRightInputImageView
         
         let sortTypeRightInputImageView = UIImageView(frame: CGRect(x: 0,
-                                                                     y: 0,
-                                                                     width: 32,
-                                                                     height: self.text_ViewType.frame.height))
+                                                                    y: 0,
+                                                                    width: 32,
+                                                                    height: self.text_ViewType.frame.height))
         sortTypeRightInputImageView.image = rightInputImage
         sortTypeRightInputImageView.contentMode = .center
         self.text_ViewType.rightViewMode = .always
@@ -163,6 +226,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         mainTable.delegate = self
         mainTable.dataSource = self
         mainTable.backgroundColor = UIColor.AppColors.dark_purple
+        loadMainTable()
     }
     
     override func didReceiveMemoryWarning() {
@@ -170,8 +234,50 @@ class FindMyWineDetailsListViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
+    func loadMainTable(){
+        let parameters: Parameters = ["action": "getWineByRetailerID",
+                                      "retailer_id": "\(retailer.getRetaileraiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
+            "sort_by":"\(iSortByOption)",
+            "sell_by":"\(iSellBy)"
+            
+            
+        ]
+        
+        print("retailer_id \(retailer.getRetaileraiid())")
+        print("iSortByOption \(iSortByOption)")
+        print("iSellBy \(iSellBy)")
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            if response.result.value == nil{
+                return
+            }
+            let jsonValues = response.result.value as! [String:Any]
+            
+            let status = jsonValues["status"] as? Int
+            if status != 1{
+                print("error from server: \(jsonValues["message"])")
+                self.wineList = WineList(JSONString: "{}")!
+                self.mainTable.reloadData()
+                return
+            }
+            let data = jsonValues["data"] as! [String:Any]
+            if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+                print("JSON string = \(theJSONText!)")
+                
+                self.wineList = WineList(JSONString: theJSONText!)!
+                self.mainTable.reloadData()
+            }
+        }
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return self.wineList.wineList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -185,13 +291,105 @@ class FindMyWineDetailsListViewController: UIViewController,
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedTitleCell", for: indexPath) as! FindMyWineRecommendedTitleCell
             cell.backgroundColor = .clear
+            let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+            showDetailsGesture.numberOfTapsRequired = 1
+            
             return cell
             
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedCell", for: indexPath) as! FindMyWineRecommendedCell
         cell.backgroundColor = .clear
+        if indexPath.row - 2 >= 0{
+            let wine = self.wineList.wineList[indexPath.row - 2]
+            cell.lbl_WineName.text = wine.getWinename()
+            var address = ""
+            if wine.getWineryname() != ""{
+                address = address + wine.getWineryname() + "\n"
+            }
+            if wine.getCountry() != ""{
+                address = address + wine.getCountry() + ", " + wine.getRegion() + "\n"
+            }
+            
+            if wine.getVarietyname() != ""{
+                address = address + wine.getVarietyname()
+            }
+            
+            cell.lbl_Address.text = address
+            
+            if wine.getPhotourl() != ""{
+                cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
+            }
+            let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+            showDetailsGesture.numberOfTapsRequired = 1
+            cell.btn_Details.addGestureRecognizer(showDetailsGesture)
+            
+            let showWasWineAvailableGesture =  UITapGestureRecognizer(target: self, action: #selector(showWasWineAvailable(_:)))
+            showDetailsGesture.numberOfTapsRequired = 1
+            cell.btn_GoTo.addGestureRecognizer(showWasWineAvailableGesture)
+            
+            
+            let selectFavoriteGesture =  UITapGestureRecognizer(target: self, action: #selector(selectFavorite(_:)))
+            selectFavoriteGesture.numberOfTapsRequired = 1
+            cell.btn_Favorite.addGestureRecognizer(selectFavoriteGesture)
+            
+        }
         return cell
     }
+    
+    @objc func selectFavorite(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        print("favorite selected")
+        let parameters: Parameters = ["action": "addCustomerWineFavorite",
+                                      "wine_id": "\(wine.getWineaiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            let customView = vwWineAdded().loadNib(myNibName: "vwWineAdded") as! vwWineAdded
+            customView.lbl_WineName.text = wine.getWinename()
+            customView.lblMessage.text = "WAS ADDED TO FAVORITES"
+            customView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
+            
+            customView.alpha = 1
+            self.view.addSubview(customView)
+        }
+    }
+    
+    
+   
+    
+    @objc func showDetails(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        print("\(indexPath?.row)")
+        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsViewController", storyBoard: "Main") as? FindMyWineDetailsViewController {
+            
+            viewController.wine = wine
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func showWasWineAvailable(_ sender: UIGestureRecognizer){
+        let tapLocation = sender.location(in: self.mainTable)
+        
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        print("\(indexPath?.row)")
+        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        if let viewController = self.programmaticSegue(vcName: "WasWineAvailableViewController", storyBoard: "Main") as? WasWineAvailableViewController {
+            
+            viewController.wine = wine
+            viewController.retailer = retailer
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
@@ -202,6 +400,33 @@ class FindMyWineDetailsListViewController: UIViewController,
             return 44
         }
         return 175
+    }
+}
+
+
+extension FindMyWineDetailsListViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case text_Bottle:
+            self.ddSellByLists.show()
+            self.view.endEditing(true)
+            break
+        case text_SortBy:
+            self.ddSortByOptions.show()
+            self.view.endEditing(true)
+            break
+        case text_ViewType:
+            self.ddListViewTypes.show()
+            self.view.endEditing(true)
+            break
+        default:
+            break
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 }
 

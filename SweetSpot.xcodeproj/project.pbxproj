@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		054B82A115C8349B30BAAC26 /* Pods_SweetSpotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CB0CBFA2C6B1ECE121760F /* Pods_SweetSpotUITests.framework */; };
+		1B23AF3320FFF69E0095BB84 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3220FFF69E0095BB84 /* Bundle.swift */; };
+		1B23AF362101044C0095BB84 /* close_details.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B23AF352101044C0095BB84 /* close_details.png */; };
+		1B23AF38210188B20095BB84 /* favorite_wine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B23AF37210188B10095BB84 /* favorite_wine.png */; };
+		1B23AF3A21018DB60095BB84 /* vwWineAdded.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B23AF3921018DB60095BB84 /* vwWineAdded.xib */; };
+		1B23AF3C21018DCF0095BB84 /* vwWineAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3B21018DCF0095BB84 /* vwWineAdded.swift */; };
+		1B23AF3E21018FB50095BB84 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3D21018FB50095BB84 /* NibView.swift */; };
+		1B23AF40210190300095BB84 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3F210190300095BB84 /* UIView.swift */; };
 		1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B2D20FC368000BD6A78 /* AppConstants.swift */; };
 		1BA58B6220FC397800BD6A78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B6120FC397800BD6A78 /* Utils.swift */; };
 		1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */; };
@@ -129,6 +136,13 @@
 
 /* Begin PBXFileReference section */
 		0E1D6F838C72D46064AFED68 /* Pods_SweetSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B23AF3220FFF69E0095BB84 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		1B23AF352101044C0095BB84 /* close_details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_details.png; sourceTree = "<group>"; };
+		1B23AF37210188B10095BB84 /* favorite_wine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_wine.png; sourceTree = "<group>"; };
+		1B23AF3921018DB60095BB84 /* vwWineAdded.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = vwWineAdded.xib; sourceTree = "<group>"; };
+		1B23AF3B21018DCF0095BB84 /* vwWineAdded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vwWineAdded.swift; sourceTree = "<group>"; };
+		1B23AF3D21018FB50095BB84 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		1B23AF3F210190300095BB84 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		1BA58B2D20FC368000BD6A78 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1BA58B6120FC397800BD6A78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retailer.swift; sourceTree = "<group>"; };
@@ -270,6 +284,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B23AF342101041E0095BB84 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1B23AF352101044C0095BB84 /* close_details.png */,
+				1B23AF37210188B10095BB84 /* favorite_wine.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		1BA58B2F20FC38F700BD6A78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +336,7 @@
 				BAC733E420E7187600E77BF4 /* Configs.swift */,
 				BAC733DE20E6F87700E77BF4 /* ModuleHandler.swift */,
 				BAC733E220E6F8A300E77BF4 /* RandomStringGenerator.swift */,
+				1B23AF3D21018FB50095BB84 /* NibView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -326,6 +350,8 @@
 				BAC733F320E7FB6600E77BF4 /* QuestionaireTableViewCell.xib */,
 				BAE0741D20EBFBBF00F8FD63 /* PrimaryNavigationViewController.xib */,
 				BAE0741C20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift */,
+				1B23AF3921018DB60095BB84 /* vwWineAdded.xib */,
+				1B23AF3B21018DCF0095BB84 /* vwWineAdded.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -343,6 +369,8 @@
 				1BA58BD320FEF25100BD6A78 /* UIImageView.swift */,
 				1BA58BD520FEF29C00BD6A78 /* UIImage.swift */,
 				1BA58BD720FEF2B900BD6A78 /* String.swift */,
+				1B23AF3220FFF69E0095BB84 /* Bundle.swift */,
+				1B23AF3F210190300095BB84 /* UIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -405,6 +433,7 @@
 		BAC7339620E6F4B100E77BF4 /* SweetSpot */ = {
 			isa = PBXGroup;
 			children = (
+				1B23AF342101041E0095BB84 /* Images */,
 				1BA58BCC20FE2F3C00BD6A78 /* Views */,
 				1BA58BCB20FE2C3300BD6A78 /* Cells */,
 				1BA58B6020FC396C00BD6A78 /* Utils */,
@@ -601,9 +630,12 @@
 				BAB2783420EF2A090023EF1D /* Athelas-Regular.ttf in Resources */,
 				BAC733A220E6F4B200E77BF4 /* Assets.xcassets in Resources */,
 				BAC733F520E7FB6600E77BF4 /* QuestionaireTableViewCell.xib in Resources */,
+				1B23AF362101044C0095BB84 /* close_details.png in Resources */,
 				BAB2783920EF2EC20023EF1D /* Futura.ttc in Resources */,
 				BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */,
+				1B23AF3A21018DB60095BB84 /* vwWineAdded.xib in Resources */,
 				BAC7339D20E6F4B100E77BF4 /* Main.storyboard in Resources */,
+				1B23AF38210188B20095BB84 /* favorite_wine.png in Resources */,
 				BAE0742320EC047D00F8FD63 /* SecondaryNavigationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +704,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -685,6 +718,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -729,6 +763,7 @@
 				BAFDCB9220EDAABB00611048 /* AddReviewViewController.swift in Sources */,
 				BAC733F120E7EC9500E77BF4 /* ResendPasswordPopOverViewController.swift in Sources */,
 				1BA58BB620FDAAAE00BD6A78 /* RetailDatasourceType.swift in Sources */,
+				1B23AF3320FFF69E0095BB84 /* Bundle.swift in Sources */,
 				1BA58BD620FEF29C00BD6A78 /* UIImage.swift in Sources */,
 				1BA58BBE20FDAAAE00BD6A78 /* Wine.swift in Sources */,
 				BAFDCB9420EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift in Sources */,
@@ -771,6 +806,7 @@
 				BAC733A020E6F4B200E77BF4 /* SweetSpot.xcdatamodeld in Sources */,
 				BAE0742720EC788800F8FD63 /* Question.swift in Sources */,
 				1BA58BB520FDAAAE00BD6A78 /* SalaryRange.swift in Sources */,
+				1B23AF3E21018FB50095BB84 /* NibView.swift in Sources */,
 				BAC733DB20E6F6A600E77BF4 /* Error.swift in Sources */,
 				BAC733F420E7FB6600E77BF4 /* QuestionaireTableViewCell.swift in Sources */,
 				BA7DC9FC20EF1D05001A7AFB /* RateMyWineRatedController.swift in Sources */,
@@ -790,6 +826,7 @@
 				BAC733EB20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift in Sources */,
 				BAE0741420E97F7F00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
 				1BA58BC620FDAAAE00BD6A78 /* Gender.swift in Sources */,
+				1B23AF40210190300095BB84 /* UIView.swift in Sources */,
 				BA7DC9FE20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift in Sources */,
 				1BA58BD020FEE16100BD6A78 /* RetailerDistance.swift in Sources */,
 				1BA58BC420FDAAAE00BD6A78 /* MaritalStatus.swift in Sources */,
@@ -799,6 +836,7 @@
 				BAC733EF20E7E68400E77BF4 /* RegistrationPasswordViewController.swift in Sources */,
 				BAE0741920E9824400F8FD63 /* ProfileViewController.swift in Sources */,
 				1BA58BC320FDAAAE00BD6A78 /* AlcoholStrength.swift in Sources */,
+				1B23AF3C21018DCF0095BB84 /* vwWineAdded.swift in Sources */,
 				1BA58BC020FDAAAE00BD6A78 /* Acidity.swift in Sources */,
 				BA7DC9F820EF1688001A7AFB /* RateMyWineContainerController.swift in Sources */,
 				BAE0741B20E982CD00F8FD63 /* WineProfileViewController.swift in Sources */,

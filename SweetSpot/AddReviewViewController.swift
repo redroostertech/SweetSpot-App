@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AddReviewViewController: UIViewController {
 
@@ -20,12 +21,16 @@ class AddReviewViewController: UIViewController {
     @IBOutlet var text_AddReview: UITextView!
     
     var user: User!
+    var wine:Wine = Wine(JSONString: "{}")!
+    var rating = 0
     var primaryNavigationViewController: PrimaryNavigationViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.AppColors.purple.withAlphaComponent(0.8)
+        
+        lbl_WineName.text = wine.getWinename()
         
         view_PrimaryContainer.layer.cornerRadius = 100
         view_PrimaryContainer.clipsToBounds = true

@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class MySweetSpotRemoveWineViewController: UIViewController {
-
+    
     @IBOutlet var popUpContainer: UIView!
     @IBOutlet var btn_Login: UIButton!
     @IBOutlet var popoverText: UILabel!
     @IBOutlet var btn_Cancel: UIButton!
-    
+    var wine:Wine = Wine(JSONString:"{}")!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +32,7 @@ class MySweetSpotRemoveWineViewController: UIViewController {
                                 for: .normal)
         popoverText.text = "Are you sure you would like to remove this wine from your SweetSpot?"
         btn_Login.setTitle("Remove Wine".uppercased(),
-                            for: .normal)
+                           for: .normal)
         
         btn_Cancel.layer.cornerRadius = CGFloat(btn_radius)
         btn_Cancel.layer.borderColor = UIColor.AppColors.beige.cgColor
@@ -44,10 +45,16 @@ class MySweetSpotRemoveWineViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: UIButton) {
-        self.dismiss(animated: true,
-                     completion: nil)
+        let parameters: Parameters = ["action": "deleteCustomerWineFavorite",
+                                      "wine_id":"\(wine.getWineaiid())",
+                                      "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            self.dismiss(animated: true,
+                         completion: nil)
+        }
     }
-
+    
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true,
                      completion: nil)

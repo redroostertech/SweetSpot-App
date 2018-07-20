@@ -30,6 +30,12 @@ extension UIViewController {
         self.view.insertSubview(vcBackgroundImageView,
                                 at: 0)
     }
+    
+    public func programmaticSegue(vcName: String, storyBoard: String) -> Any? {
+        let sb = UIStoryboard.init(name: storyBoard, bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: vcName)
+        return vc
+    }
     /*public func peformProgrammaticSegueNewStack(nameForStoryBoard name: String, idForViewController id: String) {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: id)

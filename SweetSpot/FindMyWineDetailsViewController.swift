@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import DropDown
 class FindMyWineDetailsViewController: UIViewController {
 
     @IBOutlet var mainContainer: UIView!
@@ -23,7 +24,14 @@ class FindMyWineDetailsViewController: UIViewController {
     @IBOutlet var divider: UILabel!
     @IBOutlet var lbl_AdditionalDetails: [UILabel]!
     
+    var wine:Wine = Wine(JSONString:"{}")!
     
+    @IBOutlet weak var btnCloseDetails: UIButton!
+    
+    
+    @IBAction func btnCloseDetails_Click(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +41,13 @@ class FindMyWineDetailsViewController: UIViewController {
         mainContainer.clipsToBounds = true
         
         lbl_WineLocation.textColor = UIColor.AppColors.beige
+        lbl_WineLocation.text = wine.getWineryname()
         lbl_WinePrice.textColor = UIColor.AppColors.beige
+        lbl_WinePrice.text = "$\(wine.getRetailerbottleprice())"
         lbl_WineCity.textColor = UIColor.AppColors.grey
+        lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
         lbl_WineDescription.textColor = UIColor.AppColors.grey
+        lbl_WineDescription.text = wine.getWinedescription()
         divider.backgroundColor = UIColor.AppColors.grey
         
         lbl_SweetSportWine.layer.cornerRadius = 5
@@ -43,7 +55,7 @@ class FindMyWineDetailsViewController: UIViewController {
         
         img_BG.clipsToBounds = true
         img_Wine.clipsToBounds = true
-        
+        img_Wine.imageFromUrl(theUrl: wine.getPhotourl())
         self.view.backgroundColor = UIColor.AppColors.purple
         
         var count = 1

@@ -16,7 +16,7 @@ pod 'ObjectMapper', '~> 3.1'
 pod 'Alamofire'
 pod 'AWSS3'
 pod 'SwiftyJSON'
-
+pod 'DropDown'
   target 'SweetSpotTests' do
     inherit! :search_paths
     # Pods for testing

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import DropDown
 
 class FindMyWineFirstCell: UITableViewCell {
     @IBOutlet var lbl_Title: UILabel!
@@ -62,6 +63,13 @@ class FindMyWineViewController:
     var selectedRetailer = 0
     var selectedDistance = 0
     
+    var selectedRetailIndex = -1
+    let ddRetailerTypes = DropDown()
+    let ddRetailerDistances = DropDown()
+    
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,6 +84,7 @@ class FindMyWineViewController:
         
         self.text_Search.textColor = UIColor.AppColors.beige
         self.text_Search.backgroundColor = UIColor.AppColors.dark_purple
+         self.text_Search.delegate = self
         
         let addressRightInputImage = UIImage(named: "shape")
         let addressRightInputImageView = UIImageView(frame: CGRect(x: 0,
@@ -87,7 +96,7 @@ class FindMyWineViewController:
         self.text_Address.rightViewMode = .always
         self.text_Address.textColor = UIColor.AppColors.beige
         self.text_Address.rightView = addressRightInputImageView
-        
+        self.text_Address.delegate = self
         
         
         let retailersRightInputImage = UIImage(named: "dropDownArrow")
@@ -119,25 +128,31 @@ class FindMyWineViewController:
         mainTable.backgroundColor = UIColor.AppColors.dark_purple
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        locationManager.requestLocation()
         loadList(list_id:1)
         loadList(list_id:2)
     }
-    func presentPicker(_ textField: UITextField) {
-        self.picker = UIPickerView()
-        self.picker?.delegate = self
-        self.picker?.dataSource = self
-        self.picker?.reloadAllComponents()
-        textField.inputView = self.picker
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.loadMainTable()
+        
     }
+   
     
     func loadList(list_id:Int){
         var action = ""
         switch(list_id){
         case 1:
             action = "getRetailTypes"
+             self.ddRetailerTypes.dataSource = []
             break
         case 2:
             action = "getRetailDistances"
+            self.ddRetailerDistances.dataSource = []
             break
     
         default:
@@ -149,10 +164,43 @@ class FindMyWineViewController:
             switch(list_id){
             case 1:
                 self.retailerTypeList = RetailerTypeList(JSONString: response.result.value!)!
+                for retailerType in self.retailerTypeList.retailertypeList{
+                    
+                   self.ddRetailerTypes.dataSource.append(retailerType.getRetailertypename())
+                }
+                if(self.retailerTypeList.retailertypeList.count > 0){
+                    self.selectedRetailer = 7
+                    self.text_Retailers.text = "All Retailers"
+                    self.ddRetailerTypes.anchorView = self.text_Retailers // UIView or UIBarButtonItem
+                    //self.fulfillmentDropdown.dataSource = self.fulfillmentTypes
+                    self.ddRetailerTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+                        print("Selected item: \(item) at index: \(index)")
+                        self.text_Retailers.text = item
+                        self.selectedRetailer = self.retailerTypeList.retailertypeList[index].getRetailertypeid()
+                        self.loadMainTable()
+                    }
+                }
                 
                 break
             case 2:
                 self.retailerDistanceList = RetailerDistanceList(JSONString: response.result.value!)!
+                for retailerDistance in self.retailerDistanceList.retailerdistanceList{
+                    
+                    self.ddRetailerDistances.dataSource.append(retailerDistance.getDistancename())
+                }
+                if(self.retailerDistanceList.retailerdistanceList.count > 0){
+                    self.selectedDistance = self.retailerDistanceList.retailerdistanceList[0].getRetailerdistanceid()
+                    self.text_Distance.text = self.retailerDistanceList.retailerdistanceList[0].getDistancename()
+                    self.ddRetailerDistances.anchorView = self.text_Distance // UIView or UIBarButtonItem
+                    //self.fulfillmentDropdown.dataSource = self.fulfillmentTypes
+                    self.ddRetailerDistances.selectionAction = { [unowned self] (index: Int, item: String) in
+                        print("Selected item: \(item) at index: \(index)")
+                        self.text_Distance.text = item
+                        self.selectedDistance = self.retailerDistanceList.retailerdistanceList[index].getRetailerdistanceid()
+                        self.loadMainTable()
+                    }
+                }
+                
                 break
            
             default:
@@ -167,14 +215,23 @@ class FindMyWineViewController:
         let address = text_Address.text!
         let radius = text_Distance.text!
         let retail_type = text_Retailers.text!
+        var retail_name = text_Search.text!
+        if retail_name == "Search For A Retailer By Name"{
+            retail_name = ""
+        }
+        print("retail_name \(retail_name)")
         let parameters: Parameters = ["action": "getRetailListByAddress",
                                       "address":address,
                                       "retail_type_id":selectedRetailer,
-                                      "retail_distance_id":selectedDistance
+                                      "retail_distance_id":selectedDistance,
+                                      "retail_name":retail_name
         ]
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
+                print("error from server returning nil")
+                self.retailerList = RetailerList(JSONString: "{}")!
+                self.mainTable.reloadData()
                 return
             }
             let jsonValues = response.result.value as! [String:Any]
@@ -182,6 +239,8 @@ class FindMyWineViewController:
             let status = jsonValues["status"] as? Int
             if status != 1{
                 print("error from server: \(jsonValues["message"])")
+                self.retailerList = RetailerList(JSONString: "{}")!
+                self.mainTable.reloadData()
                 return
             }
             let data = jsonValues["data"] as! [String:Any]
@@ -196,9 +255,7 @@ class FindMyWineViewController:
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        locationManager.requestLocation()
-    }
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -225,14 +282,34 @@ class FindMyWineViewController:
             if let distance = retailer.distance{
                 cell.lbl_Distance.text = "\(distance)"
             }
-            let image_url = retailer.getRetailerimageurl()
-            if image_url.isBlank{
-                 cell.mainImg.imageFromUrl(theUrl: "http://52.15.191.207/images/wine_aisle.jpg")
-                cell.mainImg.contentMode = .scaleAspectFill
-                cell.mainImg.clipsToBounds = true
-            }else{
-                cell.mainImg.imageFromUrl(theUrl: image_url)
+            var image_url = "http://52.15.191.207/images/wine_aisle.jpg"
+            //
+            switch(retailer.getRetailertypeid()){
+            case 1:
+                image_url = "http://52.15.191.207/images/restaurant_wine.jpg"
+                break
+            case 2:
+                image_url = "http://52.15.191.207/images/grocery_wine.jpeg"
+                break
+            case 3:
+                image_url = "http://52.15.191.207/images/liquor_store_wine.jpg"
+                break
+            case 4:
+                image_url = "http://52.15.191.207/images/hotel_wine.jpg"
+                break
+            case 5:
+                image_url = "http://52.15.191.207/images/bar_wine.jpg"
+                break
+            case 6:
+                image_url = "http://52.15.191.207/images/big_box_wine.jpg"
+                break
+            default:
+                break
             }
+            cell.mainImg.imageFromUrl(theUrl: image_url)
+            cell.btn_GoTo.tag = indexPath.row - 1
+            cell.btn_GoTo.addTarget(self, action: #selector(FindMyWineViewController.connected(sender:)), for: .touchUpInside)
+            
         }
         return cell
     }
@@ -243,6 +320,30 @@ class FindMyWineViewController:
         }
         return 150
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("didSelectRowAt \(indexPath.row) ")
+        if indexPath.row - 1 >= 0{
+            let retailer = retailerList.retailerList[indexPath.row - 1]
+            selectedRetailIndex = indexPath.row - 1
+            performSegue(withIdentifier: "segueWineDetails", sender: self)
+        }
+    }
+    @objc func connected(sender: UIButton){
+        selectedRetailIndex = sender.tag
+        performSegue(withIdentifier: "segueWineDetails", sender: self)
+    }
+    //happens after the didSelectRow at
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueWineDetails"{
+            
+            let vc = segue.destination as! FindMyWineDetailsListViewController
+             let retailer = retailerList.retailerList[selectedRetailIndex]
+            
+            vc.retailer = retailer
+        }
+    }
 }
 
 
@@ -250,12 +351,12 @@ extension FindMyWineViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case text_Retailers:
-            self.presentPicker(textField)
-            self.dropDownType = 1
+            self.ddRetailerTypes.show()
+            self.view.endEditing(true)
             break
         case text_Distance:
-            self.dropDownType = 2
-            self.presentPicker(textField)
+            self.ddRetailerDistances.show()
+            self.view.endEditing(true)
             break
         default:
             break
@@ -263,64 +364,17 @@ extension FindMyWineViewController: UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if textField == self.text_Search{
+            self.loadMainTable()
+        }
+        if textField == self.text_Address{
+            self.loadMainTable()
+        }
         return true
     }
 }
 
-extension FindMyWineViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        let dropDownType = self.dropDownType
-        switch(dropDownType){
-        case 1:
-            return retailerTypeList.retailertypeList.count
-            
-        case 2:
-            return retailerDistanceList.retailerdistanceList.count
-        default:
-            return 0
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch(dropDownType){
-        case 1:
-            return  retailerTypeList.retailertypeList[row].getRetailertypename()
-        case 2:
-            return  retailerDistanceList.retailerdistanceList[row].getDistancename()
-            
-        default:
-            return ""
-        }
-        
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //find the object at row and set the corresponding variable value (marital = 1, gender = 1, etc...)
-        switch(dropDownType){
-        case 1:
-            self.selectedRetailer = retailerTypeList.retailertypeList[row].getRetailertypeid()
-            self.text_Retailers.text = retailerTypeList.retailertypeList[row].getRetailertypename()
-            self.loadMainTable()
-            break
-        case 2:
-            self.selectedDistance = retailerDistanceList.retailerdistanceList[row].getRetailerdistanceid()
-            self.text_Distance.text = retailerDistanceList.retailerdistanceList[row].getDistancename()
-            self.loadMainTable()
-            break
-        
-        default:
-            break
-        }
-    }
-    
-}
+
 
 extension FindMyWineViewController: NavDelegate {
     func doDismiss() {
