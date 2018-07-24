@@ -65,7 +65,35 @@ class RateMyWineContainerController:
                                               width: self.view.frame.width,
                                               height: self.view.frame.height),
                                 pageMenuOptions: parameters)
+       
+        //self.view.addSubview(pageMenu!.view)
+        
+        addChildViewController(pageMenu!)
         self.view.addSubview(pageMenu!.view)
+        pageMenu!.didMove(toParentViewController: self)
+         self.pageMenu!.controllerScrollView.isScrollEnabled = false;
+        print("\(self.pageMenu?.view.frame)")
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePageMenu(notfication:)), name: .addReviewDismissed, object: nil)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("RateMyWineContainerController viewWillAppear")
+        
+    }
+    
+    @objc func updatePageMenu(notfication: NSNotification) {
+        print("updating PageMenu")
+//        DispatchQueue.main.async {
+//            print("\(self.pageMenu?.view.frame)")
+//
+//            self.pageMenu?.view.frame = CGRect(x: 0.0,
+//                                          y: (self.navigationViewContainer.frame.height) + 150 + self.navigationViewContainer.frame.origin.y,
+//                                          width: self.view.frame.width,
+//                                          height: self.view.frame.height)
+//             print("\(self.pageMenu?.view.frame)")
+//        }
+       
     }
     
     override func didReceiveMemoryWarning() {

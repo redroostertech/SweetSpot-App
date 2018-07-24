@@ -8,9 +8,10 @@
 
 import UIKit
 import SideMenu
+import Alamofire
 
 class DashboardViewController: UIViewController {
-
+    
     @IBOutlet var navigationViewContainer: UIView!
     @IBOutlet var view_PrimaryContainer: UIView!
     @IBOutlet var view_ButtonContainers: UIView!
@@ -19,8 +20,11 @@ class DashboardViewController: UIViewController {
     @IBOutlet var view_MSS: UIView!
     @IBOutlet var view_RMW: UIView!
     
+    @IBOutlet weak var btnUnRatedWineCount: UIButton!
     var user: User!
     var primaryNavigationViewController: PrimaryNavigationViewController!
+    
+    var unRatedWineCount:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,7 @@ class DashboardViewController: UIViewController {
         didMove(toParentViewController: primaryNavigationViewController)
         
         setVCBackgroundImageToView(image: dashboard_background_image)
-
+        
         
         view_PrimaryContainer.layer.cornerRadius = 100
         view_PrimaryContainer.clipsToBounds = true
@@ -50,14 +54,49 @@ class DashboardViewController: UIViewController {
         view_MSS.layer.borderWidth = 0.5
         view_RMW.layer.borderColor = UIColor.AppColors.black.cgColor
         view_RMW.layer.borderWidth = 0.5
+        btnUnRatedWineCount.isHidden = true
+        getCustomerRatedWine()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = ""
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getCustomerRatedWine(){
+        let parameters: Parameters = ["action": "getCustomerRatedWine",
+                                      "rating_type":"2",
+                                      "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            if response.result.value == nil{
+                return
+            }
+            let jsonValues = response.result.value as! [String:Any]
+            
+            let status = jsonValues["status"] as? Int
+            if status != 1{
+                print("error from server: \(jsonValues["message"])")
+                
+                return
+            }
+            let data = jsonValues["data"] as! [String:Any]
+            if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+                let wineList = WineList(JSONString: theJSONText!)!
+                self.unRatedWineCount = wineList.wineList.count
+                if self.unRatedWineCount > 0 {
+                    self.btnUnRatedWineCount.isHidden = false
+                    self.btnUnRatedWineCount.setTitle("\(self.unRatedWineCount)", for: .normal)
+                }
+            }
+        }
     }
     
     @IBAction func findMyWine(_ sender: UIButton) {
@@ -91,7 +130,10 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func myWineJourney(_ sender: UIButton) {
-
+        
+        if let url = URL(string: AppConstants.WINE_JOURNEY_URL) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
     
     @IBAction func mySweetSpot(_ sender: UIButton) {

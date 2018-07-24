@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import DropDown
 
 class QuestionaireFinalStepViewController: UIViewController {
     
@@ -38,6 +38,11 @@ class QuestionaireFinalStepViewController: UIViewController {
     var selectedGender = 0
     var selectedAge = 0
     var selectedMarital = 0
+    
+    let ddSalaryTypes = DropDown()
+    let ddGenderTypes = DropDown()
+    let ddAgeTypes = DropDown()
+    let ddMaritalTypes = DropDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,15 +113,52 @@ class QuestionaireFinalStepViewController: UIViewController {
             switch(list_id){
             case 1:
                 self.genderList = GenderList(JSONString: response.result.value!)!
+                for gender:Gender in self.genderList.genderList{
+                    self.ddGenderTypes.dataSource.append(gender.getGendername())
+                }
+                self.ddGenderTypes.anchorView = self.text_Gender
+                self.ddGenderTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+                    print("Selected item: \(item) at index: \(index)")
+                    self.text_Gender.text = item
+                    self.selectedGender = self.genderList.genderList[index].getGenderid()
+                }
                 break
             case 2:
                 self.maritalStatusList = MaritalStatusList(JSONString: response.result.value!)!
+                for maritalStatus:MaritalStatus in self.maritalStatusList.maritalstatusList{
+                    self.ddMaritalTypes.dataSource.append(maritalStatus.getMaritalstatusname())
+                }
+                self.ddMaritalTypes.anchorView = self.text_MaritalStatus
+                self.ddMaritalTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+                    print("Selected item: \(item) at index: \(index)")
+                    self.text_MaritalStatus.text = item
+                    self.selectedMarital = self.maritalStatusList.maritalstatusList[index].getMaritalstatusid()
+                }
                 break
             case 3:
                 self.ageRangeList = AgeRangeList(JSONString: response.result.value!)!
+                for ageRange:AgeRange in self.ageRangeList.agerangeList{
+                    self.ddAgeTypes.dataSource.append(ageRange.getAgerangename())
+                }
+                self.ddAgeTypes.anchorView = self.text_Age
+                self.ddAgeTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+                    print("Selected item: \(item) at index: \(index)")
+                    self.text_Age.text = item
+                    self.selectedAge = self.ageRangeList.agerangeList[index].getAgerangeid()
+                }
                 break
             case 4:
                 self.salaryList = SalaryRangeList(JSONString: response.result.value!)!
+                self.salaryList = SalaryRangeList(JSONString: response.result.value!)!
+                for salaryRange:SalaryRange in self.salaryList.salaryrangeList{
+                    self.ddSalaryTypes.dataSource.append(salaryRange.getSalaryrangename())
+                }
+                self.ddSalaryTypes.anchorView = self.text_Salary
+                self.ddSalaryTypes.selectionAction = { [unowned self] (index: Int, item: String) in
+                    print("Selected item: \(item) at index: \(index)")
+                    self.text_Salary.text = item
+                    self.selectedSalary = self.salaryList.salaryrangeList[index].getSalaryrangeid()
+                }
                 break
             default:
                 break
@@ -169,30 +211,25 @@ class QuestionaireFinalStepViewController: UIViewController {
                      completion: nil)
     }
     
-    func presentPicker(_ textField: UITextField) {
-        self.picker = UIPickerView()
-        self.picker?.delegate = self
-        self.picker?.dataSource = self
-        self.picker?.reloadAllComponents()
-        textField.inputView = self.picker
-    }
+   
+    
 }
 
 extension QuestionaireFinalStepViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case text_MaritalStatus:
-            self.presentPicker(textField)
-            self.dropDownType = 2
+            self.ddMaritalTypes.show()
+            self.view.endEditing(true)
         case text_Age:
-            self.dropDownType = 3
-            self.presentPicker(textField)
+            self.ddAgeTypes.show()
+            self.view.endEditing(true)
         case text_Salary:
-            self.dropDownType = 4
-            self.presentPicker(textField)
+            self.ddSalaryTypes.show()
+            self.view.endEditing(true)
         case text_Gender:
-            self.dropDownType = 1
-            self.presentPicker(textField)
+            self.ddGenderTypes.show()
+            self.view.endEditing(true)
         default:
             break
         }
@@ -206,78 +243,5 @@ extension QuestionaireFinalStepViewController: UITextFieldDelegate {
 
 
 
-extension QuestionaireFinalStepViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        let dropDownType = self.dropDownType
-        switch(dropDownType){
-        case 1:
-            return genderList.genderList.count
-            
-        case 2:
-            return maritalStatusList.maritalstatusList.count
-            
-        case 3:
-            return ageRangeList.agerangeList.count
-            
-        case 4:
-            return salaryList.salaryrangeList.count
-            
-        default:
-            return 0
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch(dropDownType){
-        case 1:
-            return genderList.genderList[row].getGendername()
-            
-        case 2:
-            return maritalStatusList.maritalstatusList[row].getMaritalstatusname()
-            
-        case 3:
-            return ageRangeList.agerangeList[row].getAgerangename()
-            
-        case 4:
-            return salaryList.salaryrangeList[row].getSalaryrangename()
-            
-        default:
-            return ""
-        }
-        
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //find the object at row and set the corresponding variable value (marital = 1, gender = 1, etc...)
-        switch(dropDownType){
-        case 1:
-            self.selectedGender = genderList.genderList[row].getGenderid()
-            self.text_Gender.text = genderList.genderList[row].getGendername()
-            break
-        case 2:
-            self.selectedMarital = maritalStatusList.maritalstatusList[row].getMaritalstatusid()
-            self.text_MaritalStatus.text = maritalStatusList.maritalstatusList[row].getMaritalstatusname()
-            break
-        case 3:
-            self.selectedAge = ageRangeList.agerangeList[row].getAgerangeid()
-            self.text_Age.text = ageRangeList.agerangeList[row].getAgerangename()
-            break
-        case 4:
-            self.selectedSalary = salaryList.salaryrangeList[row].getSalaryrangeid()
-            self.text_Salary.text = salaryList.salaryrangeList[row].getSalaryrangename()
-            break
-        default:
-            break
-        }
-    }
-    
-}
 
 

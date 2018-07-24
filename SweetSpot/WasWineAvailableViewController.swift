@@ -94,8 +94,14 @@ class WasWineAvailableViewController: UIViewController {
         ]
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
-            self.dismiss(animated: true,
-                         completion: nil)
+           
+            if let viewController = self.programmaticSegue(vcName: "AddReviewViewController", storyBoard: "Main") as? AddReviewViewController {
+                
+                viewController.wine = self.wine
+                viewController.return_two_view_controller = true
+                
+                self.present(viewController, animated: true, completion: nil)
+            }
         }
     }
     

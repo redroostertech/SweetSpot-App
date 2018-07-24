@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         lbl_CallToAction.text = login_cta_text
         lbl_CallToAction.textColor = UIColor.AppColors.grey
         
+        
         btn_GetStarted.layer.cornerRadius = CGFloat(btn_radius)
         btn_GetStarted.layer.borderColor = UIColor.AppColors.black.cgColor
         btn_GetStarted.layer.borderWidth = CGFloat(btn_border_width)

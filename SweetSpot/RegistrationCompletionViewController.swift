@@ -102,6 +102,7 @@ class RegistrationCompletionViewController: UIViewController {
         self.present(vc,
                      animated: true,
                      completion: nil)
+        Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "1")
         
     }
 }

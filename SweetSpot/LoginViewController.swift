@@ -130,8 +130,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if let customer = Customer(JSONString: theJSONText!){
                     if customer.getCustomerid() > 0{
                         
-                          Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "\(customer.getCustomerid())")
-                        
+                        Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "\(customer.getCustomerid())")
+                        Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "1")
+                        Utils().savePermanentString(keyName: "USER_NAME", keyValue: customer.getFirstname())
                         let sb = UIStoryboard(name: "Main",
                                               bundle: nil)
                         guard let vc = sb.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController else {

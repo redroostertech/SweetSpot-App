@@ -132,7 +132,7 @@ class QuestionaireViewController:
        
         currentQuestionIndex = currentQuestionIndex + 1
         print("currentQuestionIndex: \(currentQuestionIndex) and selectedAnswer: \(selectedAnswers[currentQuestionIndex -  1])")
-        if currentQuestionIndex == 2 && selectedAnswers[1] == 0{
+        if (currentQuestionIndex == 2 && selectedAnswers[1] == 6) || (currentQuestionIndex == 2 && selectedAnswers[1] == 7){
             doCompleteQuestionaire()
         }else{
             if selectedAnswers[currentQuestionIndex -  1] > -1{
@@ -166,6 +166,8 @@ class QuestionaireViewController:
                                      
         ]
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseString { response in
+            
+            if Utils().getPermanentString(keyName: "IS_ONBOARDED") == "" {
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "QuestionaireFinalStepViewController") as? QuestionaireFinalStepViewController else {
@@ -176,6 +178,17 @@ class QuestionaireViewController:
             self.present(vc,
                          animated: true,
                          completion: nil)
+            }else{
+                let sb = UIStoryboard(name: "Main",
+                                      bundle: nil)
+                guard let vc = sb.instantiateViewController(withIdentifier: "RegistrationCompletionViewController") as? RegistrationCompletionViewController else {
+                    return
+                }
+                vc.user = self.user
+                self.present(vc,
+                             animated: true,
+                             completion: nil)
+            }
         }
         
         

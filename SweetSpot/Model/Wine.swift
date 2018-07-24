@@ -49,6 +49,7 @@ class Wine : Mappable {
     var retailer_name:String?
     var rating:String? //needs to be manually converted to an Int because of PHPs JSON limitations
     var retailer_address:String?
+    var is_stretch_wine = ""
     
     
     required init?(map: Map){
@@ -95,6 +96,7 @@ class Wine : Mappable {
         retailer_name <- map["retailer_name"]
         rating <- map["rating"]
         retailer_address <- map["retailer_address"]
+        is_stretch_wine <- map["is_stretch_wine"]
     }
     
     

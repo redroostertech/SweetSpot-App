@@ -67,7 +67,7 @@ class FindMyWineViewController:
     let ddRetailerTypes = DropDown()
     let ddRetailerDistances = DropDown()
     
-    
+    let indicatorHolder = ActivityIndicatorHolder()
    
     
     override func viewDidLoad() {
@@ -129,16 +129,21 @@ class FindMyWineViewController:
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide , object: nil)
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         locationManager.requestLocation()
-        loadList(list_id:1)
         loadList(list_id:2)
+        loadList(list_id:1)
+        self.loadMainTable()
+        //indicatorHolder.showActivityIndicator(uiView: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.loadMainTable()
+       
         
     }
    
@@ -279,8 +284,10 @@ class FindMyWineViewController:
             let retailer = retailerList.retailerList[indexPath.row - 1]
             cell.lbl_BusinessName.text = retailer.getRetailername()
             cell.lbl_Address.text = retailer.getAddressline1()
-            if let distance = retailer.distance{
-                cell.lbl_Distance.text = "\(distance)"
+            if let strDistance = retailer.distance{
+                if let distance = Double(strDistance){
+                    cell.lbl_Distance.text = "\(distance.rounded(toPlaces: 2)) miles"
+                }
             }
             var image_url = "http://52.15.191.207/images/wine_aisle.jpg"
             //
@@ -362,6 +369,13 @@ extension FindMyWineViewController: UITextFieldDelegate {
             break
         }
     }
+    
+   
+     @objc func keyboardWillHide(_ notification: NSNotification) {
+        print("Keyboard will hide!")
+        self.loadMainTable()
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == self.text_Search{
@@ -484,6 +498,7 @@ extension FindMyWineViewController: CLLocationManagerDelegate {
                     if AppConstants.IS_SIMULATOR{
                         self.text_Address.text = "384 northyards blvd nw, atlanta, ga 30313"
                     }
+                   //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
                     self.loadMainTable()
                 }
         })
@@ -505,12 +520,14 @@ extension FindMyWineViewController: CLLocationManagerDelegate {
                 else {
                     // An error occurred during geocoding.
                     completionHandler(nil)
+                     //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
                 }
             })
         }
         else {
             // No location was available.
             completionHandler(nil)
+            //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
         }
     }
     

@@ -49,7 +49,7 @@ class RateMyWineRatedController:
         mainTable.backgroundColor = UIColor.AppColors.dark_purple
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
+        
         loadMainTable()
     }
     
@@ -76,7 +76,7 @@ class RateMyWineRatedController:
             if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
                 let theJSONText = String(data: theJSONData,
                                          encoding: .ascii)
-                print("JSON string = \(theJSONText!)")
+                //print("JSON string = \(theJSONText!)")
                 
                 self.wineList = WineList(JSONString: theJSONText!)!
                 self.mainTable.reloadData()

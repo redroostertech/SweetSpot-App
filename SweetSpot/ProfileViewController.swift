@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func saveChanges(_ sender: UIButton) {
         
-        
+        Utils().savePermanentString(keyName: "USER_NAME", keyValue: text_FIrstName.text!)
         let parameters: Parameters = ["action": "updateUserProfile",
                                       "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
                                       "first_name":text_FIrstName.text!,

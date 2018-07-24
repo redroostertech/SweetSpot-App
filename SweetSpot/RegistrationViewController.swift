@@ -76,6 +76,28 @@ class RegistrationViewController: UIViewController {
                                for: .normal)
         btn_Next.setTitle(registration_next.uppercased(),
                           for: .normal)
+        
+        Utils().savePermanentString(keyName: "USER_NAME", keyValue: "")
+        Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "")
+        Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "")
+        
+        
+        if AppConstants.DEBUG{
+            text_FIrstName.text = "John"
+            text_LastName.text = "Smith"
+            text_Email.text = "john@gmail.com"
+            text_ConfirmEmail.text = "john@gmail.com"
+            text_PhoneNumber.text = "4045551234"
+            text_ZipCode.text = "30303"
+            
+        }else{
+            text_FIrstName.text = ""
+            text_LastName.text = ""
+            text_Email.text = ""
+            text_ConfirmEmail.text = ""
+            text_PhoneNumber.text = ""
+            text_ZipCode.text = ""
+        }
     }
     
     @IBAction func next(_ sender: UIButton) {
@@ -89,8 +111,56 @@ class RegistrationViewController: UIViewController {
        registerUser()
     }
     
+    func validateFields() -> Bool{
+        var isValid = false
+        
+        if text_Email.text!.isEmpty || text_ZipCode.text!.isEmpty || text_LastName.text!.isEmpty || text_FIrstName.text!.isEmpty || text_ConfirmEmail.text!.isEmpty{
+            let alert = UIAlertController(title: "Invalid", message: "Sorry, no fields can be empty", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return isValid
+        }
+        
+        if !self.text_ConfirmEmail.text!.isEmail{
+            //alert
+            let alert = UIAlertController(title: "Invalid", message: "Email address must be in email format", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return isValid
+        }
+        
+        
+        if text_ConfirmEmail.text!.lowercased() != text_Email.text!.lowercased() {
+            let alert = UIAlertController(title: "Invalid", message: "Email address and confirm email address must be equal", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return isValid
+        }
+        
+        if self.text_ZipCode.text!.length != 5{
+            //alert
+            let alert = UIAlertController(title: "Invalid", message: "Zip Code must be 5 digits", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return isValid
+        }
+        
+        if self.text_PhoneNumber.text!.length >  0 && self.text_PhoneNumber.text!.length != 10{
+            //alert
+            let alert = UIAlertController(title: "Invalid", message: "Phone number must be 10 digits", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return isValid
+        }
+        
+        
+        return true
+    }
     
     func registerUser(){
+        if !self.validateFields(){
+            return
+        }
         let parameters: Parameters = ["action": "registerUser",
                                       "email_address": self.user!.emailAddress,
                                       "first_name": self.user!.firstName,
@@ -123,7 +193,7 @@ class RegistrationViewController: UIViewController {
                     if customer.getCustomerid() > 0{
                         
                         Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "\(customer.getCustomerid())")
-                        
+                        Utils().savePermanentString(keyName: "USER_NAME", keyValue: customer.getFirstname())
                         let sb = UIStoryboard(name: "Main",
                                               bundle: nil)
                         guard

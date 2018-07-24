@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
+import Social
 
 class AddReviewViewController: UIViewController {
-
+    
     @IBOutlet var view_PrimaryContainer: UIView!
     @IBOutlet var btn_Share: UIButton!
     @IBOutlet var btn_Submit: UIButton!
@@ -22,7 +23,8 @@ class AddReviewViewController: UIViewController {
     
     var user: User!
     var wine:Wine = Wine(JSONString: "{}")!
-    var rating = 0
+    var return_two_view_controller = false
+    var selectedRating:Int = 0
     var primaryNavigationViewController: PrimaryNavigationViewController!
     
     override func viewDidLoad() {
@@ -43,18 +45,18 @@ class AddReviewViewController: UIViewController {
         btn_FinishLater.layer.borderWidth = CGFloat(btn_border_width)
         btn_FinishLater.backgroundColor = UIColor.clear
         btn_FinishLater.setTitleColor(UIColor.AppColors.beige,
-                                 for: .normal)
+                                      for: .normal)
         btn_FinishLater.setTitle("Finish Later".uppercased(),
-                            for: .normal)
+                                 for: .normal)
         
         btn_Submit.layer.cornerRadius = btn_Submit.frame.height / 2
         btn_Submit.layer.borderColor = UIColor.AppColors.black.cgColor
         btn_Submit.layer.borderWidth = CGFloat(btn_border_width)
         btn_Submit.backgroundColor = UIColor.AppColors.beige
         btn_Submit.setTitleColor(UIColor.AppColors.black,
-                              for: .normal)
+                                 for: .normal)
         btn_Submit.setTitle("Submit".uppercased(),
-                         for: .normal)
+                            for: .normal)
         
         var count = 1
         for star in btn_Star {
@@ -72,19 +74,39 @@ class AddReviewViewController: UIViewController {
     }
     
     @IBAction func yes(_ sender: UIButton) {
-        self.dismiss(animated: true,
-                     completion: nil)
+        let parameters: Parameters = [
+            "action": "rateSelectedWine",
+            "wine_id": "\(wine.getWineaiid())",
+            "rating": "\(selectedRating)",
+            "rating_text":text_AddReview.text!,
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            self.doDismiss()
+        }
     }
     
     @IBAction func cancel(_ sender: UIButton) {
-        self.dismiss(animated: true,
-                     completion: nil)
+        self.doDismiss()
     }
     
     @IBAction func addStar(_ sender: UIButton) {
         print("Button Tag: ", sender.tag)
+        selectedRating = sender.tag
+        
     }
     
-
-
+    func doDismiss(){
+        NotificationCenter.default.post(name: .addReviewDismissed, object: nil)
+        if !self.return_two_view_controller {
+            self.dismiss(animated: true,
+                         completion: nil)
+        }else{
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
+    
 }

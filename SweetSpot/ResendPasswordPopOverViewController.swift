@@ -42,7 +42,7 @@ class ResendPasswordPopOverViewController: UIViewController {
     }
 
     @IBAction func login(_ sender: UIButton) {
-        self.dismiss(animated: true,
-                     completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

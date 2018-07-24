@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import Alamofire
 
 class MenuViewController: UIViewController {
 
@@ -20,8 +21,10 @@ class MenuViewController: UIViewController {
     @IBOutlet var btn_MyWineJourney: UIButton!
     @IBOutlet var btn_Logout: UIButton!
     
+    @IBOutlet weak var btnUnratedWineCount: UIButton!
     @IBOutlet weak var lbl_Version: UILabel!
-    //var user: User!
+    
+    var unRatedWineCount:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +35,11 @@ class MenuViewController: UIViewController {
         lbl_Version.textColor = UIColor.AppColors.beige
         
         lbl_TitleOfView.textColor = UIColor.AppColors.beige
-        lbl_TitleOfView.text = String(format: "Welcome, %@", "Mike"/*user.firstName*/).uppercased()
+        lbl_TitleOfView.text = String(format: "Welcome, %@", "User"/*user.firstName*/).uppercased()
         
+        if Utils().getPermanentString(keyName: "USER_NAME") != "" {
+            lbl_TitleOfView.text = Utils().getPermanentString(keyName: "USER_NAME")
+        }
 
         btn_Help.setAttributedTitle(NSAttributedString(string: "Help",
                                                        attributes: [.foregroundColor : UIColor.AppColors.beige]), for: .normal)
@@ -50,6 +56,40 @@ class MenuViewController: UIViewController {
                                                                 attributes: [.foregroundColor : UIColor.AppColors.beige]), for: .normal)
         btn_Logout.setAttributedTitle(NSAttributedString(string: "Log Out",
                                                          attributes: [.foregroundColor : UIColor.AppColors.beige]), for: .normal)
+        getCustomerRatedWine()
+        btnUnratedWineCount.isHidden = true
+    }
+    
+    func getCustomerRatedWine(){
+        let parameters: Parameters = ["action": "getCustomerRatedWine",
+                                      "rating_type":"2",
+                                      "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            if response.result.value == nil{
+                return
+            }
+            let jsonValues = response.result.value as! [String:Any]
+            
+            let status = jsonValues["status"] as? Int
+            if status != 1{
+                print("error from server: \(jsonValues["message"])")
+                
+                return
+            }
+            let data = jsonValues["data"] as! [String:Any]
+            if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+                let wineList = WineList(JSONString: theJSONText!)!
+                self.unRatedWineCount = wineList.wineList.count
+                if self.unRatedWineCount > 0{
+                    self.btnUnratedWineCount.isHidden = false
+                    self.btnUnratedWineCount.setTitle("\(self.unRatedWineCount)", for: .normal)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +101,36 @@ class MenuViewController: UIViewController {
     @IBAction func goTo(_ sender: UIButton) {
         print("Sender: ", sender)
         switch sender {
+        case btn_Help:
+            let sb = UIStoryboard(name: "Main",
+                                  bundle: nil)
+            guard
+                let vc = sb.instantiateViewController(withIdentifier: "HelpViewController") as? HelpViewController
+                else
+            {
+                return
+            }
+            //vc.user = self.user
+            present(vc,
+                    animated: true,
+                    completion: nil)
+            break
+            
+            
+        case btn_RateMyWine:
+            let sb = UIStoryboard(name: "Main",
+                                  bundle: nil)
+            guard
+                let vc = sb.instantiateViewController(withIdentifier: "RateMyWineContainerController") as? RateMyWineContainerController
+                else
+            {
+                return
+            }
+            //vc.user = self.user
+            present(vc,
+                    animated: true,
+                    completion: nil)
+            break
         case btn_Profile:
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
@@ -100,6 +170,12 @@ class MenuViewController: UIViewController {
             present(vc,
                     animated: true,
                     completion: nil)
+            break
+        case btn_MyWineJourney:
+            if let url = URL(string: AppConstants.WINE_JOURNEY_URL) {
+                UIApplication.shared.open(url, options: [:])
+            }
+            break
         default:
              break
         }

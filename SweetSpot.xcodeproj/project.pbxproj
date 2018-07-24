@@ -15,6 +15,10 @@
 		1B23AF3C21018DCF0095BB84 /* vwWineAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3B21018DCF0095BB84 /* vwWineAdded.swift */; };
 		1B23AF3E21018FB50095BB84 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3D21018FB50095BB84 /* NibView.swift */; };
 		1B23AF40210190300095BB84 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF3F210190300095BB84 /* UIView.swift */; };
+		1B23AF422101C7580095BB84 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF412101C7580095BB84 /* Double.swift */; };
+		1B23AF44210594D90095BB84 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF43210594D90095BB84 /* Notifications.swift */; };
+		1B23AF462106BBA80095BB84 /* HelpCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF452106BBA80095BB84 /* HelpCategory.swift */; };
+		1B23AF482106D1540095BB84 /* ActivityIndicatorHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */; };
 		1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B2D20FC368000BD6A78 /* AppConstants.swift */; };
 		1BA58B6220FC397800BD6A78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B6120FC397800BD6A78 /* Utils.swift */; };
 		1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */; };
@@ -143,6 +147,10 @@
 		1B23AF3B21018DCF0095BB84 /* vwWineAdded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vwWineAdded.swift; sourceTree = "<group>"; };
 		1B23AF3D21018FB50095BB84 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		1B23AF3F210190300095BB84 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		1B23AF412101C7580095BB84 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		1B23AF43210594D90095BB84 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		1B23AF452106BBA80095BB84 /* HelpCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCategory.swift; sourceTree = "<group>"; };
+		1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHolder.swift; sourceTree = "<group>"; };
 		1BA58B2D20FC368000BD6A78 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1BA58B6120FC397800BD6A78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retailer.swift; sourceTree = "<group>"; };
@@ -305,6 +313,7 @@
 				1BA58BB020FDAAAD00BD6A78 /* CustomerWineFavorite.swift */,
 				1BA58B9920FDAAAC00BD6A78 /* CustomerWineSelect.swift */,
 				1BA58BAC20FDAAAD00BD6A78 /* Gender.swift */,
+				1B23AF452106BBA80095BB84 /* HelpCategory.swift */,
 				1BA58BAA20FDAAAD00BD6A78 /* MaritalStatus.swift */,
 				1BA58BA320FDAAAC00BD6A78 /* NuraResponse.swift */,
 				1BA58BAD20FDAAAD00BD6A78 /* Oak.swift */,
@@ -337,6 +346,8 @@
 				BAC733DE20E6F87700E77BF4 /* ModuleHandler.swift */,
 				BAC733E220E6F8A300E77BF4 /* RandomStringGenerator.swift */,
 				1B23AF3D21018FB50095BB84 /* NibView.swift */,
+				1B23AF43210594D90095BB84 /* Notifications.swift */,
+				1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				1BA58BD720FEF2B900BD6A78 /* String.swift */,
 				1B23AF3220FFF69E0095BB84 /* Bundle.swift */,
 				1B23AF3F210190300095BB84 /* UIView.swift */,
+				1B23AF412101C7580095BB84 /* Double.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -779,6 +791,7 @@
 				BAC733E720E72A0800E77BF4 /* LoginViewController.swift in Sources */,
 				1BA58BB320FDAAAE00BD6A78 /* CustomerWineSelect.swift in Sources */,
 				BAC7339A20E6F4B100E77BF4 /* ViewController.swift in Sources */,
+				1B23AF462106BBA80095BB84 /* HelpCategory.swift in Sources */,
 				BAE0740620E950A200F8FD63 /* MenuViewController.swift in Sources */,
 				1BA58BC720FDAAAE00BD6A78 /* Oak.swift in Sources */,
 				1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */,
@@ -807,6 +820,7 @@
 				BAE0742720EC788800F8FD63 /* Question.swift in Sources */,
 				1BA58BB520FDAAAE00BD6A78 /* SalaryRange.swift in Sources */,
 				1B23AF3E21018FB50095BB84 /* NibView.swift in Sources */,
+				1B23AF482106D1540095BB84 /* ActivityIndicatorHolder.swift in Sources */,
 				BAC733DB20E6F6A600E77BF4 /* Error.swift in Sources */,
 				BAC733F420E7FB6600E77BF4 /* QuestionaireTableViewCell.swift in Sources */,
 				BA7DC9FC20EF1D05001A7AFB /* RateMyWineRatedController.swift in Sources */,
@@ -825,6 +839,7 @@
 				BAE0741E20EBFBBF00F8FD63 /* PrimaryNavigationViewController.swift in Sources */,
 				BAC733EB20E7DBCF00E77BF4 /* TermsAndConditionsViewController.swift in Sources */,
 				BAE0741420E97F7F00F8FD63 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
+				1B23AF422101C7580095BB84 /* Double.swift in Sources */,
 				1BA58BC620FDAAAE00BD6A78 /* Gender.swift in Sources */,
 				1B23AF40210190300095BB84 /* UIView.swift in Sources */,
 				BA7DC9FE20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift in Sources */,
@@ -843,6 +858,7 @@
 				1BA58BB420FDAAAE00BD6A78 /* WineType.swift in Sources */,
 				BAE0742D20ECFB0400F8FD63 /* FindMyWineViewController.swift in Sources */,
 				BAC733F720E7FC2700E77BF4 /* QuestionaireViewController.swift in Sources */,
+				1B23AF44210594D90095BB84 /* Notifications.swift in Sources */,
 				1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */,
 				BAE0742B20EC7EFE00F8FD63 /* HelpViewController.swift in Sources */,
 				BAC733CD20E6F67700E77BF4 /* UIColor+Extensions.swift in Sources */,

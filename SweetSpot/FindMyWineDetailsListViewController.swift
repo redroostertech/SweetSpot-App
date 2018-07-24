@@ -116,6 +116,9 @@ class FindMyWineDetailsListViewController: UIViewController,
     let ddSellByLists = DropDown()
     
     var wineList = WineList(JSONString: "{}")!
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +184,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         addressRightInputImageView.contentMode = .center
         self.text_Address.rightViewMode = .always
         self.text_Address.textColor = UIColor.AppColors.beige
-        self.text_Address.rightView = addressRightInputImageView
+        //self.text_Address.rightView = addressRightInputImageView
         
         let sortByRightInputImageView = UIImageView(frame: CGRect(x: 0,
                                                                   y: 0,
@@ -234,6 +237,9 @@ class FindMyWineDetailsListViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
+  
+    
+    
     func loadMainTable(){
         let parameters: Parameters = ["action": "getWineByRetailerID",
                                       "retailer_id": "\(retailer.getRetaileraiid())",
@@ -275,15 +281,70 @@ class FindMyWineDetailsListViewController: UIViewController,
     
     
     
-    
+    func findStretchWine()->Wine{
+        var wine:Wine = Wine(JSONString:"{}")!
+        for tmpWine in wineList.wineList{
+            if tmpWine.is_stretch_wine == "1"{
+                wine = tmpWine
+            }
+        }
+        return wine
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.wineList.wineList.count
+        let wine = findStretchWine()
+        var listCount = 0
+        if wine.getWineaiid() == 0{
+           listCount =  self.wineList.wineList.count
+        }else{
+             listCount =  self.wineList.wineList.count - 1
+        }
+        
+        return listCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineSponsoredCell", for: indexPath) as! FindMyWineSponsoredCell
             cell.backgroundColor = .clear
+             let wine = findStretchWine()
+             cell.lbl_WineName.text = wine.getWinename()
+             cell.lbl_WineName.text = wine.getWinename()
+            var address = ""
+            if wine.getWineryname() != ""{
+                address = address + wine.getWineryname() + "\n"
+            }
+            if wine.getCountry() != ""{
+                address = address + wine.getCountry() + ", " + wine.getRegion() + "\n"
+            }
+            
+            if wine.getVarietyname() != ""{
+                address = address + wine.getVarietyname()
+            }
+            
+            cell.lbl_Address.text = address
+            if wine.getPhotourl() != ""{
+                cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
+            }
+            if iSellBy == 2 {
+                cell.lbl_Price.text = "$\(wine.getRetailerglassprice())"
+               
+            }else{
+                 cell.lbl_Price.text = "$\(wine.getRetailerbottleprice())"
+            }
+            
+            let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showStretchDetails(_:)))
+            showDetailsGesture.numberOfTapsRequired = 1
+            cell.btn_Details.addGestureRecognizer(showDetailsGesture)
+            
+            let showWasWineAvailableGesture =  UITapGestureRecognizer(target: self, action: #selector(showStretchWasWineAvailable(_:)))
+            showDetailsGesture.numberOfTapsRequired = 1
+            cell.btn_GoTo.addGestureRecognizer(showWasWineAvailableGesture)
+            
+            
+            let selectFavoriteGesture =  UITapGestureRecognizer(target: self, action: #selector(selectStretchFavorite(_:)))
+            selectFavoriteGesture.numberOfTapsRequired = 1
+            cell.btn_Favorite.addGestureRecognizer(selectFavoriteGesture)
+            
             return cell
             
         }
@@ -293,7 +354,8 @@ class FindMyWineDetailsListViewController: UIViewController,
             cell.backgroundColor = .clear
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
             showDetailsGesture.numberOfTapsRequired = 1
-            
+           //just shows the title "Recommended Wines"
+           
             return cell
             
         }
@@ -302,6 +364,8 @@ class FindMyWineDetailsListViewController: UIViewController,
         if indexPath.row - 2 >= 0{
             let wine = self.wineList.wineList[indexPath.row - 2]
             cell.lbl_WineName.text = wine.getWinename()
+            cell.lbl_WineName.adjustsFontSizeToFitWidth = true
+            
             var address = ""
             if wine.getWineryname() != ""{
                 address = address + wine.getWineryname() + "\n"
@@ -318,6 +382,13 @@ class FindMyWineDetailsListViewController: UIViewController,
             
             if wine.getPhotourl() != ""{
                 cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
+            }
+            
+            if iSellBy == 2 {
+                cell.lbl_Price.text = "$\(wine.getRetailerglassprice())"
+                
+            }else{
+                cell.lbl_Price.text = "$\(wine.getRetailerbottleprice())"
             }
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
             showDetailsGesture.numberOfTapsRequired = 1
@@ -357,7 +428,27 @@ class FindMyWineDetailsListViewController: UIViewController,
             self.view.addSubview(customView)
         }
     }
-    
+    @objc func selectStretchFavorite(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        let wine = self.wineList.wineList[self.wineList.wineList.count - 1]
+        print("favorite selected")
+        let parameters: Parameters = ["action": "addCustomerWineFavorite",
+                                      "wine_id": "\(wine.getWineaiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            let customView = vwWineAdded().loadNib(myNibName: "vwWineAdded") as! vwWineAdded
+            customView.lbl_WineName.text = wine.getWinename()
+            customView.lblMessage.text = "WAS ADDED TO FAVORITES"
+            customView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
+            
+            customView.alpha = 1
+            self.view.addSubview(customView)
+        }
+    }
     
    
     
@@ -368,6 +459,18 @@ class FindMyWineDetailsListViewController: UIViewController,
         let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
         print("\(indexPath?.row)")
         let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsViewController", storyBoard: "Main") as? FindMyWineDetailsViewController {
+            
+            viewController.wine = wine
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    @objc func showStretchDetails(_ sender: UIGestureRecognizer){
+        
+        
+        let wine = self.wineList.wineList[self.wineList.wineList.count - 1]
         if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsViewController", storyBoard: "Main") as? FindMyWineDetailsViewController {
             
             viewController.wine = wine
@@ -389,14 +492,33 @@ class FindMyWineDetailsListViewController: UIViewController,
         }
     }
     
+    @objc func showStretchWasWineAvailable(_ sender: UIGestureRecognizer){
+       
+        let wine = self.wineList.wineList[self.wineList.wineList.count - 1]
+        if let viewController = self.programmaticSegue(vcName: "WasWineAvailableViewController", storyBoard: "Main") as? WasWineAvailableViewController {
+            
+            viewController.wine = wine
+            viewController.retailer = retailer
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
+            let wine = findStretchWine()
+            if wine.getWineaiid() == 0{
+                return 0
+            }
             return 200
         }
         
         if indexPath.row == 1 {
+            let wine = findStretchWine()
+            if wine.getWineaiid() == 0{
+                return 0
+            }
             return 44
         }
         return 175

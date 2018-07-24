@@ -59,7 +59,7 @@ class RateMyWineUnRatedController:
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
+        
         loadMainTable()
     }
     
@@ -86,7 +86,7 @@ class RateMyWineUnRatedController:
             if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
                 let theJSONText = String(data: theJSONData,
                                          encoding: .ascii)
-                print("JSON string = \(theJSONText!)")
+                //print("JSON string = \(theJSONText!)")
                 
                 self.wineList = WineList(JSONString: theJSONText!)!
                 self.mainTable.reloadData()
@@ -115,7 +115,25 @@ class RateMyWineUnRatedController:
         if let retailer_address = wine.retailer_address{
             cell.lbl_Address.text = retailer_address
         }
+        let rateWineGesture =  UITapGestureRecognizer(target: self, action: #selector(rateThisWine(_:)))
+        rateWineGesture.numberOfTapsRequired = 1
+        cell.btn_RateThisWine.addGestureRecognizer(rateWineGesture)
         return cell
+    }
+    
+    @objc func rateThisWine(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        let wine = self.wineList.wineList[(indexPath?.row)!]
+        print("rateThisWine")
+        if let viewController = self.programmaticSegue(vcName: "AddReviewViewController", storyBoard: "Main") as? AddReviewViewController {
+            
+            viewController.wine = wine
+            
+            self.present(viewController, animated: true, completion: nil)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
