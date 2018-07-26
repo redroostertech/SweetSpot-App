@@ -80,7 +80,7 @@ class FindMyWineDetailsCarouselViewController:
     
     let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
     let strListViewTypeList = ["List View","Carousel View"]
-    let strSellByList = ["All","By Bottle", "By Glass"]
+    let strSellByList = ["By Bottle", "By Glass"]
     
     var iSortByOption = 0
     var iListViewType = 1
@@ -221,6 +221,7 @@ class FindMyWineDetailsCarouselViewController:
         loadMainTable()
     }
     
+    
     func loadMainTable(){
         let parameters: Parameters = ["action": "getWineByRetailerID",
                                       "retailer_id": "\(retailer.getRetaileraiid())",
@@ -287,9 +288,23 @@ class FindMyWineDetailsCarouselViewController:
             address = address + wine.getVarietyname()
         }
         cell.lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
-        cell.lbl_WinePrice.text = "$\(wine.getRetailerbottleprice())"
+        cell.lbl_WinePrice.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
         cell.lbl_WineType.text = "\(wine.getVarietyname())"
-        cell.lbl_WineDescription.text = wine.getWinedescription()
+        cell.lbl_WineDescription.text = wine.getTastingnotes()
+        if wine.is_stretch_wine == "1"{
+            cell.lbl_SweetSportWine.text = "Try This Wine"
+            cell.lbl_SweetSportWine.backgroundColor = UIColor.AppColors.grey
+            cell.lbl_SweetSportWine.textColor = UIColor.AppColors.black
+        }else{
+           cell.lbl_SweetSportWine.text = "SweetSpot Wine"
+        }
+        
+        if iSellBy == 1 {
+            cell.lbl_WinePrice.text = "$" + String(format:"%.2f", wine.getRetailerglassprice())
+            
+        }else{
+            cell.lbl_WinePrice.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
+        }
         
         
         if wine.getPhotourl() != ""{

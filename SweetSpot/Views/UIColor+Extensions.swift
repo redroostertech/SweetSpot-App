@@ -20,6 +20,7 @@ extension UIColor {
         static var dark_purple_3 = UIColor(red: 51/255, green: 38/255, blue: 45/255, alpha: 1)
         static var grey = UIColor(red: 213/255, green: 213/255, blue: 213/255, alpha: 1)
         static var plum = UIColor(red: 134/255, green: 51/255, blue: 66/255, alpha: 1)
+        static var link_blue = UIColor(red: 50/255, green: 132/255, blue: 255/255, alpha: 1)
         //  Add more colors as needed...
     }
     func fromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {

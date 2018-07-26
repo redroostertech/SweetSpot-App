@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func logoutUser(){
+        
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
+        UIApplication.shared.keyWindow?.rootViewController = vc
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -45,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        Utils().savePermanentString(keyName: "RETAIL_LIST", keyValue: "")
         self.saveContext()
     }
 

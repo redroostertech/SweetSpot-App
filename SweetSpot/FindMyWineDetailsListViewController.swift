@@ -104,7 +104,7 @@ class FindMyWineDetailsListViewController: UIViewController,
     
     let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
     let strListViewTypeList = ["List View","Carousel View"]
-    let strSellByList = ["All","By Bottle", "By Glass"]
+    let strSellByList = ["By Bottle", "By Glass"]
     
     var iSortByOption = 0
     var iListViewType = 0
@@ -291,45 +291,74 @@ class FindMyWineDetailsListViewController: UIViewController,
         return wine
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let wine = findStretchWine()
+       
         var listCount = 0
-        if wine.getWineaiid() == 0{
-           listCount =  self.wineList.wineList.count
-        }else{
-             listCount =  self.wineList.wineList.count - 1
+        listCount = self.wineList.wineList.count
+        let wine = findStretchWine()
+        if wine.getWineaiid() != -1{
+             listCount = self.wineList.wineList.count +  2
         }
-        
         return listCount
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+         let wine = findStretchWine()
         if indexPath.row == 0 {
+            
+            if wine.getWineaiid() == -1{
+                return 0
+            }
+            return 200
+        }
+        
+        if indexPath.row == 1 {
+           
+            if wine.getWineaiid() == -1{
+                return 0
+            }
+            return 44
+        }
+        
+        if wine.getWineaiid() != -1 && (indexPath.row ) > (self.wineList.wineList.count ) {
+            return 0
+        }
+        return 175
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let stretch_wine = findStretchWine()
+        print("cellForRowAt \(indexPath.row)")
+        let hasStretchWine = (stretch_wine.getWineaiid() != -1)
+        if indexPath.row == 0 && hasStretchWine{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineSponsoredCell", for: indexPath) as! FindMyWineSponsoredCell
             cell.backgroundColor = .clear
-             let wine = findStretchWine()
-             cell.lbl_WineName.text = wine.getWinename()
-             cell.lbl_WineName.text = wine.getWinename()
+            
+            if stretch_wine.getWineaiid() != -1{
+             cell.lbl_WineName.text = stretch_wine.getWinename()
+            
             var address = ""
-            if wine.getWineryname() != ""{
-                address = address + wine.getWineryname() + "\n"
+            if stretch_wine.getWineryname() != ""{
+                address = address + stretch_wine.getWineryname() + "\n"
             }
-            if wine.getCountry() != ""{
-                address = address + wine.getCountry() + ", " + wine.getRegion() + "\n"
+            if stretch_wine.getCountry() != ""{
+                address = address + stretch_wine.getCountry() + ", " + stretch_wine.getRegion() + "\n"
             }
             
-            if wine.getVarietyname() != ""{
-                address = address + wine.getVarietyname()
+            if stretch_wine.getVarietyname() != ""{
+                address = address + stretch_wine.getVarietyname()
             }
             
             cell.lbl_Address.text = address
-            if wine.getPhotourl() != ""{
-                cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
+            if stretch_wine.getPhotourl() != ""{
+                cell.mainImg.imageFromUrl(theUrl: stretch_wine.getPhotourl())
             }
-            if iSellBy == 2 {
-                cell.lbl_Price.text = "$\(wine.getRetailerglassprice())"
+            if iSellBy == 1 {
+                cell.lbl_Price.text = "$" + String(format:"%.2f", stretch_wine.getRetailerglassprice())
                
             }else{
-                 cell.lbl_Price.text = "$\(wine.getRetailerbottleprice())"
+                 cell.lbl_Price.text = "$" + String(format:"%.2f", stretch_wine.getRetailerbottleprice())
             }
             
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showStretchDetails(_:)))
@@ -344,12 +373,13 @@ class FindMyWineDetailsListViewController: UIViewController,
             let selectFavoriteGesture =  UITapGestureRecognizer(target: self, action: #selector(selectStretchFavorite(_:)))
             selectFavoriteGesture.numberOfTapsRequired = 1
             cell.btn_Favorite.addGestureRecognizer(selectFavoriteGesture)
+            }
             
             return cell
             
         }
         
-        if indexPath.row == 1 {
+        if indexPath.row == 1 && hasStretchWine{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedTitleCell", for: indexPath) as! FindMyWineRecommendedTitleCell
             cell.backgroundColor = .clear
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
@@ -361,7 +391,9 @@ class FindMyWineDetailsListViewController: UIViewController,
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedCell", for: indexPath) as! FindMyWineRecommendedCell
         cell.backgroundColor = .clear
-        if indexPath.row - 2 >= 0{
+        
+        if indexPath.row - 2 >= 0 && (indexPath.row - 2) < (self.wineList.wineList.count - 1 ) {
+            print("getting wine at index \(indexPath.row - 2)")
             let wine = self.wineList.wineList[indexPath.row - 2]
             cell.lbl_WineName.text = wine.getWinename()
             cell.lbl_WineName.adjustsFontSizeToFitWidth = true
@@ -384,11 +416,11 @@ class FindMyWineDetailsListViewController: UIViewController,
                 cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
             }
             
-            if iSellBy == 2 {
-                cell.lbl_Price.text = "$\(wine.getRetailerglassprice())"
+            if iSellBy == 1 {
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerglassprice())
                 
             }else{
-                cell.lbl_Price.text = "$\(wine.getRetailerbottleprice())"
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
             }
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
             showDetailsGesture.numberOfTapsRequired = 1
@@ -505,24 +537,7 @@ class FindMyWineDetailsListViewController: UIViewController,
     
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            let wine = findStretchWine()
-            if wine.getWineaiid() == 0{
-                return 0
-            }
-            return 200
-        }
-        
-        if indexPath.row == 1 {
-            let wine = findStretchWine()
-            if wine.getWineaiid() == 0{
-                return 0
-            }
-            return 44
-        }
-        return 175
-    }
+    
 }
 
 

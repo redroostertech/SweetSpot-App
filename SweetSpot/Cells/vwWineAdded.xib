@@ -79,6 +79,7 @@
                 <outlet property="btn_Close" destination="tJH-09-7dW" id="g8D-Vu-GHG"/>
                 <outlet property="lblMessage" destination="jZp-I0-Rz0" id="LcQ-4q-q3Z"/>
                 <outlet property="lbl_WineName" destination="RTW-WL-8aw" id="WSu-7d-oAZ"/>
+                <outlet property="vwBackground" destination="F2Z-sw-vPv" id="dtZ-Mu-Rto"/>
             </connections>
             <point key="canvasLocation" x="-2.5" y="-43.5"/>
         </view>

@@ -13,6 +13,7 @@ class vwWineAdded: UIView {
 
     @IBOutlet weak var lbl_WineName: UILabel!
     
+    @IBOutlet weak var vwBackground: UIView!
     
     @IBOutlet weak var btn_Close: UIButton!
     @IBOutlet weak var lblMessage: UILabel!
@@ -24,9 +25,17 @@ class vwWineAdded: UIView {
     }
     */
 
+   
     @IBAction func btnClose_Click(_ sender: Any) {
         print("btnClose_Click")
         self.removeFromSuperview()
+    }
+    @objc func doDismiss(_ sender:UITapGestureRecognizer){
+      
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+         self.removeFromSuperview()
     }
     
 }

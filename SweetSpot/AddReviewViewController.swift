@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Social
 
-class AddReviewViewController: UIViewController {
+class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var view_PrimaryContainer: UIView!
     @IBOutlet var btn_Share: UIButton!
@@ -26,6 +26,7 @@ class AddReviewViewController: UIViewController {
     var return_two_view_controller = false
     var selectedRating:Int = 0
     var primaryNavigationViewController: PrimaryNavigationViewController!
+    let TV_REVIEW_DEFAULT_TEXT = "Type in your comment here..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,22 @@ class AddReviewViewController: UIViewController {
         for star in btn_Star {
             star.tag = count
             count += 1
+        }
+        text_AddReview.delegate = self
+        text_AddReview.text = TV_REVIEW_DEFAULT_TEXT
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == TV_REVIEW_DEFAULT_TEXT{
+           textView.text = ""
+        }
+    }
+    
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == ""{
+            textView.text = TV_REVIEW_DEFAULT_TEXT
         }
     }
     

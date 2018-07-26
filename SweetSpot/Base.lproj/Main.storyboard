@@ -263,6 +263,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UkW-0B-ZJN"/>
                     </view>
+                    <navigationItem key="navigationItem" id="IDC-g1-SKm"/>
                     <connections>
                         <outlet property="btn_Cancel" destination="j1T-jS-3lu" id="MD7-fq-3Vl"/>
                         <outlet property="btn_ForgotPassword" destination="CaT-Uo-3yM" id="Tqk-m0-N55"/>
@@ -276,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jz2-tH-bZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="33.733133433283363"/>
+            <point key="canvasLocation" x="2327.1999999999998" y="33.733133433283363"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="1bI-La-yv8">
@@ -400,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciu-Ld-JXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="33.733133433283363"/>
+            <point key="canvasLocation" x="3039.1999999999998" y="33.733133433283363"/>
         </scene>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="7HA-Hi-vw3">
@@ -715,7 +716,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHm-YY-6LF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AGE RANGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHm-YY-6LF">
                                 <rect key="frame" x="16" y="262" width="343" height="16"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -730,7 +731,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SALARY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-Gg-g1d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SALARY RANGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-Gg-g1d">
                                 <rect key="frame" x="16" y="326" width="343" height="16"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2644,6 +2645,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="goTo:" destination="XqG-Gj-YRZ" eventType="touchUpInside" id="4pg-Om-EmM"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="group8" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-C7-6GB">
                                 <rect key="frame" x="309" y="149" width="50" height="50"/>
@@ -2892,7 +2896,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-PU-svJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-PU-svJ">
                                                     <rect key="frame" x="83" y="68.5" width="222" height="13.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="32 Peachtree St. NW Atlanta, Georgia, 30303">
@@ -3471,7 +3475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYy-Kt-ffZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7992.8000000000002" y="33.733133433283363"/>
+            <point key="canvasLocation" x="8932" y="33.733133433283363"/>
         </scene>
         <!--Find My Wine Details List View Controller-->
         <scene sceneID="WtJ-cL-vD0">
@@ -3978,7 +3982,7 @@
                                         <rect key="frame" x="0.0" y="274.5" width="309" height="372.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVt-Ua-uVb">
-                                        <rect key="frame" x="24" y="310" width="261" height="15"/>
+                                        <rect key="frame" x="24" y="286" width="261" height="15"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Port Wine">
                                                 <attributes>
@@ -3990,7 +3994,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIM-Io-2t6">
-                                        <rect key="frame" x="24" y="333" width="261" height="15"/>
+                                        <rect key="frame" x="24" y="309" width="261" height="15"/>
                                         <attributedString key="attributedText">
                                             <fragment content="San Francisco, California">
                                                 <attributes>
@@ -4071,7 +4075,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyV-ao-zRh" userLabel="HR">
-                                        <rect key="frame" x="24" y="364" width="261" height="1"/>
+                                        <rect key="frame" x="24" y="340" width="261" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="osL-qV-iW1"/>
@@ -4081,7 +4085,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxe-az-LRa">
-                                        <rect key="frame" x="24" y="373" width="261" height="90"/>
+                                        <rect key="frame" x="24" y="349" width="261" height="90"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="cqA-Jo-oQy"/>
@@ -4098,7 +4102,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-Yd-Lap" userLabel="HR">
-                                        <rect key="frame" x="24" y="471" width="261" height="1"/>
+                                        <rect key="frame" x="24" y="447" width="261" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="KxB-C9-cyC"/>
@@ -4108,7 +4112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-Bd-hit">
-                                        <rect key="frame" x="24" y="480" width="261" height="17"/>
+                                        <rect key="frame" x="24" y="456" width="261" height="17"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Additional Details">
                                                 <attributes>
@@ -4120,31 +4124,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nua-5J-cjZ">
-                                        <rect key="frame" x="24" y="505" width="126.5" height="16"/>
+                                        <rect key="frame" x="24" y="481" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Color">
                                                 <attributes>
                                                     <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="14" name="Athelas-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBU-2A-m8Q">
-                                        <rect key="frame" x="24" y="529" width="126.5" height="16"/>
+                                        <rect key="frame" x="24" y="505" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Alochol">
+                                            <fragment content="Alcohol">
                                                 <attributes>
                                                     <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="14" name="Athelas-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8g-hk-JQR">
-                                        <rect key="frame" x="24" y="553" width="126.5" height="16"/>
+                                        <rect key="frame" x="24" y="529" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Tasting Notes">
                                                 <attributes>
@@ -4156,7 +4162,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvY-EB-1IK">
-                                        <rect key="frame" x="158.5" y="505" width="126.5" height="16"/>
+                                        <rect key="frame" x="158.5" y="481" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Tannin">
                                                 <attributes>
@@ -4168,7 +4174,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfd-eA-XSj">
-                                        <rect key="frame" x="158.5" y="529" width="126.5" height="16"/>
+                                        <rect key="frame" x="158.5" y="505" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Oak">
                                                 <attributes>
@@ -4180,7 +4186,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fel-zh-ctz">
-                                        <rect key="frame" x="158.5" y="553" width="126.5" height="16"/>
+                                        <rect key="frame" x="158.5" y="529" width="126.5" height="16"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Acidity">
                                                 <attributes>
@@ -4236,7 +4242,7 @@
                                     <constraint firstItem="gBU-2A-m8Q" firstAttribute="width" secondItem="Nua-5J-cjZ" secondAttribute="width" id="LIp-fM-cNr"/>
                                     <constraint firstAttribute="trailing" secondItem="jqQ-qT-xGn" secondAttribute="trailing" id="MdB-z4-P80"/>
                                     <constraint firstItem="jqQ-qT-xGn" firstAttribute="leading" secondItem="CrJ-oo-PYf" secondAttribute="leading" id="Nhf-s9-Kb7"/>
-                                    <constraint firstItem="X3o-W4-Enf" firstAttribute="top" secondItem="W8g-hk-JQR" secondAttribute="bottom" constant="36" id="OY4-Do-5sg"/>
+                                    <constraint firstItem="X3o-W4-Enf" firstAttribute="top" secondItem="W8g-hk-JQR" secondAttribute="bottom" constant="60" id="OY4-Do-5sg"/>
                                     <constraint firstAttribute="trailing" secondItem="ZIM-Io-2t6" secondAttribute="trailing" constant="24" id="QXZ-j6-4oi"/>
                                     <constraint firstItem="X3o-W4-Enf" firstAttribute="leading" secondItem="CrJ-oo-PYf" secondAttribute="leading" id="RKr-gu-QbB"/>
                                     <constraint firstItem="MvY-EB-1IK" firstAttribute="width" secondItem="Nua-5J-cjZ" secondAttribute="width" id="RMH-0v-xPc"/>
@@ -4293,12 +4299,12 @@
                         <outlet property="lbl_WinePrice" destination="g3o-Cy-2Gs" id="8fv-Wb-S1H"/>
                         <outlet property="lbl_WineType" destination="JVt-Ua-uVb" id="g5O-8k-Iaz"/>
                         <outlet property="mainContainer" destination="CrJ-oo-PYf" id="Jyi-Bi-Dko"/>
-                        <outletCollection property="lbl_AdditionalDetails" destination="Nua-5J-cjZ" collectionClass="NSMutableArray" id="ioc-5n-ESu"/>
                         <outletCollection property="lbl_AdditionalDetails" destination="gBU-2A-m8Q" collectionClass="NSMutableArray" id="Uih-Gl-J0c"/>
                         <outletCollection property="lbl_AdditionalDetails" destination="W8g-hk-JQR" collectionClass="NSMutableArray" id="5JB-AQ-XAp"/>
                         <outletCollection property="lbl_AdditionalDetails" destination="MvY-EB-1IK" collectionClass="NSMutableArray" id="0TA-kX-1Yq"/>
                         <outletCollection property="lbl_AdditionalDetails" destination="mfd-eA-XSj" collectionClass="NSMutableArray" id="a0E-Ra-S2d"/>
                         <outletCollection property="lbl_AdditionalDetails" destination="Fel-zh-ctz" collectionClass="NSMutableArray" id="xTo-Fh-P5e"/>
+                        <outletCollection property="lbl_AdditionalDetails" destination="Nua-5J-cjZ" collectionClass="NSMutableArray" id="nOf-Md-fMn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WM2-HE-9bc" userLabel="First Responder" sceneMemberID="firstResponder"/>

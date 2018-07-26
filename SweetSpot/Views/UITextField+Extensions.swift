@@ -31,4 +31,13 @@ extension UITextField {
             self.rightViewMode = .always
         }
     }
+    
+    func setLeftViewButton(icon: UIImage)->UIButton {
+        let btnView = UIButton(frame: CGRect(x: 0, y: 0, width: ((self.frame.height) * 0.70), height: ((self.frame.height) * 0.70)))
+        btnView.setImage(icon, for: .normal)
+        btnView.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 3)
+        self.leftViewMode = .always
+        self.leftView = btnView
+        return btnView
+    }
 }

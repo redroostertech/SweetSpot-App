@@ -14,7 +14,7 @@ class QuestionaireDataSource:
 {
     
     var parent: UIViewController?
-    var questions: [Question]?
+    var questions: [Question] = [Question]()
     var delegate: QuestionaireDelegate?
     var selectedQuestion: Question? {
         didSet {
@@ -35,32 +35,59 @@ class QuestionaireDataSource:
         self.init()
         self.parent = parent
         fetchQuestionaire {
-            guard let questions = self.questions else {
-                return self.selectedQuestion = nil
-            }
-            self.selectedQuestion = questions[0]
+            
+            self.selectedQuestion = self.questions[0]
+            
         }
     }
     
     func fetchQuestionaire(completion: @escaping()-> Void) {
         self.questions = [Question]()
-        guard let questions = sample_questionaire_date as? [[String: Any]] else {
-            return completion()
+
+        
+        loadQuestion(atIndex:0, completion: {
+            self.loadQuestion(atIndex:1, completion: {
+                self.loadQuestion(atIndex:2, completion: {
+                    completion()
+                })
+            })
+            
+        })
+       
+        
+    
+      
+    }
+    
+    func loadQuestion(atIndex:Int, completion: @escaping()-> Void){
+        let parameters: Parameters = ["action": "getQuestion",
+                                      "question_index": "\(atIndex+1)"
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseString { response in
+            do{
+                let data = response.result.value!.data(using: .utf8)!
+                let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String: Any]
+                let question = Question(data: jsonArray!)
+                self.questions.append(question)
+                //self.questions[atIndex] = question
+                if atIndex == 0{
+                    self.selectedQuestion = question
+                    print("selectedQuestion is set")
+                }
+                
+            } catch let error as NSError {
+                print(error)
+            }
+            completion()
         }
-        for question in questions {
-            let question = Question(data: question)
-            self.questions?.append(question)
-        }
-        completion()
     }
     
     func nextQuestion() {
         guard
-            let questions = self.questions,
             let selectedQuestion = self.selectedQuestion,
             let indexOfCurrentQuestion = getIndexOf(question: selectedQuestion,
-                                                    inArray: questions),
-            indexOfCurrentQuestion < (questions.endIndex - 1)
+                                                    inArray: self.questions),
+            indexOfCurrentQuestion < (self.questions.endIndex - 1)
             else
         {
             self.delegate?.doCompleteQuestionaire()
@@ -68,8 +95,10 @@ class QuestionaireDataSource:
         }
         print("indexOfCurrentQuestion \(indexOfCurrentQuestion)")
         if indexOfCurrentQuestion < 1{
-            self.selectedQuestion = questions[questions.index(after: indexOfCurrentQuestion)]
-            hideParentPreviousButton(false)
+            self.selectedQuestion = self.questions[self.questions.index(after: indexOfCurrentQuestion)]
+            self.hideParentPreviousButton(false)
+            
+            
         }else{
             //get the question
             guard
@@ -128,7 +157,7 @@ class QuestionaireDataSource:
     
     func previous() {
         guard
-            let questions = self.questions,
+            
             let selectedQuestion = self.selectedQuestion,
             let indexOfCurrentQuestion = getIndexOf(question: selectedQuestion,
                                                     inArray: questions),

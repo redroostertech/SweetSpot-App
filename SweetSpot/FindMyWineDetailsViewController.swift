@@ -24,6 +24,8 @@ class FindMyWineDetailsViewController: UIViewController {
     @IBOutlet var divider: UILabel!
     @IBOutlet var lbl_AdditionalDetails: [UILabel]!
     
+    
+    
     var wine:Wine = Wine(JSONString:"{}")!
     
     @IBOutlet weak var btnCloseDetails: UIButton!
@@ -43,15 +45,20 @@ class FindMyWineDetailsViewController: UIViewController {
         lbl_WineLocation.textColor = UIColor.AppColors.beige
         lbl_WineLocation.text = wine.getWineryname()
         lbl_WinePrice.textColor = UIColor.AppColors.beige
-        lbl_WinePrice.text = "$\(wine.getRetailerbottleprice())"
+        //String(format:"%.2f", doubleValue)
+        lbl_WinePrice.text = "$"+String(format:"%.2f", wine.getRetailerbottleprice())
         lbl_WineCity.textColor = UIColor.AppColors.grey
         lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
         lbl_WineDescription.textColor = UIColor.AppColors.grey
-        lbl_WineDescription.text = wine.getWinedescription()
+        lbl_WineDescription.text = wine.getTastingnotes()
         divider.backgroundColor = UIColor.AppColors.grey
+        
+        lbl_WineType.text = wine.getVarietyname()
         
         lbl_SweetSportWine.layer.cornerRadius = 5
         lbl_SweetSportWine.clipsToBounds = true
+        
+        lbl_WineName.text = wine.getWinename()
         
         img_BG.clipsToBounds = true
         img_Wine.clipsToBounds = true
@@ -59,13 +66,53 @@ class FindMyWineDetailsViewController: UIViewController {
         self.view.backgroundColor = UIColor.AppColors.purple
         
         var count = 1
+        print("\(wine.toJSONString())")
         for label in lbl_AdditionalDetails {
             label.tag = count
             count += 1
             label.textColor = UIColor.AppColors.beige
+            if label.text == "Tannin" && wine.getAlcoholstrength() != ""{
+                print("wine alky: \(wine.getAlcoholstrength())")
+                label.text = "Alcohol Strength: " + wine.getAlcoholstrength()
+            }
+            else if label.text == "Alcohol" && wine.getBottlesizeml() > 0 {
+                label.text = "Bottle Size: \(wine.getBottlesizeml())"
+            }
+            else if label.text == "Tasting Notes" && wine.getWineryurl() != "" {
+                print("wine url: \(wine.getWineryurl())")
+                label.text = "\(wine.getWineryurl())"
+                label.textColor = UIColor.AppColors.link_blue
+                label.isUserInteractionEnabled = true
+                let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openWineURL))
+                
+                label.addGestureRecognizer(tap)
+            }
+            else if label.text == "Color"{
+                let color_id = wine.getWinecolorid()
+                print("Color: \(color_id)")
+                if color_id == 1{
+                    label.text =  "Color: White"
+                }else{
+                    label.text =  "Color: Red"
+                }
+            }else{
+                label.text = ""
+            }
+        }
+        
+        if wine.is_stretch_wine == "1" {
+            lbl_SweetSportWine.text = "Try This Wine"
+            lbl_SweetSportWine.backgroundColor = UIColor.AppColors.grey
+            lbl_SweetSportWine.textColor = UIColor.AppColors.black
         }
     }
-    
+    @objc func openWineURL(sender:UITapGestureRecognizer) {
+        guard let url = URL(string: wine.getWineryurl()) else {
+            print("Can't convert to URL")
+            return //be safe
+        }
+        UIApplication.shared.openURL(url)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

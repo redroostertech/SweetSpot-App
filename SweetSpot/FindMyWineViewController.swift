@@ -68,8 +68,12 @@ class FindMyWineViewController:
     let ddRetailerDistances = DropDown()
     
     let indicatorHolder = ActivityIndicatorHolder()
+    var userHomeAddress:String = ""
    
+    var spinnerView:UIView = UIView()
     
+    fileprivate let googleMapsKey = "AIzaSyCE-IICsrZpekbpWXj-v_7rtCR83-Dym50"
+    fileprivate let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +89,7 @@ class FindMyWineViewController:
         self.text_Search.textColor = UIColor.AppColors.beige
         self.text_Search.backgroundColor = UIColor.AppColors.dark_purple
          self.text_Search.delegate = self
+        self.text_Search.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         let addressRightInputImage = UIImage(named: "shape")
         let addressRightInputImageView = UIImageView(frame: CGRect(x: 0,
@@ -93,11 +98,19 @@ class FindMyWineViewController:
                                                             height: self.text_Address.frame.height))
         addressRightInputImageView.image = addressRightInputImage
         addressRightInputImageView.contentMode = .center
+        
+        let geomarkerIcon = UIImage(named: "geomarker")
+        let geomarkerButton = self.text_Address.setLeftViewButton(icon: geomarkerIcon!)
+        geomarkerButton.addTarget(self, action: #selector(self.setHomeAddress), for: .touchUpInside)
+       
         self.text_Address.rightViewMode = .always
+        self.text_Address.leftViewMode = .always
         self.text_Address.textColor = UIColor.AppColors.beige
         self.text_Address.rightView = addressRightInputImageView
+       
         self.text_Address.delegate = self
-        
+        self.text_Address.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+       
         
         let retailersRightInputImage = UIImage(named: "dropDownArrow")
         let retailersRightInputImageView = UIImageView(frame: CGRect(x: 0,
@@ -133,13 +146,26 @@ class FindMyWineViewController:
 
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        locationManager.requestLocation()
-        loadList(list_id:2)
-        loadList(list_id:1)
+    @IBAction func setHomeAddress(_ sender: Any) {
+        text_Address.text = userHomeAddress
         self.loadMainTable()
-        //indicatorHolder.showActivityIndicator(uiView: self.view)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        var retail_list = Utils().getPermanentString(keyName: "RETAIL_LIST")
+        if retail_list == "" {
+            locationManager.requestLocation()
+            loadList(list_id:2)
+            loadList(list_id:1)
+            self.loadMainTable()
+            //indicatorHolder.showActivityIndicator(uiView: self.view)
+            self.spinnerView = displaySpinner(onView: self.view)
+        }else{
+            loadList(list_id:2)
+            loadList(list_id:1)
+             self.retailerList = RetailerList(JSONString: retail_list)!
+            self.mainTable.reloadData()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -217,6 +243,9 @@ class FindMyWineViewController:
     }
     
     func loadMainTable(){
+        if text_Address.text == ""{
+            text_Address.text = userHomeAddress
+        }
         let address = text_Address.text!
         let radius = text_Distance.text!
         let retail_type = text_Retailers.text!
@@ -224,6 +253,9 @@ class FindMyWineViewController:
         if retail_name == "Search For A Retailer By Name"{
             retail_name = ""
         }
+        
+        
+        
         print("retail_name \(retail_name)")
         let parameters: Parameters = ["action": "getRetailListByAddress",
                                       "address":address,
@@ -255,6 +287,7 @@ class FindMyWineViewController:
                 print("JSON string = \(theJSONText!)")
                 
                 self.retailerList = RetailerList(JSONString: theJSONText!)!
+                Utils().savePermanentString(keyName: "RETAIL_LIST", keyValue: theJSONText!)
                 self.mainTable.reloadData()
             }
         }
@@ -283,10 +316,10 @@ class FindMyWineViewController:
         if indexPath.row - 1 >= 0{
             let retailer = retailerList.retailerList[indexPath.row - 1]
             cell.lbl_BusinessName.text = retailer.getRetailername()
-            cell.lbl_Address.text = retailer.getAddressline1()
+            cell.lbl_Address.text = retailer.getAddressline1() + "\n" + retailer.getAddressline2() + "\n" + retailer.getCity() + "," + retailer.getState() + " " + "\(retailer.getZipcode())"
             if let strDistance = retailer.distance{
                 if let distance = Double(strDistance){
-                    cell.lbl_Distance.text = "\(distance.rounded(toPlaces: 2)) miles"
+                    cell.lbl_Distance.text = "\(distance.rounded(toPlaces: 2)) miles away"
                 }
             }
             var image_url = "http://52.15.191.207/images/wine_aisle.jpg"
@@ -375,7 +408,63 @@ extension FindMyWineViewController: UITextFieldDelegate {
         print("Keyboard will hide!")
         self.loadMainTable()
     }
-    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == text_Address{
+            if textField.text!.length > 3 {
+                let ddAddress = DropDown()
+                ddAddress.anchorView = text_Address
+                AutoCompleteAdddressPopulator().fetchAutocompletePlaces(keyword: textField.text!, dropDown: ddAddress)
+                
+                ddAddress.selectionAction = { [unowned self] (index: Int, item: String) in
+                    print("Selected item: \(item) at index: \(index)")
+                    self.text_Address.text = item
+                    self.loadMainTable()
+                }
+            }
+            
+        }
+        
+        if textField == text_Search{
+            if textField.text!.length > 3{
+                let ddRetailerNames = DropDown()
+                ddRetailerNames.anchorView = text_Search
+                
+                let parameters: Parameters = ["action": "getRetailerByName",
+                                              "retailer_name":textField.text!
+                    
+                ]
+                Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+                    
+                    let jsonValues = response.result.value as! [String:Any]
+                    
+                    let status = jsonValues["status"] as? Int
+                    if status != 1{
+                        print("error from server: \(jsonValues["message"])")
+                        return
+                    }
+                    let data = jsonValues["data"] as! [String:Any]
+                    if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                        let theJSONText = String(data: theJSONData,
+                                                 encoding: .ascii)
+                        print("JSON string = \(theJSONText!)")
+                        
+                        let tmpRetailerList = RetailerList(JSONString: theJSONText!)!
+                        for retailer: Retailer in tmpRetailerList.retailerList{
+                            ddRetailerNames.dataSource.append(retailer.getRetailername())
+                           
+                        }
+                        ddRetailerNames.selectionAction = { [unowned self] (index: Int, item: String) in
+                            print("Selected item: \(item) at index: \(index)")
+                            self.text_Search.text = item
+                            self.loadMainTable()
+                        }
+                        ddRetailerNames.show()
+                    }
+                }
+                
+            }
+        }
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == self.text_Search{
@@ -392,6 +481,7 @@ extension FindMyWineViewController: UITextFieldDelegate {
 
 extension FindMyWineViewController: NavDelegate {
     func doDismiss() {
+         Utils().savePermanentString(keyName: "RETAIL_LIST", keyValue: "")
         dismiss(animated: true,
                 completion: nil)
     }
@@ -495,10 +585,13 @@ extension FindMyWineViewController: CLLocationManagerDelegate {
                     }
                     //print(addressString)
                     self.text_Address.text = addressString
+                    
                     if AppConstants.IS_SIMULATOR{
                         self.text_Address.text = "384 northyards blvd nw, atlanta, ga 30313"
                     }
+                    self.userHomeAddress = self.text_Address.text!
                    //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
+                    self.removeSpinner(spinner: self.spinnerView)
                     self.loadMainTable()
                 }
         })
@@ -521,6 +614,7 @@ extension FindMyWineViewController: CLLocationManagerDelegate {
                     // An error occurred during geocoding.
                     completionHandler(nil)
                      //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
+                    self.removeSpinner(spinner: self.spinnerView)
                 }
             })
         }
@@ -528,6 +622,7 @@ extension FindMyWineViewController: CLLocationManagerDelegate {
             // No location was available.
             completionHandler(nil)
             //self.indicatorHolder.hideActivityIndicator(uiView: self.view)
+            self.removeSpinner(spinner: self.spinnerView)
         }
     }
     

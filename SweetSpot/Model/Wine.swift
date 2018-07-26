@@ -24,7 +24,7 @@ class Wine : Mappable {
     var vineyard:Any?
     var wine_color_id:Any?
     var wine_type_id:Any?
-    var alcohol_strength_id:Any?
+    var alcohol_strength:Any?
     var oak_id:Any?
     var tannin_id:Any?
     var acidity_id:Any?
@@ -73,7 +73,7 @@ class Wine : Mappable {
         vineyard <- map["vineyard"]
         wine_color_id <- map["wine_color_id"]
         wine_type_id <- map["wine_type_id"]
-        alcohol_strength_id <- map["alcohol_strength_id"]
+        alcohol_strength <- map["alcohol_strength"]
         oak_id <- map["oak_id"]
         tannin_id <- map["tannin_id"]
         acidity_id <- map["acidity_id"]
@@ -280,15 +280,12 @@ class Wine : Mappable {
         }//else
     }//func
     
-    func getAlcoholstrengthid()->Int{
-        if let val = alcohol_strength_id as? Int{
+    func getAlcoholstrength()->String{
+        if let val = alcohol_strength as? String{
             return val
         }
-        if let val = alcohol_strength_id as? String{
-            return Int(val)!
-        }
         else{
-            return -1
+            return ""
         }//else
     }//func
     

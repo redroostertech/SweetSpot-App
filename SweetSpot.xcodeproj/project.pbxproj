@@ -19,6 +19,8 @@
 		1B23AF44210594D90095BB84 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF43210594D90095BB84 /* Notifications.swift */; };
 		1B23AF462106BBA80095BB84 /* HelpCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF452106BBA80095BB84 /* HelpCategory.swift */; };
 		1B23AF482106D1540095BB84 /* ActivityIndicatorHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */; };
+		1B23AF4A210786EE0095BB84 /* AutoCompleteAddressPopulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23AF49210786EE0095BB84 /* AutoCompleteAddressPopulator.swift */; };
+		1B23AF4E2107954E0095BB84 /* geomarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B23AF4D2107954E0095BB84 /* geomarker.png */; };
 		1BA58B2E20FC368000BD6A78 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B2D20FC368000BD6A78 /* AppConstants.swift */; };
 		1BA58B6220FC397800BD6A78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B6120FC397800BD6A78 /* Utils.swift */; };
 		1BA58BB120FDAAAE00BD6A78 /* Retailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */; };
@@ -151,6 +153,8 @@
 		1B23AF43210594D90095BB84 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		1B23AF452106BBA80095BB84 /* HelpCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCategory.swift; sourceTree = "<group>"; };
 		1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHolder.swift; sourceTree = "<group>"; };
+		1B23AF49210786EE0095BB84 /* AutoCompleteAddressPopulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteAddressPopulator.swift; sourceTree = "<group>"; };
+		1B23AF4D2107954E0095BB84 /* geomarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geomarker.png; sourceTree = "<group>"; };
 		1BA58B2D20FC368000BD6A78 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1BA58B6120FC397800BD6A78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1BA58B9720FDAAAC00BD6A78 /* Retailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retailer.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 		1B23AF342101041E0095BB84 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1B23AF4D2107954E0095BB84 /* geomarker.png */,
 				1B23AF352101044C0095BB84 /* close_details.png */,
 				1B23AF37210188B10095BB84 /* favorite_wine.png */,
 			);
@@ -348,6 +353,7 @@
 				1B23AF3D21018FB50095BB84 /* NibView.swift */,
 				1B23AF43210594D90095BB84 /* Notifications.swift */,
 				1B23AF472106D1540095BB84 /* ActivityIndicatorHolder.swift */,
+				1B23AF49210786EE0095BB84 /* AutoCompleteAddressPopulator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -445,6 +451,8 @@
 		BAC7339620E6F4B100E77BF4 /* SweetSpot */ = {
 			isa = PBXGroup;
 			children = (
+				BAB2783220EF29CF0023EF1D /* Fonts */,
+				BAE0741720E9812900F8FD63 /* Page Menu */,
 				1B23AF342101041E0095BB84 /* Images */,
 				1BA58BCC20FE2F3C00BD6A78 /* Views */,
 				1BA58BCB20FE2C3300BD6A78 /* Cells */,
@@ -487,8 +495,6 @@
 				BAC733A320E6F4B200E77BF4 /* LaunchScreen.storyboard */,
 				BAC733A620E6F4B200E77BF4 /* Info.plist */,
 				BAC7339E20E6F4B200E77BF4 /* SweetSpot.xcdatamodeld */,
-				BAB2783220EF29CF0023EF1D /* Fonts */,
-				BAE0741720E9812900F8FD63 /* Page Menu */,
 			);
 			path = SweetSpot;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				BAC733A220E6F4B200E77BF4 /* Assets.xcassets in Resources */,
 				BAC733F520E7FB6600E77BF4 /* QuestionaireTableViewCell.xib in Resources */,
 				1B23AF362101044C0095BB84 /* close_details.png in Resources */,
+				1B23AF4E2107954E0095BB84 /* geomarker.png in Resources */,
 				BAB2783920EF2EC20023EF1D /* Futura.ttc in Resources */,
 				BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */,
 				1B23AF3A21018DB60095BB84 /* vwWineAdded.xib in Resources */,
@@ -819,6 +826,7 @@
 				BAC733A020E6F4B200E77BF4 /* SweetSpot.xcdatamodeld in Sources */,
 				BAE0742720EC788800F8FD63 /* Question.swift in Sources */,
 				1BA58BB520FDAAAE00BD6A78 /* SalaryRange.swift in Sources */,
+				1B23AF4A210786EE0095BB84 /* AutoCompleteAddressPopulator.swift in Sources */,
 				1B23AF3E21018FB50095BB84 /* NibView.swift in Sources */,
 				1B23AF482106D1540095BB84 /* ActivityIndicatorHolder.swift in Sources */,
 				BAC733DB20E6F6A600E77BF4 /* Error.swift in Sources */,

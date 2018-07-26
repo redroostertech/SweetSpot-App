@@ -101,6 +101,16 @@ class MenuViewController: UIViewController {
     @IBAction func goTo(_ sender: UIButton) {
         print("Sender: ", sender)
         switch sender {
+            
+        case btn_Logout:
+            Utils().savePermanentString(keyName: "USER_NAME", keyValue: "")
+            Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "")
+            Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "")
+            Utils().savePermanentString(keyName: "RETAIL_LIST", keyValue: "")
+            let appDelegate : AppDelegate! = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.logoutUser()
+            
+            break
         case btn_Help:
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
