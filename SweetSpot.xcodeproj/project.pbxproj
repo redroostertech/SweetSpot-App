@@ -53,6 +53,7 @@
 		1BA58BD420FEF25100BD6A78 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD320FEF25100BD6A78 /* UIImageView.swift */; };
 		1BA58BD620FEF29C00BD6A78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD520FEF29C00BD6A78 /* UIImage.swift */; };
 		1BA58BD820FEF2B900BD6A78 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA58BD720FEF2B900BD6A78 /* String.swift */; };
+		1BD9C22E210B2CC70011045C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD9C22D210B2CC40011045C /* plus.png */; };
 		23505DA1971E7F3051E1E742 /* Pods_SweetSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1D6F838C72D46064AFED68 /* Pods_SweetSpot.framework */; };
 		BA7DC9F420EECAE6001A7AFB /* MySweetSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */; };
 		BA7DC9F620EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */; };
@@ -187,6 +188,7 @@
 		1BA58BD320FEF25100BD6A78 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		1BA58BD520FEF29C00BD6A78 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1BA58BD720FEF2B900BD6A78 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1BD9C22D210B2CC40011045C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		4241194076455E89F9E9E936 /* Pods-SweetSpotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotTests/Pods-SweetSpotTests.release.xcconfig"; sourceTree = "<group>"; };
 		66CCFBFA62E816B0FA91692F /* Pods-SweetSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot.release.xcconfig"; sourceTree = "<group>"; };
 		678D4F3B510D5865B159AC83 /* Pods-SweetSpotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetSpotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetSpotUITests/Pods-SweetSpotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		1B23AF342101041E0095BB84 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1BD9C22D210B2CC40011045C /* plus.png */,
 				1B23AF4D2107954E0095BB84 /* geomarker.png */,
 				1B23AF352101044C0095BB84 /* close_details.png */,
 				1B23AF37210188B10095BB84 /* favorite_wine.png */,
@@ -653,6 +656,7 @@
 				BAB2783920EF2EC20023EF1D /* Futura.ttc in Resources */,
 				BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */,
 				1B23AF3A21018DB60095BB84 /* vwWineAdded.xib in Resources */,
+				1BD9C22E210B2CC70011045C /* plus.png in Resources */,
 				BAC7339D20E6F4B100E77BF4 /* Main.storyboard in Resources */,
 				1B23AF38210188B20095BB84 /* favorite_wine.png in Resources */,
 				BAE0742320EC047D00F8FD63 /* SecondaryNavigationViewController.xib in Resources */,

@@ -66,6 +66,19 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         }
         text_AddReview.delegate = self
         text_AddReview.text = TV_REVIEW_DEFAULT_TEXT
+        
+        if let rating_text = wine.rating_text{
+            text_AddReview.text = rating_text
+        }
+        if let strRating = wine.rating{
+            if let rating = Int(strRating){
+                //highlight this many stars
+                for star in btn_Star {
+                    star.setTitleColor(UIColor.AppColors.beige, for: .normal)
+                }
+            }
+            
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

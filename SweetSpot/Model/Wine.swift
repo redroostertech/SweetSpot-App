@@ -48,6 +48,7 @@ class Wine : Mappable {
     //accessing them all willy nilly will give you a nil exception
     var retailer_name:String?
     var rating:String? //needs to be manually converted to an Int because of PHPs JSON limitations
+    var rating_text:String?
     var retailer_address:String?
     var is_stretch_wine = ""
     
@@ -95,6 +96,7 @@ class Wine : Mappable {
         
         retailer_name <- map["retailer_name"]
         rating <- map["rating"]
+        rating_text <- map["rating_text"]
         retailer_address <- map["retailer_address"]
         is_stretch_wine <- map["is_stretch_wine"]
     }

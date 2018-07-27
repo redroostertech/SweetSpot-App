@@ -17,6 +17,7 @@ class RateMyWineRatedCell: UITableViewCell {
     @IBOutlet var lbl_Date: UILabel!
     @IBOutlet var btn_Star: [UIButton]!
     
+    @IBOutlet weak var btn_GoTo: UIButton!
     override func layoutSubviews() {
         super.layoutSubviews()
         mainImg.layer.cornerRadius = 5
@@ -30,6 +31,8 @@ class RateMyWineRatedCell: UITableViewCell {
         lbl_Address.textColor = UIColor.AppColors.beige
     }
 }
+
+
 
 class RateMyWineRatedController:
     UIViewController,
@@ -114,7 +117,26 @@ class RateMyWineRatedController:
                 }
             }
         }
+        
+        let rateWineGesture =  UITapGestureRecognizer(target: self, action: #selector(rateThisWine(_:)))
+        rateWineGesture.numberOfTapsRequired = 1
+        cell.btn_GoTo.addGestureRecognizer(rateWineGesture)
         return cell
+    }
+    
+    @objc func rateThisWine(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
+        let wine = self.wineList.wineList[(indexPath?.row)!]
+        print("rateThisWine")
+        if let viewController = self.programmaticSegue(vcName: "AddReviewViewController", storyBoard: "Main") as? AddReviewViewController {
+            
+            viewController.wine = wine
+            
+            self.present(viewController, animated: true, completion: nil)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -21,8 +21,11 @@ class FindMyWineCarouselCell: UICollectionViewCell {
     @IBOutlet var lbl_WineDescription: UITextView!
     @IBOutlet var divider: UILabel!
     
+    @IBOutlet weak var imgFavoriteWine: UIImageView!
+    @IBOutlet weak var img_SelectWine: UIImageView!
     
     
+    @IBOutlet weak var btnWineDetails: UIButton!
     override func layoutSubviews() {
         super.layoutSubviews()
         lbl_WineLocation.textColor = UIColor.AppColors.beige
@@ -51,14 +54,14 @@ class FindMyWineCarouselCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor.AppColors.purple
         //contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
         
-//        btn_Details.layer.cornerRadius = btn_Details.frame.height / 2
-//        btn_Details.layer.borderColor = UIColor.AppColors.beige.cgColor
-//        btn_Details.layer.borderWidth = CGFloat(btn_border_width)
-//        btn_Details.backgroundColor = UIColor.clear
-//        btn_Details.setTitleColor(UIColor.AppColors.beige,
-//                                  for: .normal)
-//        btn_Details.setTitle("Details".uppercased(),
-//                             for: .normal)
+        btnWineDetails.layer.cornerRadius = btnWineDetails.frame.height / 2
+        btnWineDetails.layer.borderColor = UIColor.AppColors.beige.cgColor
+        btnWineDetails.layer.borderWidth = CGFloat(btn_border_width)
+        btnWineDetails.backgroundColor = UIColor.clear
+        btnWineDetails.setTitleColor(UIColor.AppColors.beige,
+                                  for: .normal)
+        btnWineDetails.setTitle("Details".uppercased(),
+                             for: .normal)
     }
 }
 
@@ -68,7 +71,7 @@ class FindMyWineDetailsCarouselViewController:
     UICollectionViewDelegateFlowLayout,
     UICollectionViewDataSource
 {
-   
+    
     @IBOutlet var mainTable: UICollectionView!
     @IBOutlet var navigationViewContainer: UIView!
     @IBOutlet var text_Address: UITextField!
@@ -120,7 +123,7 @@ class FindMyWineDetailsCarouselViewController:
             self.iListViewType = index
             if index == 0{
                 print("show listview")
-                 self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
@@ -207,7 +210,7 @@ class FindMyWineDetailsCarouselViewController:
         flowLayout.itemSize = CGSize(width: 275,
                                      height: self.mainTable.frame.height + 50
         )
-  
+        
         mainTable.setCollectionViewLayout(flowLayout, animated: true)
         
         let mainTableImage = UIImage(named: "group15")
@@ -296,7 +299,7 @@ class FindMyWineDetailsCarouselViewController:
             cell.lbl_SweetSportWine.backgroundColor = UIColor.AppColors.grey
             cell.lbl_SweetSportWine.textColor = UIColor.AppColors.black
         }else{
-           cell.lbl_SweetSportWine.text = "SweetSpot Wine"
+            cell.lbl_SweetSportWine.text = "SweetSpot Wine"
         }
         
         if iSellBy == 1 {
@@ -310,9 +313,78 @@ class FindMyWineDetailsCarouselViewController:
         if wine.getPhotourl() != ""{
             
             cell.img_Wine.imageFromUrl(theUrl: wine.getPhotourl())
+            //cell.img_Wine
         }
+        
+        let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+        showDetailsGesture.numberOfTapsRequired = 1
+        cell.btnWineDetails.addGestureRecognizer(showDetailsGesture)
+        
+        let showWasWineAvailableGesture =  UITapGestureRecognizer(target: self, action: #selector(showWasWineAvailable(_:)))
+        showWasWineAvailableGesture.numberOfTapsRequired = 1
+        cell.img_SelectWine.addGestureRecognizer(showWasWineAvailableGesture)
+        cell.img_SelectWine.isUserInteractionEnabled = true
+        
+        
+        let selectFavoriteGesture =  UITapGestureRecognizer(target: self, action: #selector(selectFavorite(_:)))
+        selectFavoriteGesture.numberOfTapsRequired = 1
+        cell.imgFavoriteWine.addGestureRecognizer(selectFavoriteGesture)
+        cell.imgFavoriteWine.isUserInteractionEnabled = true
+        
         return cell
     }
+    
+    @objc func selectFavorite(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        let indexPath = self.mainTable.indexPathForItem(at: tapLocation)
+        let wine = self.wineList.wineList[(indexPath?.row)! ]
+        print("favorite selected")
+        let parameters: Parameters = ["action": "addCustomerWineFavorite",
+                                      "wine_id": "\(wine.getWineaiid())",
+            "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            let customView = vwWineAdded().loadNib(myNibName: "vwWineAdded") as! vwWineAdded
+            customView.lbl_WineName.text = wine.getWinename()
+            customView.lblMessage.text = "WAS ADDED TO FAVORITES"
+            customView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
+            
+            customView.alpha = 1
+            self.view.addSubview(customView)
+        }
+    }
+    
+    @objc func showDetails(_ sender: UIGestureRecognizer){
+        
+        let tapLocation = sender.location(in: self.mainTable)
+        
+        let indexPath = self.mainTable.indexPathForItem(at: tapLocation)
+        print("\(indexPath?.row)")
+        let wine = self.wineList.wineList[(indexPath?.row)! ]
+        if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsViewController", storyBoard: "Main") as? FindMyWineDetailsViewController {
+            
+            viewController.wine = wine
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func showWasWineAvailable(_ sender: UIGestureRecognizer){
+        let tapLocation = sender.location(in: self.mainTable)
+        
+        let indexPath = self.mainTable.indexPathForItem(at: tapLocation)
+        print("\(indexPath?.row)")
+        let wine = self.wineList.wineList[(indexPath?.row)! ]
+        if let viewController = self.programmaticSegue(vcName: "WasWineAvailableViewController", storyBoard: "Main") as? WasWineAvailableViewController {
+            
+            viewController.wine = wine
+            viewController.retailer = retailer
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    
     
 }
 extension FindMyWineDetailsCarouselViewController: UITextFieldDelegate {
@@ -343,8 +415,8 @@ extension FindMyWineDetailsCarouselViewController: UITextFieldDelegate {
 
 extension FindMyWineDetailsCarouselViewController: NavDelegate {
     func doDismiss() {
-//        dismiss(animated: true,
-//                completion: nil)
+        //        dismiss(animated: true,
+        //                completion: nil)
         self.presentingViewController?.view.isHidden = true
         
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)

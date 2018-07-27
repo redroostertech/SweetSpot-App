@@ -4398,9 +4398,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="451"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCB-3Y-TEK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCB-3Y-TEK">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="140.5"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="140.5" id="2tI-br-XL1"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waves" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-vz-pVf">
                                                     <rect key="frame" x="0.0" y="249.5" width="250" height="201.5"/>
@@ -4480,7 +4483,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RfH-FG-EKB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.png" translatesAutoresizingMaskIntoConstraints="NO" id="RfH-FG-EKB">
                                                     <rect key="frame" x="20" y="188.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="Ufe-ZI-LtQ"/>
@@ -4505,6 +4508,24 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite_wine.png" translatesAutoresizingMaskIntoConstraints="NO" id="2bF-XA-17C">
+                                                    <rect key="frame" x="196" y="140" width="29" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="4Lj-kc-s1Y"/>
+                                                        <constraint firstAttribute="width" constant="29" id="deg-7l-pij"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6j-9Y-qPO">
+                                                    <rect key="frame" x="135" y="185" width="100" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="jla-O4-ayq"/>
+                                                        <constraint firstAttribute="height" constant="30" id="npO-Fa-hjD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                                    <state key="normal" title="Details">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.19157214462757111" green="0.15253889560699463" blue="0.17658434808254242" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4519,7 +4540,9 @@
                                             <constraint firstItem="x5j-nJ-b5e" firstAttribute="leading" secondItem="RfH-FG-EKB" secondAttribute="leading" id="Cdr-1v-DTZ"/>
                                             <constraint firstItem="vuH-hu-bdN" firstAttribute="leading" secondItem="UBr-FM-Jiv" secondAttribute="leadingMargin" constant="12" id="Dc6-Am-geF"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="dYF-Od-z10" secondAttribute="trailing" constant="12" id="FtX-v8-8k3"/>
+                                            <constraint firstItem="2bF-XA-17C" firstAttribute="top" secondItem="oCB-3Y-TEK" secondAttribute="bottom" constant="-0.5" id="G6W-ZQ-dOx"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="oCB-3Y-TEK" secondAttribute="trailing" constant="-8" id="H39-un-7NN"/>
+                                            <constraint firstAttribute="trailing" secondItem="2bF-XA-17C" secondAttribute="trailing" constant="25" id="NIK-sQ-eQ9"/>
                                             <constraint firstItem="x5j-nJ-b5e" firstAttribute="centerY" secondItem="UBr-FM-Jiv" secondAttribute="centerY" id="OGo-0A-7A4"/>
                                             <constraint firstItem="oCB-3Y-TEK" firstAttribute="top" secondItem="UBr-FM-Jiv" secondAttribute="topMargin" constant="-8" id="RKc-Oh-5on"/>
                                             <constraint firstItem="RfH-FG-EKB" firstAttribute="top" secondItem="j3B-eb-lHj" secondAttribute="bottom" constant="24" id="RRx-DC-cmD"/>
@@ -4531,6 +4554,8 @@
                                             <constraint firstItem="6Aj-NU-v0N" firstAttribute="leading" secondItem="UBr-FM-Jiv" secondAttribute="leadingMargin" constant="12" id="bCp-f7-ZZQ"/>
                                             <constraint firstItem="hnl-t4-kDR" firstAttribute="leading" secondItem="UBr-FM-Jiv" secondAttribute="leadingMargin" constant="12" id="cN1-2E-TKz"/>
                                             <constraint firstItem="x5j-nJ-b5e" firstAttribute="leading" secondItem="UBr-FM-Jiv" secondAttribute="leadingMargin" constant="12" id="cfz-Dv-Egg"/>
+                                            <constraint firstItem="m6j-9Y-qPO" firstAttribute="top" secondItem="2bF-XA-17C" secondAttribute="bottom" constant="13" id="dKj-xB-maf"/>
+                                            <constraint firstAttribute="trailing" secondItem="m6j-9Y-qPO" secondAttribute="trailing" constant="15" id="eiS-vl-SCC"/>
                                             <constraint firstItem="j3B-eb-lHj" firstAttribute="leading" secondItem="oCB-3Y-TEK" secondAttribute="leading" constant="20" id="hqp-Lr-BKr"/>
                                             <constraint firstItem="RbX-N1-UkD" firstAttribute="leading" secondItem="UBr-FM-Jiv" secondAttribute="leadingMargin" constant="12" id="jAE-1C-iBZ"/>
                                             <constraint firstItem="vuH-hu-bdN" firstAttribute="leading" secondItem="oCB-3Y-TEK" secondAttribute="leading" constant="20" id="l1n-Wk-pmL"/>
@@ -4545,7 +4570,10 @@
                                             <constraint firstItem="hnl-t4-kDR" firstAttribute="top" secondItem="6Aj-NU-v0N" secondAttribute="bottom" constant="8" id="z92-bg-se7"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnWineDetails" destination="m6j-9Y-qPO" id="0hr-Cx-qCK"/>
                                             <outlet property="divider" destination="RbX-N1-UkD" id="55G-BF-43A"/>
+                                            <outlet property="imgFavoriteWine" destination="2bF-XA-17C" id="iWk-5D-KuH"/>
+                                            <outlet property="img_SelectWine" destination="RfH-FG-EKB" id="a9K-Aw-5d5"/>
                                             <outlet property="img_Wine" destination="oCB-3Y-TEK" id="wgn-JQ-9Fn"/>
                                             <outlet property="lbl_SweetSportWine" destination="w8u-Br-b9j" id="YdD-oa-p8y"/>
                                             <outlet property="lbl_WineCity" destination="hnl-t4-kDR" id="kB3-hx-6WT"/>
@@ -4646,7 +4674,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0e-GK-a6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8777" y="716"/>
+            <point key="canvasLocation" x="8776.7999999999993" y="715.59220389805103"/>
         </scene>
         <!--Add Review View Controller-->
         <scene sceneID="Z9i-Vc-njt">
@@ -5070,8 +5098,107 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RateMyWineUnRatedCell" rowHeight="160" id="goc-dh-gI3" customClass="RateMyWineUnRatedCell" customModule="SweetSpot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goc-dh-gI3" id="kFj-yq-9x5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOM-03-dPR">
+                                                    <rect key="frame" x="15" y="19" width="75" height="122"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="FyT-QV-14Y"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d7-lv-MVX">
+                                                    <rect key="frame" x="98" y="19" width="254" height="20"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" size="16" name="Didot-Bold"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFQ-3e-FoD">
+                                                    <rect key="frame" x="98" y="39.5" width="254" height="13.5"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Business Name">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="Athelas-Regular"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFt-5U-gLa">
+                                                    <rect key="frame" x="98" y="61" width="254" height="13.5"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="32 Peachtree St. NW Atlanta, Georgia, 30303">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="Athelas-Regular"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4w-dH-gYJ">
+                                                    <rect key="frame" x="98" y="78.5" width="254" height="13.5"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="11 - 02 - 18">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="Athelas-Regular"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFf-pS-QCy">
+                                                    <rect key="frame" x="98" y="100.5" width="210" height="40.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="Qda-oi-a7w"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                                    <state key="normal" title="  RATE THIS WINE" image="noun91608Cc">
+                                                        <color key="titleColor" red="0.4115866721" green="0.1718772948" blue="0.20792983470000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eFf-pS-QCy" secondAttribute="bottom" constant="8" id="2hK-4y-Mah"/>
+                                                <constraint firstItem="eFf-pS-QCy" firstAttribute="top" secondItem="p4w-dH-gYJ" secondAttribute="bottom" constant="8" id="5d6-0O-jXe"/>
+                                                <constraint firstItem="p4w-dH-gYJ" firstAttribute="top" secondItem="fFt-5U-gLa" secondAttribute="bottom" constant="4" id="8K8-Ii-lIF"/>
+                                                <constraint firstItem="fFt-5U-gLa" firstAttribute="leading" secondItem="iOM-03-dPR" secondAttribute="trailing" constant="8" id="E0Q-qU-LJD"/>
+                                                <constraint firstItem="1d7-lv-MVX" firstAttribute="leading" secondItem="iOM-03-dPR" secondAttribute="trailing" constant="8" id="G1l-1z-g7h"/>
+                                                <constraint firstItem="1d7-lv-MVX" firstAttribute="top" secondItem="iOM-03-dPR" secondAttribute="top" id="Gg1-86-6aN"/>
+                                                <constraint firstItem="iOM-03-dPR" firstAttribute="bottom" secondItem="kFj-yq-9x5" secondAttribute="bottomMargin" constant="-8" id="MQJ-cT-4xU"/>
+                                                <constraint firstItem="kFQ-3e-FoD" firstAttribute="top" secondItem="1d7-lv-MVX" secondAttribute="bottom" id="MlQ-FG-mmA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fFt-5U-gLa" secondAttribute="trailing" constant="8" id="Wsy-qJ-NDD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="p4w-dH-gYJ" secondAttribute="trailing" constant="8" id="Z12-Xo-Qlu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kFQ-3e-FoD" secondAttribute="trailing" constant="8" id="dCS-KG-lYN"/>
+                                                <constraint firstItem="fFt-5U-gLa" firstAttribute="top" secondItem="kFQ-3e-FoD" secondAttribute="bottom" constant="8" id="geu-fl-YHG"/>
+                                                <constraint firstItem="iOM-03-dPR" firstAttribute="top" secondItem="kFj-yq-9x5" secondAttribute="topMargin" constant="8" id="lBO-vl-ahW"/>
+                                                <constraint firstItem="kFQ-3e-FoD" firstAttribute="leading" secondItem="iOM-03-dPR" secondAttribute="trailing" constant="8" id="pvh-ZP-eqt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1d7-lv-MVX" secondAttribute="trailing" constant="8" id="rwx-Ll-3fx"/>
+                                                <constraint firstItem="iOM-03-dPR" firstAttribute="leading" secondItem="kFj-yq-9x5" secondAttribute="leadingMargin" id="w1S-42-FdN"/>
+                                                <constraint firstItem="p4w-dH-gYJ" firstAttribute="leading" secondItem="iOM-03-dPR" secondAttribute="trailing" constant="8" id="xfD-vd-v2A"/>
+                                                <constraint firstItem="eFf-pS-QCy" firstAttribute="leading" secondItem="iOM-03-dPR" secondAttribute="trailing" constant="8" id="yFn-0V-zwd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btn_RateThisWine" destination="eFf-pS-QCy" id="HTr-oW-tWf"/>
+                                            <outlet property="lbl_Address" destination="fFt-5U-gLa" id="C1H-Ke-4Gy"/>
+                                            <outlet property="lbl_BusinessName" destination="kFQ-3e-FoD" id="Pjl-7n-uTc"/>
+                                            <outlet property="lbl_Date" destination="p4w-dH-gYJ" id="x78-zI-zva"/>
+                                            <outlet property="lbl_Distance" destination="1d7-lv-MVX" id="o2D-kD-dyB"/>
+                                            <outlet property="mainImg" destination="iOM-03-dPR" id="yz9-BQ-6mM"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RateMyWineCell" rowHeight="175" id="WlK-63-uyf" customClass="RateMyWineCell" customModule="SweetSpot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="175"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WlK-63-uyf" id="XlA-0A-ALk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
@@ -5211,7 +5338,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btn_GoTo" destination="ZoG-gR-H3J" id="cfL-Vo-fqg"/>
+                                            <outlet property="btn_GoTo" destination="ZoG-gR-H3J" id="l9K-6w-9jG"/>
                                             <outlet property="lbl_Address" destination="z4Z-VQ-skt" id="6M4-cL-6Er"/>
                                             <outlet property="lbl_BusinessName" destination="uV2-UX-kFF" id="KDL-r1-azk"/>
                                             <outlet property="lbl_Date" destination="MYl-Pv-jFZ" id="7hg-5A-rCy"/>
@@ -5528,6 +5655,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btn_GoTo" destination="Gqa-GU-S0j" id="DTV-2P-fds"/>
                                             <outlet property="lbl_Address" destination="6iK-tZ-2UB" id="Dkk-G0-x7a"/>
                                             <outlet property="lbl_BusinessName" destination="Hiv-fL-BFc" id="Zad-fs-bYM"/>
                                             <outlet property="lbl_Date" destination="h5Y-84-Y5Z" id="HpV-wu-oEA"/>
@@ -5579,6 +5707,7 @@
         <image name="mwj" width="45" height="53"/>
         <image name="noun652825Cc" width="21" height="23"/>
         <image name="noun91608Cc" width="32" height="27"/>
+        <image name="plus.png" width="256" height="256"/>
         <image name="rectangle5" width="414" height="466"/>
         <image name="rmy" width="51" height="45"/>
         <image name="shape" width="10" height="10"/>

@@ -41,8 +41,24 @@ class ViewController: UIViewController {
                                      for: .normal)
         btn_Login.setTitle(login_log_in.uppercased(),
                            for: .normal)
+        
+       
     }
 
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if Utils().getPermanentString(keyName: "CUSTOMER_ID") != "" {
+            let sb = UIStoryboard(name: "Main",
+                                  bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController else {
+                return print("Error performing seguing")
+            }
+            self.present(vc,
+                         animated: true,
+                         completion: nil)
+        }
+    }
     @IBAction func getStarted(_ sender: UIButton) {
         let sb = UIStoryboard(name: "Main",
                               bundle: nil)

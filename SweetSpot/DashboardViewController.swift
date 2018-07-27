@@ -55,12 +55,13 @@ class DashboardViewController: UIViewController {
         view_RMW.layer.borderColor = UIColor.AppColors.black.cgColor
         view_RMW.layer.borderWidth = 0.5
         btnUnRatedWineCount.isHidden = true
-        getCustomerRatedWine()
+       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = ""
+         getCustomerRatedWine()
     }
     
     override func didReceiveMemoryWarning() {
