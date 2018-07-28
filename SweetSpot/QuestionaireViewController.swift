@@ -10,31 +10,6 @@ import UIKit
 import Foundation
 import Alamofire
 
-//var sample_questionaire_date = [
-//    ["title": "First Question...",
-//     "question": "Do you enjoy white or red wines more frequently?",
-//     "responses": [["response_text":"Only White", "response_id":1],
-//                   ["response_text":"Mostly White","response_id":2],
-//                   ["response_text":"Half White Half Red","response_id":3],
-//                   ["response_text":"Mostly Red","response_id":4],
-//                   ["response_text":"Only Red","response_id":5]]
-//    ],
-//    ["title": "Second Question...",
-//     "question": "What is your preferred price for a bottle of wine in a retail store?",
-//     "responses": [["response_text":"< $6", "response_id":6],
-//                   ["response_text":"$6 - $9.99","response_id":7],
-//                   ["response_text":"$10 - $14.99","response_id":8],
-//                   ["response_text":"$15 - $24.99","response_id":9],
-//                    ["response_text":"> $25","response_id":10]]
-//    ],
-//    ["title": "Third Question...",
-//     "question": "Which of these wines are your most likely to purchase?",
-//     "responses": ["Kendall - Jackson Vintners Reserver",
-//                   "Louis Latour Grand Ardeche Chardonnay",
-//                   "Not Sure"]
-//    ]
-//]
-
 class QuestionaireViewController:
     UIViewController,
     UITableViewDelegate,

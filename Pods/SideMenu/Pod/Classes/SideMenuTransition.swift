@@ -281,6 +281,7 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
     }
     
     @discardableResult internal func presentMenuStart() -> SideMenuTransition { 
+        print("Presenting menu")
         guard let menuView = menuViewController?.view,
             let mainView = mainViewController?.view else {
                 return self

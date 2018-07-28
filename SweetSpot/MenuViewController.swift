@@ -35,10 +35,9 @@ class MenuViewController: UIViewController {
         lbl_Version.textColor = UIColor.AppColors.beige
         
         lbl_TitleOfView.textColor = UIColor.AppColors.beige
-        lbl_TitleOfView.text = String(format: "Welcome, %@", "User"/*user.firstName*/).uppercased()
         
         if Utils().getPermanentString(keyName: "USER_NAME") != "" {
-            lbl_TitleOfView.text = Utils().getPermanentString(keyName: "USER_NAME")
+            lbl_TitleOfView.text = String(format: "Welcome, %@", Utils().getPermanentString(keyName: "USER_NAME").uppercased())
         }
 
         btn_Help.setAttributedTitle(NSAttributedString(string: "Help",
@@ -107,8 +106,11 @@ class MenuViewController: UIViewController {
             Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "")
             Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "")
             Utils().savePermanentString(keyName: "RETAIL_LIST", keyValue: "")
-            let appDelegate : AppDelegate! = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.logoutUser()
+            self.dismiss(animated: true, completion: {
+                let appDelegate : AppDelegate! = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.logoutUser()
+            })
+            
             
             break
         case btn_Help:

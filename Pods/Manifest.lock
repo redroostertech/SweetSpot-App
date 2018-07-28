@@ -28,19 +28,6 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - AWSCore
-    - AWSS3
-    - DropDown
-    - IQKeyboardManagerSwift
-    - ObjectMapper
-    - SDWebImage
-    - SideMenu
-    - SVProgressHUD
-    - SwiftyJSON
-
 EXTERNAL SOURCES:
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
@@ -65,4 +52,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 854e1ed73dfed22c93b69a60999933576c1846ff
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0
