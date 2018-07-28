@@ -23,14 +23,11 @@ class FindMyWineDetailsViewController: UIViewController {
     @IBOutlet var lbl_WineDescription: UITextView!
     @IBOutlet var divider: UILabel!
     @IBOutlet var lbl_AdditionalDetails: [UILabel]!
-    
-    
-    
+
     var wine:Wine = Wine(JSONString:"{}")!
     
     @IBOutlet weak var btnCloseDetails: UIButton!
-    
-    
+
     @IBAction func btnCloseDetails_Click(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

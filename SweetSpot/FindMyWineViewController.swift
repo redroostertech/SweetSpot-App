@@ -77,7 +77,8 @@ class FindMyWineViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.AppColors.purple
+        setVCBackgroundImageToView(image: dashboard_background_image)
+        //self.view.backgroundColor = UIColor.AppColors.purple
         
         navigation = SecondaryNavigationViewController()
         addChildViewController(navigation)
@@ -88,7 +89,7 @@ class FindMyWineViewController:
         
         self.text_Search.textColor = UIColor.AppColors.beige
         self.text_Search.backgroundColor = UIColor.AppColors.dark_purple
-         self.text_Search.delegate = self
+        self.text_Search.delegate = self
         self.text_Search.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         let addressRightInputImage = UIImage(named: "shape")

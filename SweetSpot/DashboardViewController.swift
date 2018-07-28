@@ -38,7 +38,7 @@ class DashboardViewController: UIViewController {
         setVCBackgroundImageToView(image: dashboard_background_image)
         
         
-        view_PrimaryContainer.layer.cornerRadius = 100
+        view_PrimaryContainer.layer.cornerRadius = 80
         view_PrimaryContainer.clipsToBounds = true
         view_PrimaryContainer.layer.borderColor = UIColor.AppColors.black.cgColor
         view_PrimaryContainer.layer.borderWidth = 2

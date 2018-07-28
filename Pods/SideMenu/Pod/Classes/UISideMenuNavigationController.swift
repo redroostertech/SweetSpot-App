@@ -232,6 +232,7 @@ open class UISideMenuNavigationController: UINavigationController {
     }
     
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("Will transition")
         super.viewWillTransition(to: size, with: coordinator)
         
         // Don't bother resizing if the view isn't visible

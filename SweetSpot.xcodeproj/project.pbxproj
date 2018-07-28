@@ -473,7 +473,6 @@
 				BAE0742A20EC7EFE00F8FD63 /* HelpViewController.swift */,
 				BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */,
 				BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */,
-				BAC7339B20E6F4B100E77BF4 /* Main.storyboard */,
 				BAE0740520E950A200F8FD63 /* MenuViewController.swift */,
 				BAE0742420EC733A00F8FD63 /* ProfileContainerViewController.swift */,
 				BAE0741820E9824400F8FD63 /* ProfileViewController.swift */,
@@ -495,6 +494,7 @@
 				BAE0743020EDA41C00F8FD63 /* WasWineAvailableViewController.swift */,
 				BAE0741A20E982CD00F8FD63 /* WineProfileViewController.swift */,
 				BAC733A120E6F4B200E77BF4 /* Assets.xcassets */,
+				BAC7339B20E6F4B100E77BF4 /* Main.storyboard */,
 				BAC733A320E6F4B200E77BF4 /* LaunchScreen.storyboard */,
 				BAC733A620E6F4B200E77BF4 /* Info.plist */,
 				BAC7339E20E6F4B200E77BF4 /* SweetSpot.xcdatamodeld */,
@@ -546,6 +546,7 @@
 				BAC7339120E6F4B100E77BF4 /* Frameworks */,
 				BAC7339220E6F4B100E77BF4 /* Resources */,
 				73DBA3942C68C1FC48F9B51E /* [CP] Embed Pods Frameworks */,
+				75CCE42F0D23D721401AFF89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -564,6 +565,8 @@
 				BAC733A720E6F4B200E77BF4 /* Sources */,
 				BAC733A820E6F4B200E77BF4 /* Frameworks */,
 				BAC733A920E6F4B200E77BF4 /* Resources */,
+				87FCFD07C36590B978844AF9 /* [CP] Embed Pods Frameworks */,
+				598DAF6C4BE52B2600459F7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -583,6 +586,8 @@
 				BAC733B220E6F4B200E77BF4 /* Sources */,
 				BAC733B320E6F4B200E77BF4 /* Frameworks */,
 				BAC733B420E6F4B200E77BF4 /* Resources */,
+				8E58B75B738B89899D74A358 /* [CP] Embed Pods Frameworks */,
+				E48CB6ADEC28F572D9D837A6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -698,6 +703,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		598DAF6C4BE52B2600459F7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpotTests/Pods-SweetSpotTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		69576C6BA71B1DB36579F60B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -754,6 +774,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		75CCE42F0D23D721401AFF89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpot/Pods-SweetSpot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87FCFD07C36590B978844AF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpotTests/Pods-SweetSpotTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E58B75B738B89899D74A358 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpotUITests/Pods-SweetSpotUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A55A159C6A3536F6DF516FD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -770,6 +835,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E48CB6ADEC28F572D9D837A6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetSpotUITests/Pods-SweetSpotUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

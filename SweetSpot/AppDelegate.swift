@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func logoutUser(){
         
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
+        let vc = sb.instantiateViewController(withIdentifier: "ViewController")
         UIApplication.shared.keyWindow?.rootViewController = vc
     }
 

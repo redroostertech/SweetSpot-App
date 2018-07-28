@@ -15,7 +15,7 @@ let btn_border_width = 1
 //  2. Splash
 let login_get_started = "Get Started"
 let login_background_image = "landingBg"
-let login_cta_text = "Start your wine Journey today and find your sweet spot."
+let login_cta_text = "Start your wine journey today & find your SweetSpot"
 let login_sub_header_image = "titleMain"
 let login_log_in = "Log In"
 let login_forgot_password = "Forgot Password?"
