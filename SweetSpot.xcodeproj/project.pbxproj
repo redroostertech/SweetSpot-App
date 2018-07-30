@@ -62,6 +62,10 @@
 		BA7DC9FC20EF1D05001A7AFB /* RateMyWineRatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FB20EF1D05001A7AFB /* RateMyWineRatedController.swift */; };
 		BA7DC9FE20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FD20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift */; };
 		BA7DCA0020EF273E001A7AFB /* ShareToSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DC9FF20EF273E001A7AFB /* ShareToSocialViewController.swift */; };
+		BA859D12210F4D0200D8C768 /* FindMyWineEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA859D10210F4D0200D8C768 /* FindMyWineEmptyView.swift */; };
+		BA859D13210F4D0200D8C768 /* FindMyWineEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA859D11210F4D0200D8C768 /* FindMyWineEmptyView.xib */; };
+		BA859D16210FA37800D8C768 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA859D14210FA37800D8C768 /* EmptyView.swift */; };
+		BA859D17210FA37800D8C768 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA859D15210FA37800D8C768 /* EmptyView.xib */; };
 		BAA5051220F2842B001A3CFD /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA5051120F2842A001A3CFD /* UIViewController+Extensions.swift */; };
 		BAA5051420F2843C001A3CFD /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA5051320F2843C001A3CFD /* UserDefaults+Extensions.swift */; };
 		BAB2783420EF2A090023EF1D /* Athelas-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */; };
@@ -199,6 +203,10 @@
 		BA7DC9FB20EF1D05001A7AFB /* RateMyWineRatedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RateMyWineRatedController.swift; path = Assets.xcassets/RateMyWineRatedController.swift; sourceTree = "<group>"; };
 		BA7DC9FD20EF1D1B001A7AFB /* RateMyWineUnRatedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyWineUnRatedController.swift; sourceTree = "<group>"; };
 		BA7DC9FF20EF273E001A7AFB /* ShareToSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareToSocialViewController.swift; sourceTree = "<group>"; };
+		BA859D10210F4D0200D8C768 /* FindMyWineEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyWineEmptyView.swift; sourceTree = "<group>"; };
+		BA859D11210F4D0200D8C768 /* FindMyWineEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindMyWineEmptyView.xib; sourceTree = "<group>"; };
+		BA859D14210FA37800D8C768 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		BA859D15210FA37800D8C768 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		BAA5051120F2842A001A3CFD /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		BAA5051320F2843C001A3CFD /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Athelas-Regular.ttf"; sourceTree = "<group>"; };
@@ -468,11 +476,15 @@
 				BAE0742E20ED143B00F8FD63 /* FindMyWineDetailsListViewController.swift */,
 				BAFDCB9320EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift */,
 				BAE0742C20ECFB0400F8FD63 /* FindMyWineViewController.swift */,
+				BA859D10210F4D0200D8C768 /* FindMyWineEmptyView.swift */,
+				BA859D11210F4D0200D8C768 /* FindMyWineEmptyView.xib */,
 				BAC733E820E72ECC00E77BF4 /* ForgotPasswordViewController.swift */,
 				BAC733E620E72A0800E77BF4 /* LoginViewController.swift */,
 				BAE0742A20EC7EFE00F8FD63 /* HelpViewController.swift */,
 				BA7DC9F520EECD20001A7AFB /* MySweetSpotRemoveWineViewController.swift */,
 				BA7DC9F320EECAE6001A7AFB /* MySweetSpotViewController.swift */,
+				BA859D14210FA37800D8C768 /* EmptyView.swift */,
+				BA859D15210FA37800D8C768 /* EmptyView.xib */,
 				BAE0740520E950A200F8FD63 /* MenuViewController.swift */,
 				BAE0742420EC733A00F8FD63 /* ProfileContainerViewController.swift */,
 				BAE0741820E9824400F8FD63 /* ProfileViewController.swift */,
@@ -655,6 +667,7 @@
 				BAB2783720EF2BB10023EF1D /* Info.plist in Resources */,
 				BAB2783420EF2A090023EF1D /* Athelas-Regular.ttf in Resources */,
 				BAC733A220E6F4B200E77BF4 /* Assets.xcassets in Resources */,
+				BA859D17210FA37800D8C768 /* EmptyView.xib in Resources */,
 				BAC733F520E7FB6600E77BF4 /* QuestionaireTableViewCell.xib in Resources */,
 				1B23AF362101044C0095BB84 /* close_details.png in Resources */,
 				1B23AF4E2107954E0095BB84 /* geomarker.png in Resources */,
@@ -662,6 +675,7 @@
 				BAB2783B20EF2F9C0023EF1D /* GFSDidot-Regular.ttf in Resources */,
 				1B23AF3A21018DB60095BB84 /* vwWineAdded.xib in Resources */,
 				1BD9C22E210B2CC70011045C /* plus.png in Resources */,
+				BA859D13210F4D0200D8C768 /* FindMyWineEmptyView.xib in Resources */,
 				BAC7339D20E6F4B100E77BF4 /* Main.storyboard in Resources */,
 				1B23AF38210188B20095BB84 /* favorite_wine.png in Resources */,
 				BAE0742320EC047D00F8FD63 /* SecondaryNavigationViewController.xib in Resources */,
@@ -869,6 +883,7 @@
 				1B23AF3320FFF69E0095BB84 /* Bundle.swift in Sources */,
 				1BA58BD620FEF29C00BD6A78 /* UIImage.swift in Sources */,
 				1BA58BBE20FDAAAE00BD6A78 /* Wine.swift in Sources */,
+				BA859D16210FA37800D8C768 /* EmptyView.swift in Sources */,
 				BAFDCB9420EE38BB00611048 /* FindMyWineDetailsCarouselViewController.swift in Sources */,
 				1BA58BC120FDAAAE00BD6A78 /* WineRetailer.swift in Sources */,
 				BAC733E320E6F8A400E77BF4 /* RandomStringGenerator.swift in Sources */,
@@ -947,6 +962,7 @@
 				1BA58BC020FDAAAE00BD6A78 /* Acidity.swift in Sources */,
 				BA7DC9F820EF1688001A7AFB /* RateMyWineContainerController.swift in Sources */,
 				BAE0741B20E982CD00F8FD63 /* WineProfileViewController.swift in Sources */,
+				BA859D12210F4D0200D8C768 /* FindMyWineEmptyView.swift in Sources */,
 				1BA58BB420FDAAAE00BD6A78 /* WineType.swift in Sources */,
 				BAE0742D20ECFB0400F8FD63 /* FindMyWineViewController.swift in Sources */,
 				BAC733F720E7FC2700E77BF4 /* QuestionaireViewController.swift in Sources */,
