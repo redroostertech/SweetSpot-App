@@ -1,0 +1,6 @@
+framework module Pods_SweetSpot {
+  umbrella header "Pods-SweetSpot-umbrella.h"
+
+  export *
+  module * { export * }
+}

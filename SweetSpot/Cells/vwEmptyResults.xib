@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="vwEmptyResults" customModule="SweetSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4a-PL-zja">
+                    <rect key="frame" x="16" y="524" width="343" height="34"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Click the heart icon to add the wines you like most to this page.">
+                            <attributes>
+                                <font key="NSFont" size="15" name="Athelas-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sweetspotempty" translatesAutoresizingMaskIntoConstraints="NO" id="y36-j0-EoQ">
+                    <rect key="frame" x="130.5" y="291.5" width="114" height="111"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGa-kU-rKe">
+                    <rect key="frame" x="35.5" y="498.5" width="304" height="19.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="You currently don't have any favorite wines.">
+                            <attributes>
+                                <font key="NSFont" size="17" name="Athelas-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-9t-YMT">
+                    <rect key="frame" x="16" y="607" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="9L3-tO-FpO"/>
+                        <constraint firstAttribute="width" constant="140" id="nh3-eb-I3f"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                    <state key="normal" title="GO HOME"/>
+                    <connections>
+                        <action selector="btnGoHome_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="vr5-5p-BBG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evy-4r-DJK">
+                    <rect key="frame" x="219" y="607" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Pfo-m3-yxV"/>
+                        <constraint firstAttribute="width" constant="140" id="uXJ-Vx-7hh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                    <state key="normal" title="FIND MY WINES"/>
+                    <connections>
+                        <action selector="btnFindMyWines_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="C6y-CG-Idl"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR SWEETSPOT IS EMPTY" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nET-gS-xoJ">
+                    <rect key="frame" x="28.5" y="461.5" width="318.5" height="26.5"/>
+                    <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="21"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="N4a-PL-zja" secondAttribute="trailing" constant="16" id="1DU-ae-N2j"/>
+                <constraint firstItem="nET-gS-xoJ" firstAttribute="top" secondItem="y36-j0-EoQ" secondAttribute="bottom" constant="59" id="DyF-jo-rR7"/>
+                <constraint firstItem="N4a-PL-zja" firstAttribute="top" secondItem="SGa-kU-rKe" secondAttribute="bottom" constant="6" id="Krf-te-t6w"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uAw-9t-YMT" secondAttribute="bottom" constant="20" id="L4l-R3-76z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="evy-4r-DJK" secondAttribute="trailing" constant="16" id="L6n-nA-aeg"/>
+                <constraint firstItem="y36-j0-EoQ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Qyn-0l-RCW"/>
+                <constraint firstItem="uAw-9t-YMT" firstAttribute="top" secondItem="N4a-PL-zja" secondAttribute="bottom" constant="49" id="S7p-zH-Haw"/>
+                <constraint firstItem="nET-gS-xoJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="28.5" id="aku-vI-ItG"/>
+                <constraint firstItem="uAw-9t-YMT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="g8e-ET-QLj"/>
+                <constraint firstItem="N4a-PL-zja" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mie-6f-JDh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SGa-kU-rKe" secondAttribute="trailing" constant="35.5" id="mxy-tw-j89"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nET-gS-xoJ" secondAttribute="trailing" constant="28" id="nUT-Pm-7zu"/>
+                <constraint firstItem="SGa-kU-rKe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="35.5" id="uEM-PS-Qau"/>
+                <constraint firstItem="SGa-kU-rKe" firstAttribute="top" secondItem="nET-gS-xoJ" secondAttribute="bottom" constant="10.5" id="vGo-KW-KKr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="evy-4r-DJK" secondAttribute="bottom" constant="20" id="wdk-nZ-FgO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="btnFindMyWines" destination="evy-4r-DJK" id="a9x-gf-8Q7"/>
+                <outlet property="btnGoHome" destination="uAw-9t-YMT" id="kTP-i7-VMx"/>
+                <outlet property="lblPrimaryDescription" destination="SGa-kU-rKe" id="XfA-m9-NDh"/>
+                <outlet property="lblSecondaryDescription" destination="N4a-PL-zja" id="Rqq-Ee-nwz"/>
+                <outlet property="lblTitle" destination="nET-gS-xoJ" id="oSR-sZ-MI3"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="66.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sweetspotempty" width="114" height="111"/>
+    </resources>
+</document>
