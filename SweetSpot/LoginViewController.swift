@@ -56,9 +56,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btn_Cancel.setTitle(registration_cancel.uppercased(),
                             for: .normal)
         
-        text_Password.text = "abc123"
+       
         text_Password.isSecureTextEntry = true
-        text_Email.text = "test@sweetspot.digital"
+        if AppConstants.DEBUG {
+            text_Email.text = "test@sweetspot.digital"
+            text_Password.text = "abc123"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.LOGIN_CANCEL)
         dismiss(animated: true,
                 completion: nil)
     }
@@ -100,6 +104,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func performLogin(email_address:String, password:String){
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.LOGIN_CANCEL)
         let parameters: Parameters = ["action": "authenticateUser",
                                       "email_address": email_address,
                                       

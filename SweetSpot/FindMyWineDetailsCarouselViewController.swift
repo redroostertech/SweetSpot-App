@@ -241,6 +241,7 @@ class FindMyWineDetailsCarouselViewController:
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
+                self.showEmptyResults()
                 return
             }
             let jsonValues = response.result.value as! [String:Any]
@@ -250,6 +251,7 @@ class FindMyWineDetailsCarouselViewController:
                 print("error from server: \(jsonValues["message"])")
                 self.wineList = WineList(JSONString: "{}")!
                 self.mainTable.reloadData()
+                self.showEmptyResults()
                 return
             }
             let data = jsonValues["data"] as! [String:Any]
@@ -261,9 +263,18 @@ class FindMyWineDetailsCarouselViewController:
                 self.wineList = WineList(JSONString: theJSONText!)!
                 self.mainTable.reloadData()
             }
+            if self.wineList.wineList.count == 0{
+                self.showEmptyResults()
+            }
         }
     }
     
+    func showEmptyResults(){
+        let customView = vwEmptyWine().loadNib(myNibName: "vwEmptyWine") as! vwEmptyWine
+        customView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        customView.alpha = 1
+        self.view.addSubview(customView)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -315,6 +326,8 @@ class FindMyWineDetailsCarouselViewController:
             
             cell.img_Wine.imageFromUrl(theUrl: wine.getPhotourl())
             //cell.img_Wine
+            cell.img_Wine.clipsToBounds = true
+            cell.img_Wine.contentMode = .scaleAspectFill
         }
         
         let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))

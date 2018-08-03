@@ -120,11 +120,13 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.REVIEW_WINE_CANCEL)
         self.doDismiss()
     }
     
     @IBAction func addStar(_ sender: UIButton) {
         print("Button Tag: ", sender.tag)
+        
         selectedRating = sender.tag
        
         for star in btn_Star {

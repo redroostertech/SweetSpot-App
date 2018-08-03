@@ -163,7 +163,7 @@ class RateMyWineUnRatedController:
         let wine = self.wineList.wineList[(indexPath?.row)!]
         print("rateThisWine")
         if let viewController = self.programmaticSegue(vcName: "AddReviewViewController", storyBoard: "Main") as? AddReviewViewController {
-            
+             viewController.modalPresentationStyle = .fullScreen
             viewController.wine = wine
             
             self.present(viewController, animated: true, completion: nil)

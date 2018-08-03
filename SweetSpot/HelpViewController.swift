@@ -52,6 +52,7 @@ class HelpViewController: UIViewController {
             }
             
         }
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.HELP)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +62,7 @@ class HelpViewController: UIViewController {
     
     @IBAction func submit(_ sender: UIButton) {
         
-        
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.HELP_SUBMIT)
         let parameters: Parameters = ["action": "sendHelpEmail",
                                       "subject": text_Category.text!,
                                       "message": text_TypeMessage.text!
@@ -88,6 +89,7 @@ class HelpViewController: UIViewController {
     
     
     @IBAction func cancel(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.HELP_CANCEL)
         dismiss(animated: true,
                 completion: nil)
     }

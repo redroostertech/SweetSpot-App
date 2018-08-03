@@ -87,7 +87,8 @@ class RateMyWineAllWInesController:
         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.VIEW_RATE_WINE_ALL)
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        print("view will load")
+       
         loadMainTable()
     }
     
@@ -115,10 +116,18 @@ class RateMyWineAllWInesController:
             if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
                 let theJSONText = String(data: theJSONData,
                                          encoding: .ascii)
-                // print("JSON string = \(theJSONText!)")
+                 //print("JSON string = \(theJSONText!)")
+                 
                 
                 self.wineList = WineList(JSONString: theJSONText!)!
-                self.mainTable.reloadData()
+                print("\(self.wineList.wineList[0].rating!)")
+                DispatchQueue.main.async {
+                    for subview in self.mainTable.subviews{
+                        subview.removeFromSuperview()
+                    }
+                    self.mainTable.reloadData()
+                }
+                
             }
             if self.wineList.wineList.count == 0 {
                  self.showEmptyResults()
@@ -163,6 +172,7 @@ class RateMyWineAllWInesController:
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let wine = self.wineList.wineList[indexPath.row]
+       
         var rating = 0
         if let strRating = wine.rating{
             if Int(strRating) != nil{
@@ -173,9 +183,11 @@ class RateMyWineAllWInesController:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RateMyWineCell", for: indexPath) as! RateMyWineCell
             cell.backgroundColor = .clear
             cell.lbl_Distance.text = wine.getWinename()
+            cell.lbl_Distance.adjustsFontSizeToFitWidth = true
             cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
             if let retailer_name = wine.retailer_name{
                 cell.lbl_BusinessName.text = retailer_name
+                
             }
             if let retailer_address = wine.retailer_address{
                 cell.lbl_Address.text = retailer_address
@@ -183,8 +195,11 @@ class RateMyWineAllWInesController:
             for index in 0...(cell.btn_Star.count - 1){
                 if index >= rating {
                     cell.btn_Star[index].isHidden = true
+                }else{
+                    cell.btn_Star[index].isHidden = false
                 }
             }
+            
             if let select_date = wine.select_date{
                 let date = String.getDateFromString(strDate: select_date, dateFormat: AppConstants.MYSQL_DATE_FORMAT)
                 let strFormattedDate = String.getFormattedDate(date: date, dateFormat: "MM - dd - YY")
@@ -203,9 +218,11 @@ class RateMyWineAllWInesController:
             cell.backgroundColor = .clear
 
             cell.lbl_Distance.text = wine.getWinename()
+             cell.lbl_Distance.adjustsFontSizeToFitWidth = true
             cell.mainImg.imageFromUrl(theUrl: wine.getPhotourl())
             if let retailer_name = wine.retailer_name{
                 cell.lbl_BusinessName.text = retailer_name
+                cell.lbl_BusinessName.adjustsFontSizeToFitWidth = true
             }
             if let retailer_address = wine.retailer_address{
                 cell.lbl_Address.text = retailer_address
@@ -231,7 +248,7 @@ class RateMyWineAllWInesController:
         if let viewController = self.programmaticSegue(vcName: "AddReviewViewController", storyBoard: "Main") as? AddReviewViewController {
             
             viewController.wine = wine
-            
+            viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true, completion: nil)
         }
         

@@ -56,6 +56,7 @@ class MySweetSpotRemoveWineViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.DELETE_FAVORITE_CANCEL)
         self.dismiss(animated: true,
                      completion: nil)
     }

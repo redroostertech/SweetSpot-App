@@ -655,7 +655,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot" */;
+			buildConfigurationList = BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot Beta" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1266,7 +1266,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot" */ = {
+		BAC7338F20E6F4B100E77BF4 /* Build configuration list for PBXProject "SweetSpot Beta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC733BD20E6F4B200E77BF4 /* Debug */,

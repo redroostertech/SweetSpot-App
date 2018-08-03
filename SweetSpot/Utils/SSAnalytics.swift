@@ -13,12 +13,18 @@ class SSAnalytics{
     
     enum AnalyticsActionType : String{
         case LOGIN
+        case LOGIN_START
+        case LOGIN_CANCEL
         case REGISTER
+        case REGISTER_START
+        case REGISTER_CANCEL
         case QUESTION_ONE
         case QUESTION_TWO
         case QUESTION_THREE
         case USER_SURVEY
         case HELP
+        case HELP_CANCEL
+        case HELP_SUBMIT
         case PROFILE
         case DASHBOARD
         case FIND_MY_WINE_RETAIL_LIST
@@ -27,7 +33,9 @@ class SSAnalytics{
         case WINE_DETAIL
         case VIEW_MY_FAVORITE
         case DELETE_FAVORITE
+        case DELETE_FAVORITE_CANCEL
         case REVIEW_WINE
+        case REVIEW_WINE_CANCEL
         case WAS_WINE_AVAILABLE
         case VIEW_WINE_DETAILS
         case VIEW_RATE_WINE_ALL
@@ -35,6 +43,10 @@ class SSAnalytics{
         case VIEW_RATE_WINE_UNRATED
         case SPLASH_SCREEN
         case FORGOT_PASSWORD
+        case STRETCH_WINE_SELECTED
+        case TC
+        case TC_START
+        case TC_CANCEL
         
     }
     

@@ -90,8 +90,10 @@ class FindMyWineRecommendedCell: UITableViewCell {
 
 class FindMyWineDetailsListViewController: UIViewController,
     UITableViewDelegate,
-    UITableViewDataSource
+    UITableViewDataSource, vwEmptyWineDelegate
 {
+   
+    
     
     @IBOutlet var mainTable: UITableView!
     @IBOutlet var navigationViewContainer: UIView!
@@ -256,6 +258,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
+                 self.showEmptyResults()
                 return
             }
             let jsonValues = response.result.value as! [String:Any]
@@ -265,6 +268,7 @@ class FindMyWineDetailsListViewController: UIViewController,
                 print("error from server: \(jsonValues["message"])")
                 self.wineList = WineList(JSONString: "{}")!
                 self.mainTable.reloadData()
+                 self.showEmptyResults()
                 return
             }
             let data = jsonValues["data"] as! [String:Any]
@@ -289,7 +293,23 @@ class FindMyWineDetailsListViewController: UIViewController,
         let customView = vwEmptyWine().loadNib(myNibName: "vwEmptyWine") as! vwEmptyWine
         customView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         customView.alpha = 1
+        customView.delegate = self
         self.view.addSubview(customView)
+    }
+    
+    func btnGetStarted_Click() {
+        let presentingViewController = self.presentingViewController
+        self.dismiss(animated: true, completion: {
+            if let viewController = self.programmaticSegue(vcName: "ProfileContainerViewController", storyBoard: "Main") as? ProfileContainerViewController {
+                viewController.navigatedFromEmptyScreen = true
+                presentingViewController?.present(viewController, animated: true, completion: nil)
+                
+            }
+        })
+    }
+    
+    func btnCancel_Click() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func findStretchWine()->Wine{
@@ -304,51 +324,48 @@ class FindMyWineDetailsListViewController: UIViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         var listCount = 0
-        listCount = self.wineList.wineList.count
-        let wine = findStretchWine()
-        if wine.getWineaiid() != -1{
-             listCount = self.wineList.wineList.count +  2
-        }
+        listCount = self.wineList.wineList.count + 1
+
         return listCount
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        
-         let wine = findStretchWine()
+        
         if indexPath.row == 0 {
             
-            if wine.getWineaiid() == -1{
-                return 0
-            }
-            return 200
-        }
-        
-        if indexPath.row == 1 {
-           
-            if wine.getWineaiid() == -1{
-                return 0
-            }
             return 44
         }
         
-        if wine.getWineaiid() != -1 && (indexPath.row ) > (self.wineList.wineList.count ) {
-            return 0
+        if indexPath.row > 0 {
+            let wine = self.wineList.wineList[indexPath.row - 1]
+         
+            if wine.is_stretch_wine == "1"{
+                return 200
+            }
+           
         }
         return 175
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let stretch_wine = findStretchWine()
-        print("cellForRowAt \(indexPath.row)")
-        let hasStretchWine = (stretch_wine.getWineaiid() != -1)
-        if indexPath.row == 0 && hasStretchWine{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineSponsoredCell", for: indexPath) as! FindMyWineSponsoredCell
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedTitleCell", for: indexPath) as! FindMyWineRecommendedTitleCell
             cell.backgroundColor = .clear
             
+            //just shows the title "Recommended Wines"
+            
+            return cell
+            
+        }
+         let wine = self.wineList.wineList[indexPath.row - 1]
+        if indexPath.row > 0 && wine.is_stretch_wine == "1" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineSponsoredCell", for: indexPath) as! FindMyWineSponsoredCell
+            cell.backgroundColor = .clear
+            let stretch_wine = wine
             if stretch_wine.getWineaiid() != -1{
              cell.lbl_WineName.text = stretch_wine.getWinename()
-            
+            cell.lbl_WineName.adjustsFontSizeToFitWidth = true
             var address = ""
             if stretch_wine.getWineryname() != ""{
                 address = address + stretch_wine.getWineryname() + "\n"
@@ -392,22 +409,13 @@ class FindMyWineDetailsListViewController: UIViewController,
             
         }
         
-        if indexPath.row == 1 && hasStretchWine{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedTitleCell", for: indexPath) as! FindMyWineRecommendedTitleCell
-            cell.backgroundColor = .clear
-            let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showDetails(_:)))
-            showDetailsGesture.numberOfTapsRequired = 1
-           //just shows the title "Recommended Wines"
-           
-            return cell
-            
-        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindMyWineRecommendedCell", for: indexPath) as! FindMyWineRecommendedCell
         cell.backgroundColor = .clear
         
-        if indexPath.row - 2 >= 0 && (indexPath.row - 2) < (self.wineList.wineList.count - 1 ) {
-            print("getting wine at index \(indexPath.row - 2)")
-            let wine = self.wineList.wineList[indexPath.row - 2]
+        if indexPath.row > 0 && wine.is_stretch_wine != "1" {
+            print("getting wine at index \(indexPath.row - 1)")
+            let wine = self.wineList.wineList[indexPath.row - 1]
             cell.lbl_WineName.text = wine.getWinename()
             cell.lbl_WineName.adjustsFontSizeToFitWidth = true
             

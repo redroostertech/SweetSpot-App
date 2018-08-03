@@ -55,15 +55,18 @@ class TermsAndConditionsViewController: UIViewController {
                                 for: .normal)
         
         view_GDPR_Container.backgroundColor = UIColor.AppColors.dark_purple
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.TC)
     }
     
     @IBAction func getStarted(_ sender: UIButton) {
         if didAcceptGDPR == false {
+            
             let alertView = UIAlertController(title: "", message: "Please accept our terms and conditions.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {action in })
             alertView.addAction(okAction)
             self.show(alertView, sender: self)
         } else {
+             SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.TC_START)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "RegistrationViewController") as? RegistrationViewController else {
@@ -77,6 +80,7 @@ class TermsAndConditionsViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.TC_CANCEL)
         self.dismiss(animated: true,
                      completion: nil)
     }

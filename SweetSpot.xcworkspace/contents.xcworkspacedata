@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SweetSpot.xcodeproj">
+      location = "group:/Users/iziahreid/Documents/iOSWorkspace/SweetSpot/SweetSpot Beta.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

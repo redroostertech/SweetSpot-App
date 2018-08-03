@@ -148,6 +148,8 @@ class RateMyWineRatedController:
                 for index in 0...(cell.btn_Star.count - 1){
                     if index >= rating! {
                         cell.btn_Star[index].isHidden = true
+                    }else{
+                        cell.btn_Star[index].isHidden = false
                     }
                 }
             }

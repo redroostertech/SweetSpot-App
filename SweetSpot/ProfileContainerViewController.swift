@@ -19,6 +19,7 @@ class ProfileContainerViewController:
     var user: User!
     var pageMenu : CAPSPageMenu?
     var navigation: SecondaryNavigationViewController!
+    var navigatedFromEmptyScreen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +120,10 @@ extension ProfileContainerViewController: NavDelegate {
     }
     
     func doGoHome(){
-        self.dismiss(animated: true, completion: nil)
+        if !navigatedFromEmptyScreen {
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
     }
 }

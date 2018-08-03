@@ -55,16 +55,17 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7v-o2-5Uz">
-                    <rect key="frame" x="112" y="604" width="150" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGe-Ul-OlY">
+                    <rect key="frame" x="209" y="607" width="150" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="WFz-8Q-bFP"/>
-                        <constraint firstAttribute="width" constant="150" id="juR-aw-FW7"/>
+                        <constraint firstAttribute="width" constant="150" id="M0e-xK-APs"/>
+                        <constraint firstAttribute="height" constant="40" id="OWI-9E-NO2"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
-                    <state key="normal" title="EDIT WINE PROFILE"/>
+                    <state key="normal" title="CANCEL"/>
                     <connections>
-                        <action selector="btnGetStarted_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="COr-3B-yfM"/>
+                        <action selector="btnCancel_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="JF2-Zs-ljm"/>
+                        <action selector="btnGetStarted_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="1sG-hU-6ek"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOf-mR-aep">
@@ -80,29 +81,46 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7v-o2-5Uz">
+                    <rect key="frame" x="24" y="607" width="150" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="9eE-O9-ukp"/>
+                        <constraint firstAttribute="height" constant="40" id="QhQ-pl-xhe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                    <state key="normal" title="EDIT WINE PROFILE"/>
+                    <connections>
+                        <action selector="btnGetStarted_Click:" destination="iN0-l3-epB" eventType="touchUpInside" id="COr-3B-yfM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FGe-Ul-OlY" secondAttribute="trailing" constant="16" id="0D4-xr-XYc"/>
+                <constraint firstItem="nxq-I4-sBP" firstAttribute="leading" secondItem="K7v-o2-5Uz" secondAttribute="trailing" constant="-174" id="2bJ-AY-9QX"/>
                 <constraint firstItem="nxq-I4-sBP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5mQ-4d-5ks"/>
                 <constraint firstItem="Hw0-yY-shd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JuS-ti-de7"/>
                 <constraint firstItem="2UN-wN-d8M" firstAttribute="top" secondItem="Hw0-yY-shd" secondAttribute="bottom" constant="8" id="LTn-Qk-5Am"/>
+                <constraint firstItem="SUv-ft-vrR" firstAttribute="top" secondItem="9Q7-CB-kq9" secondAttribute="bottom" constant="-32" id="NAb-0F-dN6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FGe-Ul-OlY" secondAttribute="bottom" constant="20" id="Njo-8g-Elh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2UN-wN-d8M" secondAttribute="trailing" constant="16" id="RHh-Jn-7tu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="K7v-o2-5Uz" secondAttribute="bottom" constant="20" id="ZFe-h3-pyl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nxq-I4-sBP" secondAttribute="bottom" constant="39" id="feW-Jp-jaT"/>
-                <constraint firstItem="K7v-o2-5Uz" firstAttribute="top" secondItem="SUv-ft-vrR" secondAttribute="bottom" constant="25" id="fqU-c8-fAT"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="K7v-o2-5Uz" secondAttribute="bottom" constant="23" id="gIQ-vn-jDR"/>
                 <constraint firstItem="MOf-mR-aep" firstAttribute="top" secondItem="2UN-wN-d8M" secondAttribute="bottom" constant="81" id="j0D-F9-P58"/>
+                <constraint firstItem="K7v-o2-5Uz" firstAttribute="top" secondItem="SUv-ft-vrR" secondAttribute="bottom" constant="28" id="jJV-Ox-7oD"/>
                 <constraint firstItem="2UN-wN-d8M" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="lLc-R4-Uzf"/>
                 <constraint firstItem="9Q7-CB-kq9" firstAttribute="top" secondItem="MOf-mR-aep" secondAttribute="bottom" constant="13" id="mCf-Tj-01a"/>
                 <constraint firstItem="nxq-I4-sBP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nKU-WT-eUG"/>
                 <constraint firstItem="9Q7-CB-kq9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="odg-gd-Mxk"/>
-                <constraint firstItem="K7v-o2-5Uz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="rMF-QU-V5S"/>
-                <constraint firstItem="K7v-o2-5Uz" firstAttribute="top" secondItem="9Q7-CB-kq9" secondAttribute="bottom" constant="118" id="rhI-lv-HJI"/>
                 <constraint firstItem="MOf-mR-aep" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="vPV-Dw-EkM"/>
                 <constraint firstItem="nxq-I4-sBP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xXY-xI-Fe4"/>
+                <constraint firstItem="SUv-ft-vrR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xr2-pm-mZb"/>
+                <constraint firstItem="2UN-wN-d8M" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="z3Y-go-EuK"/>
                 <constraint firstItem="SUv-ft-vrR" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="zmP-H8-ERE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="btnCancel" destination="FGe-Ul-OlY" id="mKR-Oy-GXS"/>
                 <outlet property="btnGetStarted" destination="K7v-o2-5Uz" id="PN0-9g-SZ7"/>
                 <outlet property="imgProfileType" destination="SUv-ft-vrR" id="Qk6-V8-17i"/>
                 <outlet property="lblDescription" destination="2UN-wN-d8M" id="of5-83-G07"/>

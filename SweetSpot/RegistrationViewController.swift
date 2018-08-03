@@ -98,6 +98,7 @@ class RegistrationViewController: UIViewController {
             text_PhoneNumber.text = ""
             text_ZipCode.text = ""
         }
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.REGISTER)
     }
     
     @IBAction func next(_ sender: UIButton) {
@@ -223,6 +224,7 @@ class RegistrationViewController: UIViewController {
         self.show(alertView, sender: self)
     }
     @IBAction func cancel(_ sender: UIButton) {
+         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.REGISTER_CANCEL)
         self.dismiss(animated: true,
                      completion: nil)
     }
