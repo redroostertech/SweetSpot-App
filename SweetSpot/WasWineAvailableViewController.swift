@@ -65,6 +65,7 @@ class WasWineAvailableViewController: UIViewController {
                          for: .normal)
         
         lbl_WineName.text = wine.getWinename()
+        lbl_BusinessName.adjustsFontSizeToFitWidth = true
         lbl_BusinessName.text = retailer.getRetailername()
         lbl_BusinessName.text = retailer.getAddressline1() + " " + retailer.getCity() + ", " + retailer.getState()
         

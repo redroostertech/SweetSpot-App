@@ -466,7 +466,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         
         let tapLocation = sender.location(in: self.mainTable)
         let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
-        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        let wine = self.wineList.wineList[(indexPath?.row)! - 1]
         print("favorite selected")
         let parameters: Parameters = ["action": "addCustomerWineFavorite",
                                       "wine_id": "\(wine.getWineaiid())",
@@ -497,6 +497,7 @@ class FindMyWineDetailsListViewController: UIViewController,
             
             let customView = vwWineAdded().loadNib(myNibName: "vwWineAdded") as! vwWineAdded
             customView.lbl_WineName.text = wine.getWinename()
+             customView.lbl_WineName.adjustsFontSizeToFitWidth = true
             customView.lblMessage.text = "WAS ADDED TO FAVORITES"
             customView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
             
@@ -513,7 +514,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         
         let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
         print("\(indexPath?.row)")
-        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        let wine = self.wineList.wineList[(indexPath?.row)! - 1]
         if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsViewController", storyBoard: "Main") as? FindMyWineDetailsViewController {
             
             viewController.wine = wine
@@ -538,7 +539,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         
         let indexPath = self.mainTable.indexPathForRow(at: tapLocation)
         print("\(indexPath?.row)")
-        let wine = self.wineList.wineList[(indexPath?.row)! - 2]
+        let wine = self.wineList.wineList[(indexPath?.row)! - 1]
         if let viewController = self.programmaticSegue(vcName: "WasWineAvailableViewController", storyBoard: "Main") as? WasWineAvailableViewController {
             
             viewController.wine = wine

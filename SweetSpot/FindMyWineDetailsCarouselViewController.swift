@@ -303,6 +303,7 @@ class FindMyWineDetailsCarouselViewController:
             address = address + wine.getVarietyname()
         }
         cell.lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
+        cell.lbl_WineCity.adjustsFontSizeToFitWidth = true
         cell.lbl_WinePrice.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
         cell.lbl_WineType.text = "\(wine.getVarietyname())"
         cell.lbl_WineDescription.text = wine.getTastingnotes()
@@ -362,6 +363,7 @@ class FindMyWineDetailsCarouselViewController:
             
             let customView = vwWineAdded().loadNib(myNibName: "vwWineAdded") as! vwWineAdded
             customView.lbl_WineName.text = wine.getWinename()
+            customView.lbl_WineName.adjustsFontSizeToFitWidth = true
             customView.lblMessage.text = "WAS ADDED TO FAVORITES"
             customView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
             

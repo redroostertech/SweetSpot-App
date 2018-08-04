@@ -224,7 +224,7 @@
 		BAB2783320EF2A050023EF1D /* Athelas-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Athelas-Regular.ttf"; sourceTree = "<group>"; };
 		BAB2783820EF2EC20023EF1D /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		BAB2783A20EF2F970023EF1D /* GFSDidot-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GFSDidot-Regular.ttf"; sourceTree = "<group>"; };
-		BAC7339420E6F4B100E77BF4 /* SweetSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC7339420E6F4B100E77BF4 /* SweetSpot Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SweetSpot Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC7339720E6F4B100E77BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAC7339920E6F4B100E77BF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BAC7339C20E6F4B100E77BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -232,10 +232,10 @@
 		BAC733A120E6F4B200E77BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAC733A420E6F4B200E77BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAC733A620E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC733AB20E6F4B200E77BF4 /* SweetSpot BetaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SweetSpot BetaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC733AF20E6F4B200E77BF4 /* SweetSpotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetSpotTests.swift; sourceTree = "<group>"; };
 		BAC733B120E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC733B620E6F4B200E77BF4 /* SweetSpot BetaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SweetSpot BetaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAC733BA20E6F4B200E77BF4 /* SweetSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetSpotUITests.swift; sourceTree = "<group>"; };
 		BAC733BC20E6F4B200E77BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC733C820E6F67600E77BF4 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -474,9 +474,9 @@
 		BAC7339520E6F4B100E77BF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BAC7339420E6F4B100E77BF4 /* SweetSpot.app */,
-				BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */,
-				BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */,
+				BAC7339420E6F4B100E77BF4 /* SweetSpot Beta.app */,
+				BAC733AB20E6F4B200E77BF4 /* SweetSpot BetaTests.xctest */,
+				BAC733B620E6F4B200E77BF4 /* SweetSpot BetaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -567,9 +567,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BAC7339320E6F4B100E77BF4 /* SweetSpot */ = {
+		BAC7339320E6F4B100E77BF4 /* SweetSpot Beta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot" */;
+			buildConfigurationList = BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot Beta" */;
 			buildPhases = (
 				A55A159C6A3536F6DF516FD1 /* [CP] Check Pods Manifest.lock */,
 				BAC7339020E6F4B100E77BF4 /* Sources */,
@@ -582,14 +582,14 @@
 			);
 			dependencies = (
 			);
-			name = SweetSpot;
+			name = "SweetSpot Beta";
 			productName = SweetSpot;
-			productReference = BAC7339420E6F4B100E77BF4 /* SweetSpot.app */;
+			productReference = BAC7339420E6F4B100E77BF4 /* SweetSpot Beta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BAC733AA20E6F4B200E77BF4 /* SweetSpotTests */ = {
+		BAC733AA20E6F4B200E77BF4 /* SweetSpot BetaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotTests" */;
+			buildConfigurationList = BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot BetaTests" */;
 			buildPhases = (
 				464D04E783B899B6696641B5 /* [CP] Check Pods Manifest.lock */,
 				BAC733A720E6F4B200E77BF4 /* Sources */,
@@ -603,14 +603,14 @@
 			dependencies = (
 				BAC733AD20E6F4B200E77BF4 /* PBXTargetDependency */,
 			);
-			name = SweetSpotTests;
+			name = "SweetSpot BetaTests";
 			productName = SweetSpotTests;
-			productReference = BAC733AB20E6F4B200E77BF4 /* SweetSpotTests.xctest */;
+			productReference = BAC733AB20E6F4B200E77BF4 /* SweetSpot BetaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BAC733B520E6F4B200E77BF4 /* SweetSpotUITests */ = {
+		BAC733B520E6F4B200E77BF4 /* SweetSpot BetaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotUITests" */;
+			buildConfigurationList = BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot BetaUITests" */;
 			buildPhases = (
 				69576C6BA71B1DB36579F60B /* [CP] Check Pods Manifest.lock */,
 				BAC733B220E6F4B200E77BF4 /* Sources */,
@@ -624,9 +624,9 @@
 			dependencies = (
 				BAC733B820E6F4B200E77BF4 /* PBXTargetDependency */,
 			);
-			name = SweetSpotUITests;
+			name = "SweetSpot BetaUITests";
 			productName = SweetSpotUITests;
-			productReference = BAC733B620E6F4B200E77BF4 /* SweetSpotUITests.xctest */;
+			productReference = BAC733B620E6F4B200E77BF4 /* SweetSpot BetaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -668,9 +668,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BAC7339320E6F4B100E77BF4 /* SweetSpot */,
-				BAC733AA20E6F4B200E77BF4 /* SweetSpotTests */,
-				BAC733B520E6F4B200E77BF4 /* SweetSpotUITests */,
+				BAC7339320E6F4B100E77BF4 /* SweetSpot Beta */,
+				BAC733AA20E6F4B200E77BF4 /* SweetSpot BetaTests */,
+				BAC733B520E6F4B200E77BF4 /* SweetSpot BetaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1018,12 +1018,12 @@
 /* Begin PBXTargetDependency section */
 		BAC733AD20E6F4B200E77BF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BAC7339320E6F4B100E77BF4 /* SweetSpot */;
+			target = BAC7339320E6F4B100E77BF4 /* SweetSpot Beta */;
 			targetProxy = BAC733AC20E6F4B200E77BF4 /* PBXContainerItemProxy */;
 		};
 		BAC733B820E6F4B200E77BF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BAC7339320E6F4B100E77BF4 /* SweetSpot */;
+			target = BAC7339320E6F4B100E77BF4 /* SweetSpot Beta */;
 			targetProxy = BAC733B720E6F4B200E77BF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1207,7 +1207,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot.app/SweetSpot";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot Beta.app/SweetSpot Beta";
 			};
 			name = Debug;
 		};
@@ -1225,7 +1225,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot.app/SweetSpot";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetSpot Beta.app/SweetSpot Beta";
 			};
 			name = Release;
 		};
@@ -1275,7 +1275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot" */ = {
+		BAC733BF20E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot Beta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC733C020E6F4B200E77BF4 /* Debug */,
@@ -1284,7 +1284,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotTests" */ = {
+		BAC733C220E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot BetaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC733C320E6F4B200E77BF4 /* Debug */,
@@ -1293,7 +1293,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpotUITests" */ = {
+		BAC733C520E6F4B200E77BF4 /* Build configuration list for PBXNativeTarget "SweetSpot BetaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAC733C620E6F4B200E77BF4 /* Debug */,

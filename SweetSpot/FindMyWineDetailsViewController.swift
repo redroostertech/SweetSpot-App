@@ -48,6 +48,9 @@ class FindMyWineDetailsViewController: UIViewController {
         lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
         lbl_WineDescription.textColor = UIColor.AppColors.grey
         lbl_WineDescription.text = wine.getTastingnotes()
+        if lbl_WineDescription.text.isBlank{
+            lbl_WineDescription.text  = "No tasting notes available for this wine."
+        }
         divider.backgroundColor = UIColor.AppColors.grey
         
         lbl_WineType.text = wine.getVarietyname()

@@ -34,7 +34,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         self.view.backgroundColor = UIColor.AppColors.purple.withAlphaComponent(0.8)
         
         lbl_WineName.text = wine.getWinename()
-        
+        lbl_WineName.adjustsFontSizeToFitWidth = true
         view_PrimaryContainer.layer.cornerRadius = 100
         view_PrimaryContainer.clipsToBounds = true
         view_PrimaryContainer.layer.borderColor = UIColor.AppColors.black.cgColor
@@ -70,6 +70,11 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         if let rating_text = wine.rating_text{
             text_AddReview.text = rating_text
         }
+        
+        if text_AddReview.text.isBlank{
+             text_AddReview.text = TV_REVIEW_DEFAULT_TEXT
+        }
+        
         if let strRating = wine.rating{
             if let rating = Int(strRating){
                 //highlight this many stars
