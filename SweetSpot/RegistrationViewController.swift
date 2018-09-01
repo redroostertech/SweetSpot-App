@@ -225,6 +225,8 @@ class RegistrationViewController: UIViewController {
     }
     @IBAction func cancel(_ sender: UIButton) {
          SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.REGISTER_CANCEL)
+        Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "")
+        Utils().savePermanentString(keyName: "USER_NAME", keyValue: "")
         self.dismiss(animated: true,
                      completion: nil)
     }

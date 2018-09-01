@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class vwEmptyWine : UIView{
     
@@ -56,7 +57,39 @@ class vwEmptyWine : UIView{
         btnCancel.setTitleColor(UIColor.AppColors.beige,
                                      for: .normal)
         
+        //getUserWineProfile
+        
+        let parameters: Parameters = ["action": "getUserWineProfile",
+                                     
+                                      "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            if response.result.value == nil{
+                return
+            }
+            let jsonValues = response.result.value as! [String:Any]
+            
+            let status = jsonValues["status"] as? Int
+            if status != 1{
+                print("error from server: \(jsonValues["message"])")
+                
+                return
+            }
+            let data = jsonValues["data"] as! [String:Any]
+            if let theJSONData = try? JSONSerialization.data( withJSONObject: data, options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .ascii)
+                
+                let wineProfile:WineProfile = WineProfile(JSONString: theJSONText!)!
+                self.lblProfileType.text = wineProfile.getWineprofilename()
+                
+            }
+        }
     }
+        
+    
+    
     
 }
 

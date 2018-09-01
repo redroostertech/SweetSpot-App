@@ -69,7 +69,7 @@ class FindMyWineDetailsCarouselViewController:
     UIViewController,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout,
-    UICollectionViewDataSource
+    UICollectionViewDataSource, vwEmptyWineDelegate, vwStretchSwipeDelegate
 {
     
     @IBOutlet var mainTable: UICollectionView!
@@ -79,10 +79,13 @@ class FindMyWineDetailsCarouselViewController:
     @IBOutlet var text_ViewType: UITextField!
     @IBOutlet var text_Bottle: UITextField!
     
+  
+    @IBOutlet weak var cstTableTop: NSLayoutConstraint!
+    
     var navigation: SecondaryNavigationViewController!
     
     let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
-    let strListViewTypeList = ["List View","Carousel View"]
+    let strListViewTypeList = ["Carousel View","List View"]
     let strSellByList = ["By Bottle", "By Glass"]
     
     var iSortByOption = 0
@@ -96,12 +99,80 @@ class FindMyWineDetailsCarouselViewController:
     
     var wineList = WineList(JSONString: "{}")!
     
+    
+    
+    var SHOW_STRETCH_WINE:Bool = false
+    @IBOutlet weak var stretchSwipe: UIView!
+    var stretchWineView:vwStretchSwipe?
+    
+    
+    
+    func addStretchWineView(){
+        stretchWineView = vwStretchSwipe().loadNib(myNibName: "vwStretchSwipe") as! vwStretchSwipe
+    
+        stretchWineView?.frame = self.stretchSwipe.frame
+        stretchWineView?.center = self.stretchSwipe.center
+        stretchWineView?.delegate = self
+        self.view.addSubview(stretchWineView!)
+        
+    }
+    
+    
+   
+    
+    func displayStretchSwipe( display:Bool){
+        if display{
+             cstTableTop.constant = 90
+             addStretchWineView()
+           
+            stretchWineView?.isHidden = false
+        }else{
+             cstTableTop.constant = 10
+            UIView.animate(withDuration: 1.5) {
+                self.view.layoutIfNeeded()
+            }
+
+//            UIView.transition(with: view, duration: 0.75, options: .transitionCrossDissolve, animations: {
+//                self.stretchWineView?.removeFromSuperview()
+//                self.stretchWineView?.isHidden = true
+//            })
+            
+            
+        }
+    }
+    
+    func vwStretchSwipe_SwipeRight(){
+        SHOW_STRETCH_WINE = true
+       
+        
+        wineList.wineList = wineList.wineList.reversed()
+        mainTable.reloadData()
+        mainTable.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                          at: .left,
+                                          animated: true)
+        
+        
+        
+        UIView.animate(withDuration: 0.75, animations: {
+             self.stretchWineView?.progressBar.progress = 1
+        }, completion: {(finished:Bool) in
+            self.stretchWineView?.removeFromSuperview()
+            self.stretchWineView?.isHidden = true
+            self.displayStretchSwipe(display: false)
+            
+        })
+      
+    }
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayStretchSwipe(display: false)
         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.FIND_MY_WINE_CAROUSEL)
         self.view.backgroundColor = UIColor.AppColors.purple
         
-        
+       
         text_Address.isEnabled = false
         text_Address.text = self.retailer.getRetailername()
         ddSortByOptions.dataSource = strSortByOptionsList
@@ -117,26 +188,37 @@ class FindMyWineDetailsCarouselViewController:
         ddListViewTypes.dataSource = strListViewTypeList
         ddListViewTypes.anchorView = text_ViewType
         text_ViewType.delegate = self
-        text_ViewType.text = strListViewTypeList[1]
+        text_ViewType.text = strListViewTypeList[0]
         self.ddListViewTypes.selectionAction = { [unowned self] (index: Int, item: String) in
             self.text_ViewType.text = item
             self.iListViewType = index
-            if index == 0{
+            if index == 1{
                 print("show listview")
-                self.dismiss(animated: true, completion: nil)
+                
+                if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsListViewController", storyBoard: "Main") as? FindMyWineDetailsListViewController {
+                    viewController.retailer = self.retailer
+                    self.present(viewController, animated: true, completion: nil)
+                }
             }
         }
         
+      
         ddSellByLists.dataSource = strSellByList
+        if self.retailer.getRetailertypeid() > 1{
+            ddSellByLists.dataSource = ["By Bottle"]
+        }
         ddSellByLists.anchorView = text_Bottle
         text_Bottle.delegate = self
         text_Bottle.text = strSellByList[0]
+        if self.retailer.getRetailertypeid() == 1{
+            text_Bottle.text = strSellByList[1]
+            iSellBy = 1 //default set to sell by glass if retailer is a restaurant
+        }
         self.ddSellByLists.selectionAction = { [unowned self] (index: Int, item: String) in
             self.text_Bottle.text = item
             self.iSellBy = index
             self.loadMainTable()
         }
-        
         
         navigation = SecondaryNavigationViewController()
         addChildViewController(navigation)
@@ -156,7 +238,7 @@ class FindMyWineDetailsCarouselViewController:
         addressRightInputImageView.contentMode = .center
         self.text_Address.rightViewMode = .always
         self.text_Address.textColor = UIColor.AppColors.beige
-        self.text_Address.rightView = addressRightInputImageView
+        //self.text_Address.rightView = addressRightInputImageView
         
         let sortByRightInputImageView = UIImageView(frame: CGRect(x: 0,
                                                                   y: 0,
@@ -241,6 +323,7 @@ class FindMyWineDetailsCarouselViewController:
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
+                self.displayStretchSwipe(display: false)
                 self.showEmptyResults()
                 return
             }
@@ -252,6 +335,7 @@ class FindMyWineDetailsCarouselViewController:
                 self.wineList = WineList(JSONString: "{}")!
                 self.mainTable.reloadData()
                 self.showEmptyResults()
+                self.displayStretchSwipe(display: false)
                 return
             }
             let data = jsonValues["data"] as! [String:Any]
@@ -261,9 +345,14 @@ class FindMyWineDetailsCarouselViewController:
                 print("JSON string = \(theJSONText!)")
                 
                 self.wineList = WineList(JSONString: theJSONText!)!
+                if let wine = self.findStretchWine(){
+                     self.displayStretchSwipe(display: true)
+                }
+                
                 self.mainTable.reloadData()
             }
             if self.wineList.wineList.count == 0{
+                 self.displayStretchSwipe(display: false)
                 self.showEmptyResults()
             }
         }
@@ -273,15 +362,52 @@ class FindMyWineDetailsCarouselViewController:
         let customView = vwEmptyWine().loadNib(myNibName: "vwEmptyWine") as! vwEmptyWine
         customView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         customView.alpha = 1
+        customView.delegate = self
         self.view.addSubview(customView)
     }
+    
+    func btnGetStarted_Click() {
+        let presentingViewController = self.presentingViewController
+        self.dismiss(animated: true, completion: {
+            if let viewController = self.programmaticSegue(vcName: "ProfileContainerViewController", storyBoard: "Main") as? ProfileContainerViewController {
+                viewController.navigatedFromEmptyScreen = true
+                presentingViewController?.present(viewController, animated: true, completion: nil)
+                
+            }
+        })
+    }
+    
+    func btnCancel_Click() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if findStretchWine() != nil && SHOW_STRETCH_WINE == false{
+            return self.wineList.wineList.count - 1
+        }
+        if findStretchWine() == nil && SHOW_STRETCH_WINE == false{
+            print("logical error, this should never happen")
+            return self.wineList.wineList.count
+        }
+        if findStretchWine() == nil && SHOW_STRETCH_WINE == true{
+            return self.wineList.wineList.count
+        }
         return self.wineList.wineList.count
+    }
+    
+    func findStretchWine()->Wine?{
+        var wine:Wine? = nil
+        for tmpWine in wineList.wineList{
+            if tmpWine.is_stretch_wine == "1"{
+                wine = tmpWine
+            }
+        }
+        return wine
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -302,6 +428,7 @@ class FindMyWineDetailsCarouselViewController:
         if wine.getVarietyname() != ""{
             address = address + wine.getVarietyname()
         }
+        cell.lbl_WineLocation.text = wine.getWineryname()
         cell.lbl_WineCity.text = wine.getCountry() + ", " + wine.getRegion()
         cell.lbl_WineCity.adjustsFontSizeToFitWidth = true
         cell.lbl_WinePrice.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
@@ -313,6 +440,8 @@ class FindMyWineDetailsCarouselViewController:
             cell.lbl_SweetSportWine.textColor = UIColor.AppColors.black
         }else{
             cell.lbl_SweetSportWine.text = "SweetSpot Wine"
+             cell.lbl_SweetSportWine.backgroundColor = UIColor.AppColors.light_purple
+             cell.lbl_SweetSportWine.textColor = UIColor.white
         }
         
         if iSellBy == 1 {
@@ -433,9 +562,7 @@ extension FindMyWineDetailsCarouselViewController: NavDelegate {
     func doDismiss() {
         //        dismiss(animated: true,
         //                completion: nil)
-        self.presentingViewController?.view.isHidden = true
-        
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         
     }
@@ -476,7 +603,7 @@ extension FindMyWineDetailsCarouselViewController: NavDelegate {
     }
     
     func doGoHome(){
-        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 

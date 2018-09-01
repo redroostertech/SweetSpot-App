@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="vwStretchSwipe" customModule="SweetSpot_Beta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxq-hL-4Z6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2I-wr-bdC">
+                            <rect key="frame" x="90" y="52" width="196" height="19"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19" id="FX3-wD-h83"/>
+                                <constraint firstAttribute="width" constant="196" id="gOU-hD-P5m"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6br-DH-TSV" customClass="ProgressBar" customModule="SweetSpot_Beta" customModuleProvider="target">
+                            <rect key="frame" x="8" y="53" width="359" height="20"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="plr-Oy-8iT"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe below to view our stretch wine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gz-y8-lEC">
+                            <rect key="frame" x="8" y="24" width="359" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="B2I-wr-bdC" secondAttribute="trailing" constant="89" id="5o1-eS-77a"/>
+                        <constraint firstItem="B2I-wr-bdC" firstAttribute="centerX" secondItem="xxq-hL-4Z6" secondAttribute="centerX" id="8a3-yr-uAd"/>
+                        <constraint firstAttribute="trailing" secondItem="6br-DH-TSV" secondAttribute="trailing" constant="8" id="SWD-JS-eyq"/>
+                        <constraint firstItem="B2I-wr-bdC" firstAttribute="top" secondItem="xxq-hL-4Z6" secondAttribute="top" constant="52" id="YvC-uS-nhV"/>
+                        <constraint firstAttribute="bottom" secondItem="6br-DH-TSV" secondAttribute="bottom" constant="8" id="Z5w-SL-RG4"/>
+                        <constraint firstItem="6br-DH-TSV" firstAttribute="leading" secondItem="xxq-hL-4Z6" secondAttribute="leading" constant="8" id="sgp-3d-fkH"/>
+                        <constraint firstAttribute="height" constant="81" id="yVi-4D-iQb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="xxq-hL-4Z6" secondAttribute="top" constant="20" id="DQa-OI-G8D"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xxq-hL-4Z6" secondAttribute="trailing" id="IIq-XV-Pyr"/>
+                <constraint firstItem="xxq-hL-4Z6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZOn-Qx-Mbn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lblInstructions" destination="4gz-y8-lEC" id="l07-dO-H7e"/>
+                <outlet property="progressBar" destination="6br-DH-TSV" id="YSy-XE-I7M"/>
+                <outlet property="vwArrow" destination="B2I-wr-bdC" id="V1B-bg-rMa"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="73.5"/>
+        </view>
+    </objects>
+</document>

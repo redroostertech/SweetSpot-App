@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
        
         text_Password.isSecureTextEntry = true
         if AppConstants.DEBUG {
-            text_Email.text = "test@sweetspot.digital"
+            text_Email.text = "iziah@nuracode.com"
             text_Password.text = "abc123"
         }
     }

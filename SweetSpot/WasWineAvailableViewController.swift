@@ -80,16 +80,19 @@ class WasWineAvailableViewController: UIViewController {
     }
     
     @IBAction func no(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.WAS_WINE_AVAILABLE_NO)
         self.dismiss(animated: true,
                      completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.WAS_WINE_AVAILABLE_CANCEL)
         self.dismiss(animated: true,
                      completion: nil)
     }
     
     @IBAction func yes(_ sender: Any) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.WAS_WINE_AVAILABLE_YES)
         let parameters: Parameters = ["action": "addCustomerSelectWine",
                                       "wine_id": "\(wine.getWineaiid())",
             "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")

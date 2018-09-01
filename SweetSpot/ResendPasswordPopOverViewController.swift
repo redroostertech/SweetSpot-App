@@ -32,17 +32,17 @@ class ResendPasswordPopOverViewController: UIViewController {
                                for: .normal)
         if let text = self.text {
             popoverText.text = text
-            btn_Login.setTitle(help_button_text.uppercased(),
+            btn_Login.setTitle("CLOSE",
                                for: .normal)
         } else {
-            popoverText.text = popover_password_resent
-            btn_Login.setTitle(login_log_in.uppercased(),
+            popoverText.text = "A new password has been sent to your email address. Use this password to login."
+            btn_Login.setTitle("CLOSE",
                                for: .normal)
         }
     }
 
     @IBAction func login(_ sender: UIButton) {
-        //self.dismiss(animated: true, completion: nil)
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

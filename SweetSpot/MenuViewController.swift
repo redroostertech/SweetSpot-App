@@ -102,6 +102,7 @@ class MenuViewController: UIViewController {
         switch sender {
             
         case btn_Logout:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_LOGOUT)
             Utils().savePermanentString(keyName: "USER_NAME", keyValue: "")
             Utils().savePermanentString(keyName: "CUSTOMER_ID", keyValue: "")
             Utils().savePermanentString(keyName: "IS_ONBOARDED", keyValue: "")
@@ -114,6 +115,7 @@ class MenuViewController: UIViewController {
             
             break
         case btn_Help:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_HELP)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard
@@ -130,6 +132,7 @@ class MenuViewController: UIViewController {
             
             
         case btn_RateMyWine:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_RATE_MY_WINE)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard
@@ -144,6 +147,7 @@ class MenuViewController: UIViewController {
                     completion: nil)
             break
         case btn_Profile:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_PROFILE)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard
@@ -157,6 +161,7 @@ class MenuViewController: UIViewController {
                     animated: true,
                     completion: nil)
         case btn_MySweetSpot:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_MY_FAVORITE)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard
@@ -170,6 +175,7 @@ class MenuViewController: UIViewController {
                     animated: true,
                     completion: nil)
         case btn_FindMyWine:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_FIND_MY_WINE)
             let sb = UIStoryboard(name: "Main",
                                   bundle: nil)
             guard
@@ -184,6 +190,7 @@ class MenuViewController: UIViewController {
                     completion: nil)
             break
         case btn_MyWineJourney:
+            SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.MENU_MY_WINE_JOURNEY)
             if let url = URL(string: AppConstants.WINE_JOURNEY_URL) {
                 UIApplication.shared.open(url, options: [:])
             }

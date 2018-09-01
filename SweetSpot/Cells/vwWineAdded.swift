@@ -25,6 +25,9 @@ class vwWineAdded: UIView {
     }
     */
 
+    override func layoutSubviews() {
+        
+    }
    
     @IBAction func btnClose_Click(_ sender: Any) {
         print("btnClose_Click")

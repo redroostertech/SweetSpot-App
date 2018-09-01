@@ -33,6 +33,7 @@ class Retailer : Mappable {
     var date_entered:Any?
     var date_updated:Any?
     var is_active:Any?
+    
     var distance:String?
     
     required init?(map: Map){

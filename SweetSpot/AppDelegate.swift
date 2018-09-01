@@ -21,7 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
-       
+        let didOnboard = Utils().getPermanentString(keyName: "DID_ONBOARD")
+        if didOnboard != "1"{
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let swipingController = vcOnboardingWizard(collectionViewLayout: layout)
+            
+            window?.rootViewController = swipingController
+        }
         
         
         return true

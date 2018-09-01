@@ -116,5 +116,23 @@ class Utils{
         return randomString
     }
     
+    public class func drawProgressBar(frame frame: CGRect = CGRect(x: 0, y: 1, width: 288, height: 12), progress: CGFloat = 274) {
+        //// Color Declarations
+        let pinkColor = UIColor(red: 0.905, green: 0.740, blue: 0.911, alpha: 1.000)
+        
+        //// Progress Outline Drawing
+        let progressOutlinePath = UIBezierPath(roundedRect: CGRect(x: frame.minX + 1, y: frame.minY + 1, width: floor((frame.width - 1) * 0.99652 + 0.5), height: 10), cornerRadius: 5)
+        pinkColor.setStroke()
+        progressOutlinePath.lineWidth = 1
+        progressOutlinePath.stroke()
+        progressOutlinePath.addClip()
+        
+        
+        //// Progress Active Drawing
+        let progressActivePath = UIBezierPath(roundedRect: CGRect(x: 1, y: 1, width: progress, height: 10), cornerRadius: 5)
+        pinkColor.setFill()
+        progressActivePath.fill()
+    }
+    
 }
 

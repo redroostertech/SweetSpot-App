@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var btn_GetStarted: UIButton!
     @IBOutlet var btn_Login: UIButton!
     @IBOutlet var lbl_CallToAction: UILabel!
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbl_Version: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.SPLASH_SCREEN)
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.SPLASH_SCREEN)
         lbl_Version.text = Bundle.main.releaseVersionNumberPretty
         lbl_Version.textColor = UIColor.AppColors.beige
         setVCBackgroundImageToView(image: login_background_image)
@@ -39,13 +39,13 @@ class ViewController: UIViewController {
         btn_GetStarted.setTitle(login_get_started.uppercased(),
                                 for: .normal)
         btn_Login.setTitleColor(UIColor.AppColors.black,
-                                     for: .normal)
+                                for: .normal)
         btn_Login.setTitle(login_log_in.uppercased(),
                            for: .normal)
         
-       
+        
     }
-
+    
     
     
     override func viewDidAppear(_ animated: Bool) {

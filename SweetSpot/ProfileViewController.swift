@@ -67,10 +67,12 @@ class ProfileViewController: UIViewController {
         btn_SaveChanges.setTitle(profile_save_changes.uppercased(),
                                  for: .normal)
         loadCustomer()
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_PERSONAL_INFO)
     }
     
     @IBAction func saveChanges(_ sender: UIButton) {
         
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_PERSONAL_INFO_SAVECHANGES)
         Utils().savePermanentString(keyName: "USER_NAME", keyValue: text_FIrstName.text!)
         let parameters: Parameters = ["action": "updateUserProfile",
                                       "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
@@ -119,6 +121,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_PERSONAL_INFO_CANCEL)
         goDashboard()
     }
     
@@ -130,19 +133,24 @@ class ProfileViewController: UIViewController {
         switch sender {
         case self.btn_FirstName:
             print("First Name")
-            self.showSaveButtonOn(sender: sender)
+            text_FIrstName.becomeFirstResponder()
+            //self.showSaveButtonOn(sender: sender)
         case self.btn_LastName:
             print("Last Name")
-            self.showSaveButtonOn(sender: sender)
+            text_LastName.becomeFirstResponder()
+            //self.showSaveButtonOn(sender: sender)
         case self.btn_ZipCode:
             print("Zip Code")
-            self.showSaveButtonOn(sender: sender)
+            text_ZipCode.becomeFirstResponder()
+            //self.showSaveButtonOn(sender: sender)
         case self.btn_EmailAddress:
             print("Email Address")
-            self.showSaveButtonOn(sender: sender)
+            text_Email.becomeFirstResponder()
+            //self.showSaveButtonOn(sender: sender)
         case self.btn_PhoneNumber:
             print("Phone Number")
-            self.showSaveButtonOn(sender: sender)
+            text_PhoneNumber.becomeFirstResponder()
+            //self.showSaveButtonOn(sender: sender)
         default:
             print("None")
         }
@@ -164,8 +172,15 @@ class ProfileViewController: UIViewController {
                                      for: .normal)
         self.btn_Save?.setTitle("Save".uppercased(),
                                 for: .normal)
+        self.btn_Save?.addTarget(self, action: #selector(self.saveButtonClicked), for: .touchUpInside)
         
         self.view.addSubview(self.btn_Save!)
+    }
+    @objc private func saveButtonClicked() {
+        if let btn_Save = self.btn_Save {
+            btn_Save.removeFromSuperview()
+           
+        }
     }
 }
 

@@ -37,6 +37,9 @@ class SSAnalytics{
         case REVIEW_WINE
         case REVIEW_WINE_CANCEL
         case WAS_WINE_AVAILABLE
+        case WAS_WINE_AVAILABLE_YES
+        case WAS_WINE_AVAILABLE_NO
+        case WAS_WINE_AVAILABLE_CANCEL
         case VIEW_WINE_DETAILS
         case VIEW_RATE_WINE_ALL
         case VIEW_RATE_WINE_RATED
@@ -47,6 +50,30 @@ class SSAnalytics{
         case TC
         case TC_START
         case TC_CANCEL
+        
+        case MENU_FIND_MY_WINE
+        case MENU_RATE_MY_WINE
+        case MENU_MY_FAVORITE
+        case MENU_PROFILE
+        case MENU_MY_WINE_JOURNEY
+        case MENU_HELP
+        case MENU_LOGOUT
+        
+        case PROFILE_PERSONAL_INFO
+        case PROFILE_WINE_PROFILE
+        case PROFILE_PERSONAL_INFO_SAVECHANGES
+        case PROFILE_PERSONAL_INFO_CANCEL
+        case PROFILE_WINE_PROFILE_SAVECHANGES
+        case PROFILE_WINE_PROFILE_CANCEL
+        
+        case QUESTION_ONE_NEXT
+        case QUESTION_ONE_CANCEL
+        case QUESTION_TWO_NEXT
+        case QUESTION_TWO_CANCEL
+        case QUESTION_THREE_NEXT
+        case QUESTION_THREE_CANCEL
+        case USER_SURVEY_FINISH
+        case USER_SURVEY_SKIP
         
     }
     

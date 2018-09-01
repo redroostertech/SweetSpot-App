@@ -52,7 +52,7 @@ class HelpViewController: UIViewController {
             }
             
         }
-        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.HELP)
+        
     }
     
     override func didReceiveMemoryWarning() {

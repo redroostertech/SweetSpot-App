@@ -114,6 +114,7 @@ class WineProfileViewController: UIViewController {
             loadList(list_id: i)
         }
         loadCustomer()
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_WINE_PROFILE)
     }
     
     func loadCustomer(){
@@ -272,7 +273,7 @@ class WineProfileViewController: UIViewController {
     }
     
     @IBAction func saveChanges(_ sender: UIButton) {
-        
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_WINE_PROFILE_SAVECHANGES)
        
         let parameters: Parameters = ["action": "updateUserProfile",
                                       "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
@@ -288,6 +289,7 @@ class WineProfileViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.PROFILE_WINE_PROFILE_CANCEL)
         //        self.dismiss(animated: true,
         //                     completion: nil)
         goDashboard()

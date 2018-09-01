@@ -50,7 +50,7 @@ class RateMyWineRatedController:
         mainTable.delegate = self
         mainTable.dataSource = self
         mainTable.backgroundColor = UIColor.AppColors.dark_purple
-         SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.VIEW_RATE_WINE_RATED)
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.VIEW_RATE_WINE_RATED)
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -74,7 +74,7 @@ class RateMyWineRatedController:
                 print("error from server: \(jsonValues["message"])")
                 self.wineList = WineList(JSONString: "{}")!
                 self.mainTable.reloadData()
-                  self.showEmptyResults()
+                self.showEmptyResults()
                 return
                 
             }

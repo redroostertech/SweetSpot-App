@@ -173,7 +173,7 @@ class QuestionaireFinalStepViewController: UIViewController {
     }
     
     @IBAction func finished(_ sender: UIButton) {
-        
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.USER_SURVEY_FINISH)
         let parameters: Parameters = ["action": "updateUserProfile",
                                       "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID"),
                                       "gender_id":"\(selectedGender)",
@@ -200,6 +200,7 @@ class QuestionaireFinalStepViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: UIButton) {
+        SSAnalytics.reportUserAction(action_type: SSAnalytics.AnalyticsActionType.USER_SURVEY_SKIP)
         let sb = UIStoryboard(name: "Main",
                               bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController else {

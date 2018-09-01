@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegistrationPasswordViewController: UIViewController {
     
@@ -57,14 +58,14 @@ class RegistrationPasswordViewController: UIViewController {
         btn_Next.setTitle(registration_submit.uppercased(),
                           for: .normal)
         
-        btn_EditEmail.layer.cornerRadius = CGFloat(btn_radius)
-        btn_EditEmail.layer.borderColor = UIColor.AppColors.beige.cgColor
-        btn_EditEmail.layer.borderWidth = CGFloat(btn_border_width)
-        btn_EditEmail.backgroundColor = UIColor.clear
-        btn_EditEmail.setTitleColor(UIColor.AppColors.beige,
-                                    for: .normal)
-        btn_EditEmail.setTitle(registration_edit_email.uppercased(),
-                               for: .normal)
+//        btn_EditEmail.layer.cornerRadius = CGFloat(btn_radius)
+//        btn_EditEmail.layer.borderColor = UIColor.AppColors.beige.cgColor
+//        btn_EditEmail.layer.borderWidth = CGFloat(btn_border_width)
+//        btn_EditEmail.backgroundColor = UIColor.clear
+//        btn_EditEmail.setTitleColor(UIColor.AppColors.beige,
+//                                    for: .normal)
+//        btn_EditEmail.setTitle(registration_edit_email.uppercased(),
+//                               for: .normal)
         
         btn_ReSend.layer.cornerRadius = CGFloat(btn_radius)
         btn_ReSend.layer.borderColor = UIColor.AppColors.beige.cgColor
@@ -117,7 +118,25 @@ class RegistrationPasswordViewController: UIViewController {
     }
     
     @IBAction func resendPassword(_ sender: UIButton) {
-        
+        let parameters: Parameters = ["action": "resendPassword",
+                                      "customer_id":Utils().getPermanentString(keyName: "CUSTOMER_ID")
+                                      
+            
+        ]
+        Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+
+            
+            let sb = UIStoryboard(name: "Main",
+                                  bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: "ResendPasswordPopOverViewController") as? ResendPasswordPopOverViewController else {
+                return
+            }
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc,
+                         animated: true,
+                         completion: nil)
+        }
+        //ResendPasswordPopOverViewController
         
     }
     

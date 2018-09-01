@@ -22,6 +22,8 @@ class Customer : Mappable {
     var wine_profile_id:Any?
     var app_last_used:Any?
     var profile_last_updated:Any?
+    
+    
     var gender_name:String?
     var salary_name:String?
     var marital_name:String?

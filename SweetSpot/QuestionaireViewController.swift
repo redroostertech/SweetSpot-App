@@ -82,10 +82,7 @@ class QuestionaireViewController:
         questionaireTable.delegate = self
         questionaireTable.dataSource = self
         questionaireTable.backgroundColor = .clear
-        let questionaireNib = UINib(nibName: "QuestionaireTableViewCell",
-                                    bundle: nil)
-        questionaireTable.register(questionaireNib,
-                                   forCellReuseIdentifier: "QuestionaireTableViewCell")
+        
         questionaireTable.reloadData()
         
         if let _ = self.startingViewController as? RegistrationViewController {
@@ -220,6 +217,8 @@ class QuestionaireViewController:
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.register(QuestionaireTableViewCell.self, forCellReuseIdentifier: "QuestionaireTableViewCell")
+         tableView.register(UINib(nibName: "QuestionaireTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionaireTableViewCell")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionaireTableViewCell",
                                                        for: indexPath) as? QuestionaireTableViewCell else {
                                                         return UITableViewCell()

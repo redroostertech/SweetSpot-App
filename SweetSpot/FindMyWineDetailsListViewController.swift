@@ -90,7 +90,7 @@ class FindMyWineRecommendedCell: UITableViewCell {
 
 class FindMyWineDetailsListViewController: UIViewController,
     UITableViewDelegate,
-    UITableViewDataSource, vwEmptyWineDelegate
+    UITableViewDataSource, vwEmptyWineDelegate, vwStretchSwipeDelegate
 {
    
     
@@ -102,11 +102,20 @@ class FindMyWineDetailsListViewController: UIViewController,
     @IBOutlet var text_ViewType: UITextField!
     @IBOutlet var text_Bottle: UITextField!
     
+    
+    
+    @IBOutlet weak var stretchSwipe: UIView!
+    
+    var SHOW_STRETCH_WINE:Bool = false
+    var stretchWineView:vwStretchSwipe?
+    @IBOutlet weak var cstTableTop: NSLayoutConstraint!
     var navigation: SecondaryNavigationViewController!
     
+    
     let strSortByOptionsList = ["Low To High", "High To Low", "A-Z", "Z-A"]
-    let strListViewTypeList = ["List View","Carousel View"]
+    let strListViewTypeList = ["Carousel View","List View"]
     let strSellByList = ["By Bottle", "By Glass"]
+    
     
     var iSortByOption = 0
     var iListViewType = 0
@@ -121,6 +130,47 @@ class FindMyWineDetailsListViewController: UIViewController,
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    
+    
+    
+    func addStretchWineView(){
+        stretchWineView = vwStretchSwipe().loadNib(myNibName: "vwStretchSwipe") as! vwStretchSwipe
+        
+        stretchWineView?.frame = self.stretchSwipe.frame
+        stretchWineView?.center = self.stretchSwipe.center
+        stretchWineView?.delegate = self
+        self.view.addSubview(stretchWineView!)
+        
+    }
+    func displayStretchSwipe( display:Bool){
+        if display{
+            cstTableTop.constant = 90
+            addStretchWineView()
+            
+            stretchWineView?.isHidden = false
+        }else{
+            cstTableTop.constant = 10
+            UIView.animate(withDuration: 1.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func vwStretchSwipe_SwipeRight(){
+        SHOW_STRETCH_WINE = true
+        wineList.wineList = wineList.wineList.reversed()
+        mainTable.reloadData()
+        mainTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        UIView.animate(withDuration: 0.75, animations: {
+            self.stretchWineView?.progressBar.progress = 1
+        }, completion: {(finished:Bool) in
+            self.stretchWineView?.removeFromSuperview()
+            self.stretchWineView?.isHidden = true
+            self.displayStretchSwipe(display: false)
+            
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,29 +190,33 @@ class FindMyWineDetailsListViewController: UIViewController,
         ddListViewTypes.dataSource = strListViewTypeList
         ddListViewTypes.anchorView = text_ViewType
         text_ViewType.delegate = self
-        text_ViewType.text = strListViewTypeList[0]
+        text_ViewType.text = strListViewTypeList[1]
         self.ddListViewTypes.selectionAction = { [unowned self] (index: Int, item: String) in
             self.text_ViewType.text = item
             self.iListViewType = index
-            if index == 1{
-                print("show carouselview")
-                if let viewController = self.programmaticSegue(vcName: "FindMyWineDetailsCarouselViewController", storyBoard: "Main") as? FindMyWineDetailsCarouselViewController {
-                    
-                    viewController.retailer = self.retailer
-                    self.present(viewController, animated: true, completion: nil)
-                }
+            if index == 0{
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
         ddSellByLists.dataSource = strSellByList
+        if self.retailer.getRetailertypeid() > 1{
+            ddSellByLists.dataSource = ["By Bottle"]
+        }
         ddSellByLists.anchorView = text_Bottle
         text_Bottle.delegate = self
         text_Bottle.text = strSellByList[0]
+        if self.retailer.getRetailertypeid() == 1{
+            text_Bottle.text = strSellByList[1]
+            iSellBy = 1
+        }
+        
         self.ddSellByLists.selectionAction = { [unowned self] (index: Int, item: String) in
             self.text_Bottle.text = item
             self.iSellBy = index
             self.loadMainTable()
         }
+        
         
         
         
@@ -258,6 +312,7 @@ class FindMyWineDetailsListViewController: UIViewController,
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
+                self.displayStretchSwipe(display: false)
                  self.showEmptyResults()
                 return
             }
@@ -268,6 +323,7 @@ class FindMyWineDetailsListViewController: UIViewController,
                 print("error from server: \(jsonValues["message"])")
                 self.wineList = WineList(JSONString: "{}")!
                 self.mainTable.reloadData()
+                self.displayStretchSwipe(display: false)
                  self.showEmptyResults()
                 return
             }
@@ -278,10 +334,14 @@ class FindMyWineDetailsListViewController: UIViewController,
                 print("JSON string = \(theJSONText!)")
                 
                 self.wineList = WineList(JSONString: theJSONText!)!
+                if let wine = self.findStretchWine(){
+                    self.displayStretchSwipe(display: true)
+                }
                 self.mainTable.reloadData()
             }
             
             if self.wineList.wineList.count == 0{
+                self.displayStretchSwipe(display: false)
                 self.showEmptyResults()
             }
         }
@@ -312,8 +372,8 @@ class FindMyWineDetailsListViewController: UIViewController,
         self.dismiss(animated: true, completion: nil)
     }
     
-    func findStretchWine()->Wine{
-        var wine:Wine = Wine(JSONString:"{}")!
+    func findStretchWine()->Wine?{
+        var wine:Wine? = nil
         for tmpWine in wineList.wineList{
             if tmpWine.is_stretch_wine == "1"{
                 wine = tmpWine
@@ -325,6 +385,10 @@ class FindMyWineDetailsListViewController: UIViewController,
        
         var listCount = 0
         listCount = self.wineList.wineList.count + 1
+        
+        if findStretchWine() != nil && SHOW_STRETCH_WINE == false{
+            return self.wineList.wineList.count
+        }
 
         return listCount
     }
@@ -384,11 +448,15 @@ class FindMyWineDetailsListViewController: UIViewController,
                 cell.mainImg.clipsToBounds = true
                 cell.mainImg.contentMode = .scaleAspectFill
             }
-            if iSellBy == 1 {
-                cell.lbl_Price.text = "$" + String(format:"%.2f", stretch_wine.getRetailerglassprice())
-               
+                
+            if retailer.getRetailertypeid() == 1 && iSellBy == 1{
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerglassprice())
+                
+            }else if retailer.getRetailertypeid() == 1 && iSellBy == 0{
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
+                
             }else{
-                 cell.lbl_Price.text = "$" + String(format:"%.2f", stretch_wine.getRetailerbottleprice())
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
             }
             
             let showDetailsGesture = UITapGestureRecognizer(target: self, action: #selector(showStretchDetails(_:)))
@@ -439,8 +507,11 @@ class FindMyWineDetailsListViewController: UIViewController,
                 cell.mainImg.contentMode = .scaleAspectFill
             }
             
-            if iSellBy == 1 {
+            if retailer.getRetailertypeid() == 1 && iSellBy == 1{
                 cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerglassprice())
+                
+            }else if retailer.getRetailertypeid() == 1 && iSellBy == 0{
+                cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
                 
             }else{
                 cell.lbl_Price.text = "$" + String(format:"%.2f", wine.getRetailerbottleprice())
@@ -593,8 +664,11 @@ extension FindMyWineDetailsListViewController: UITextFieldDelegate {
 
 extension FindMyWineDetailsListViewController: NavDelegate {
     func doDismiss() {
-        dismiss(animated: true,
-                completion: nil)
+//        dismiss(animated: true,
+//                completion: nil)
+        self.presentingViewController?.view.isHidden = true
+        
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func doGoToProfile() {
@@ -633,6 +707,7 @@ extension FindMyWineDetailsListViewController: NavDelegate {
     }
     
     func doGoHome(){
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+         self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+       
     }
 }

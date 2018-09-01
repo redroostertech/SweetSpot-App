@@ -71,7 +71,7 @@ class FindMyWineViewController:
     var userHomeAddress:String = ""
    
     var spinnerView:UIView = UIView()
-    
+    var stretchView:vwStretchSwipe?
     fileprivate let googleMapsKey = "AIzaSyCE-IICsrZpekbpWXj-v_7rtCR83-Dym50"
     fileprivate let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     override func viewDidLoad() {
@@ -111,6 +111,8 @@ class FindMyWineViewController:
        
         self.text_Address.delegate = self
         self.text_Address.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.text_Address.attributedPlaceholder = NSAttributedString(string: "Type Address",
+                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
        
         
         let retailersRightInputImage = UIImage(named: "dropDownArrow")
@@ -143,10 +145,16 @@ class FindMyWineViewController:
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide , object: nil)
-
+        
         
     }
+    
+    
+
+   
+    
     @IBAction func setHomeAddress(_ sender: Any) {
         text_Address.text = userHomeAddress
         self.loadMainTable()
@@ -167,6 +175,27 @@ class FindMyWineViewController:
             self.mainTable.reloadData()
         }
         
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if (authorizationStatus == CLAuthorizationStatus.denied) {
+           self.removeSpinner(spinner: self.spinnerView)
+            
+        }else{
+            print("authorizationStatus is authorized")
+        }
+       
+        
+        
+    }
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.denied) {
+            // The user denied authorization
+            self.removeSpinner(spinner: self.spinnerView)
+        } else if (status == CLAuthorizationStatus.authorizedAlways) {
+            // The user accepted authorization
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -257,13 +286,15 @@ class FindMyWineViewController:
         
         
         
-        print("retail_name \(retail_name)")
+       
         let parameters: Parameters = ["action": "getRetailListByAddress",
                                       "address":address,
                                       "retail_type_id":selectedRetailer,
                                       "retail_distance_id":selectedDistance,
                                       "retail_name":retail_name
         ]
+        print("retail_name \(retail_name)")
+        print("parameters \(parameters)")
         Alamofire.request(AppConstants.RM_SERVER_URL, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
             if response.result.value == nil{
@@ -327,7 +358,7 @@ class FindMyWineViewController:
         if indexPath.row - 1 >= 0{
             let retailer = retailerList.retailerList[indexPath.row - 1]
             cell.lbl_BusinessName.text = retailer.getRetailername()
-            cell.lbl_Address.text = retailer.getAddressline1() + "\n" + retailer.getAddressline2() + "\n" + retailer.getCity() + "," + retailer.getState() + " " + "\(retailer.getZipcode())"
+            cell.lbl_Address.text = retailer.getAddressline1() + "\n" + retailer.getAddressline2() + "\n" + retailer.getCity() + ", " + retailer.getState() + " " + "\(retailer.getZipcode())"
             if let strDistance = retailer.distance{
                 if let distance = Double(strDistance){
                     cell.lbl_Distance.text = "\(distance.rounded(toPlaces: 2)) miles away"
@@ -391,7 +422,7 @@ class FindMyWineViewController:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueWineDetails"{
             
-            let vc = segue.destination as! FindMyWineDetailsListViewController
+            let vc = segue.destination as! FindMyWineDetailsCarouselViewController
              let retailer = retailerList.retailerList[selectedRetailIndex]
             
             vc.retailer = retailer
@@ -452,7 +483,7 @@ extension FindMyWineViewController: UITextFieldDelegate {
                     
                     let status = jsonValues["status"] as? Int
                     if status != 1{
-                        print("error from server: \(jsonValues["message"])")
+                        //print("error from server: \(jsonValues["message"])")
                         return
                     }
                     let data = jsonValues["data"] as! [String:Any]
